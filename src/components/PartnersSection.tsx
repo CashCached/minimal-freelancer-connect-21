@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Building, Award, Users } from 'lucide-react';
+import { Users } from 'lucide-react';
 
 const PartnersSection = () => {
   return (
@@ -32,7 +32,7 @@ const PartnersSection = () => {
             />
           </div>
           
-          {/* New Logo instead of Handshake icon */}
+          {/* Global Tech Logo */}
           <div className="flex flex-col items-center">
             <img 
               src="/lovable-uploads/8665157c-b619-4900-a187-04babcb84170.png" 
@@ -40,9 +40,16 @@ const PartnersSection = () => {
               className="h-12 object-contain brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
             />
           </div>
+          
+          {/* HD Sales Logo (replacing the Award icon) */}
           <div className="flex flex-col items-center">
-            <Award size={48} className="text-brand-green" />
+            <img 
+              src="/lovable-uploads/b911427e-f3ec-4d6a-98fa-7bdc4b8de91f.png" 
+              alt="HD Sales" 
+              className="h-12 object-contain brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
+            />
           </div>
+          
           <div className="flex flex-col items-center">
             <Users size={48} className="text-brand-green" />
           </div>
