@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Building, Handshake, Award, Users } from 'lucide-react';
 
@@ -19,9 +18,8 @@ const PartnersSection = () => {
             <img 
               src="/lovable-uploads/7d9b9752-20da-4013-ae11-df2bec3bc9de.png" 
               alt="Dexter Agency" 
-              className="h-12 object-contain mb-2 brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
+              className="h-12 object-contain brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
             />
-            <span className="font-medium text-brand-darkGreen">Dexter Agency</span>
           </div>
           
           {/* Agency Watch Logo */}
@@ -29,23 +27,19 @@ const PartnersSection = () => {
             <img 
               src="/lovable-uploads/c2897f46-1493-4b80-b7fe-f24038db9475.png" 
               alt="Agency Watch" 
-              className="h-12 object-contain mb-2 brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
+              className="h-12 object-contain brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
             />
-            <span className="font-medium text-brand-darkGreen">Agency Watch</span>
           </div>
           
           {/* Other partner logos with icons as placeholders */}
           <div className="flex flex-col items-center">
-            <Handshake size={48} className="text-brand-green mb-2" />
-            <span className="font-medium text-brand-darkGreen">Global Tech</span>
+            <Handshake size={48} className="text-brand-green" />
           </div>
           <div className="flex flex-col items-center">
-            <Award size={48} className="text-brand-green mb-2" />
-            <span className="font-medium text-brand-darkGreen">Summit Inc</span>
+            <Award size={48} className="text-brand-green" />
           </div>
           <div className="flex flex-col items-center">
-            <Users size={48} className="text-brand-green mb-2" />
-            <span className="font-medium text-brand-darkGreen">Elevate Group</span>
+            <Users size={48} className="text-brand-green" />
           </div>
         </div>
       </div>
