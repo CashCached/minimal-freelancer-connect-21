@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Building, Handshake, Award, Users } from 'lucide-react';
 
@@ -13,8 +12,18 @@ const PartnersSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-          {/* Partner logos - using icons as placeholders, you can replace with actual logos */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
+          {/* Dexter Agency Logo */}
+          <div className="flex flex-col items-center col-span-2 md:col-span-1">
+            <img 
+              src="/lovable-uploads/7d9b9752-20da-4013-ae11-df2bec3bc9de.png" 
+              alt="Dexter Agency" 
+              className="h-12 object-contain mb-2" 
+            />
+            <span className="font-medium text-brand-darkGreen">Dexter Agency</span>
+          </div>
+          
+          {/* Other partner logos with icons as placeholders */}
           <div className="flex flex-col items-center">
             <Building size={48} className="text-brand-green mb-2" />
             <span className="font-medium text-brand-darkGreen">Acme Corp</span>
