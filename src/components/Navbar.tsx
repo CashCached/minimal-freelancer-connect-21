@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight, Linkedin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,8 +74,13 @@ const Navbar = () => {
           </div>
           
           <div className="flex-1 flex justify-center items-center">
-            <div className="bg-gradient-to-r from-brand-darkBlue to-brand-teal text-transparent bg-clip-text">
-              <span className="text-xl font-bold">Schedule<span className="text-brand-coral">Pro</span></span>
+            <div className="h-10 relative">
+              <img 
+                src="/lovable-uploads/2a70dfb2-6e84-419a-a547-1f4c0f67c494.png" 
+                alt="SchedulePro Logo" 
+                className="h-full object-contain"
+                style={{ filter: "brightness(0) saturate(100%) invert(55%) sepia(69%) saturate(1511%) hue-rotate(335deg) brightness(99%) contrast(92%)" }}
+              />
             </div>
           </div>
           
