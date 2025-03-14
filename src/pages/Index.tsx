@@ -26,7 +26,7 @@ const Index = () => {
             <span className="text-brand-teal text-sm font-medium">Professional Scheduling Service</span>
           </div>
           
-          <h1 className="heading-xl mb-6 animate-fade-up opacity-0">
+          <h1 className="heading-xl mb-6">
             <span className="relative inline-block">
               Professional 
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-coral opacity-30"></div>
@@ -34,11 +34,11 @@ const Index = () => {
             <span className="text-gradient">Appointment</span> Scheduling
           </h1>
           
-          <p className="subtitle max-w-2xl mx-auto mb-8 animate-fade-up opacity-0 delay-100">
+          <p className="subtitle max-w-2xl mx-auto mb-8">
             Streamline your appointments with our efficient scheduling service. Save time and focus on what matters most - your clients.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-up opacity-0 delay-200">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <button 
               onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
               className="btn-primary"
@@ -54,7 +54,7 @@ const Index = () => {
           </div>
           
           {/* Brand Color Indicators */}
-          <div className="flex justify-center gap-2 mt-8 animate-fade-up opacity-0 delay-300">
+          <div className="flex justify-center gap-2 mt-8">
             <div className="w-8 h-2 rounded-full bg-brand-darkBlue"></div>
             <div className="w-8 h-2 rounded-full bg-brand-teal"></div>
             <div className="w-8 h-2 rounded-full bg-brand-yellow"></div>
