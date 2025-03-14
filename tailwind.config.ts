@@ -55,12 +55,11 @@ export default {
 				},
 				// Custom colors based on provided hex codes
 				brand: {
-					darkBg: '#120f12',    // Dark background
-					darkGreen: '#102321', // Dark green
-					green: '#1B5e3c',     // Main green
-					gold: '#BE9553',      // Gold accent
-					cream: '#FFEAC6',     // Light cream
-					white: '#FFFFFF',     // White
+					darkBlue: '#264653',
+					teal: '#2a9d8f',
+					yellow: '#e9c46a',
+					orange: '#f4a261',
+					coral: '#e76f51',
 				}
 			},
 			borderRadius: {

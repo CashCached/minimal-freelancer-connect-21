@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 300 14% 7%;      /* #120f12 */
-    --foreground: 167 33% 10%;     /* #102321 */
+    --background: 0 0% 100%;
+    --foreground: 200 20% 25%;
 
-    --card: 300 14% 7%;
-    --card-foreground: 167 33% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 20% 25%;
 
-    --popover: 300 14% 7%;
-    --popover-foreground: 167 33% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 20% 25%;
 
-    --primary: 147 53% 24%;        /* #1B5e3c */
-    --primary-foreground: 36 100% 95%;   /* #FFEAC6 */
+    --primary: 196 33% 24%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 41 43% 54%;       /* #BE9553 */
-    --secondary-foreground: 0 0% 100%;   /* white */
+    --secondary: 174 59% 39%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 167 33% 10%;
-    --muted-foreground: 147 53% 24%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 41 43% 54%;          /* #BE9553 */
-    --accent-foreground: 0 0% 100%;       /* white */
+    --accent: 39 71% 66%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 147 53% 24%;         /* #1B5e3c */
-    --input: 147 53% 24%;          /* #1B5e3c */
-    --ring: 41 43% 54%;            /* #BE9553 */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 196 33% 24%;
 
     --radius: 0.5rem;
   }
@@ -46,13 +46,13 @@
   }
   
   ::selection {
-    @apply bg-brand-green/30 text-brand-white;
+    @apply bg-brand-teal/30 text-brand-darkBlue;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply backdrop-blur-sm bg-brand-darkBg/80 rounded-2xl border border-brand-green/20 shadow-lg;
+    @apply backdrop-blur-sm bg-white/80 rounded-2xl border border-white/20 shadow-lg;
   }
   
   .heading-xl {
@@ -68,17 +68,17 @@
   }
   
   .subtitle {
-    @apply text-lg md:text-xl text-brand-cream/80;
+    @apply text-lg md:text-xl text-brand-darkBlue/80;
   }
   
   .btn-primary {
-    @apply rounded-full bg-gradient-to-r from-brand-green to-brand-green/90 text-white font-medium px-6 py-3 shadow-md hover:shadow-lg 
-    hover:bg-brand-green/90 transition-all duration-300 focus:ring-2 focus:ring-brand-green/50 focus:outline-none;
+    @apply rounded-full bg-gradient-to-r from-brand-teal to-brand-teal/90 text-white font-medium px-6 py-3 shadow-md hover:shadow-lg 
+    hover:bg-brand-teal/90 transition-all duration-300 focus:ring-2 focus:ring-brand-teal/50 focus:outline-none;
   }
   
   .btn-secondary {
-    @apply rounded-full bg-brand-gold text-brand-darkBg border border-brand-gold/10 font-medium 
-    px-6 py-3 shadow-sm hover:shadow-md hover:bg-brand-gold/90 transition-all duration-300;
+    @apply rounded-full bg-white text-brand-darkBlue border border-brand-darkBlue/10 font-medium 
+    px-6 py-3 shadow-sm hover:shadow-md hover:bg-brand-darkBlue/5 transition-all duration-300;
   }
 
   .section-padding {
@@ -87,41 +87,41 @@
   
   .link-underline {
     @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 
-    after:bg-brand-green after:transition-all after:duration-300 hover:after:w-full;
+    after:bg-brand-teal after:transition-all after:duration-300 hover:after:w-full;
   }
 
   .gradient-card {
-    @apply bg-gradient-to-br from-brand-darkBg via-brand-darkBg to-brand-green/5 backdrop-blur-sm;
+    @apply bg-gradient-to-br from-white via-white to-brand-teal/5 backdrop-blur-sm;
   }
 
   .gradient-dark {
-    @apply bg-gradient-to-br from-brand-darkGreen to-brand-green;
+    @apply bg-gradient-to-br from-brand-darkBlue to-brand-teal;
   }
 
   .gradient-warm {
-    @apply bg-gradient-to-br from-brand-gold to-brand-cream;
+    @apply bg-gradient-to-br from-brand-coral to-brand-orange;
   }
   
   .gradient-cool {
-    @apply bg-gradient-to-br from-brand-darkGreen to-brand-green;
+    @apply bg-gradient-to-br from-brand-darkBlue to-brand-teal;
   }
   
   .gradient-light {
-    @apply bg-gradient-to-br from-brand-cream/30 to-brand-gold/30;
+    @apply bg-gradient-to-br from-brand-yellow/30 to-brand-orange/30;
   }
 }
 
 /* Custom animations and effects */
 .text-gradient {
-  @apply bg-gradient-to-r from-brand-darkGreen via-brand-green to-brand-gold bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-brand-darkBlue via-brand-teal to-brand-coral bg-clip-text text-transparent;
 }
 
 .text-gradient-cool {
-  @apply bg-gradient-to-r from-brand-darkGreen to-brand-green bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-brand-darkBlue to-brand-teal bg-clip-text text-transparent;
 }
 
 .text-gradient-warm {
-  @apply bg-gradient-to-r from-brand-cream to-brand-gold bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-brand-yellow to-brand-coral bg-clip-text text-transparent;
 }
 
 .hover-lift {
