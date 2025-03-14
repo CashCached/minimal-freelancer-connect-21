@@ -7,8 +7,8 @@ import VideoSalesLetterSection from '@/components/VideoSalesLetterSection';
 import HeroVideoBackground from '@/components/HeroVideoBackground';
 
 const Index = () => {
-  // Set your video URL here - use a direct MP4 link for best compatibility
-  const heroVideoUrl = "https://www.canva.com/design/DAGhvFVL6rc/LxSpe7rEgag5ARFuGjLSog/watch?utm_content=DAGhvFVL6rc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0f5f5c0c64";
+  // Direct MP4 URL for better compatibility
+  const heroVideoUrl = "https://drive.google.com/uc?export=download&id=1gGAt0IbxL-4tRFLfLS9nzAtfNZYGefDW";
   
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-brand-teal/5">
