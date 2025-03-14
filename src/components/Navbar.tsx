@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
-import { Linkedin, Phone } from 'lucide-react';
+import { Calendar, Linkedin, Phone } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +17,16 @@ const Navbar = () => {
           </span>
         </div>
         
-        {/* Main Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          <a href="#features" className="text-brand-darkBlue hover:text-brand-teal transition-colors">Features</a>
-          <a href="#testimonials" className="text-brand-darkBlue hover:text-brand-teal transition-colors">Testimonials</a>
-          <a href="#pricing" className="text-brand-darkBlue hover:text-brand-teal transition-colors">Pricing</a>
-          <a href="#contact" className="text-brand-darkBlue hover:text-brand-teal transition-colors">Contact</a>
-        </nav>
+        {/* Call to Action Button - hidden on mobile */}
+        <div className="hidden md:block">
+          <Button 
+            className="bg-brand-teal hover:bg-brand-teal/90 text-white font-medium" 
+            onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <Calendar className="mr-2 h-4 w-4" />
+            Schedule Free Audit
+          </Button>
+        </div>
         
         {/* Social Icons and Contact */}
         <div className="flex items-center space-x-4">
@@ -49,7 +53,7 @@ const Navbar = () => {
             </PopoverContent>
           </Popover>
           
-          {/* Mobile menu button */}
+          {/* Mobile menu button - now toggles the CTA instead of navigation */}
           <button 
             className="md:hidden flex flex-col space-y-1.5 p-2"
             onClick={() => setIsOpen(!isOpen)}
@@ -61,14 +65,20 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile Navigation */}
-      <div className={`md:hidden bg-white border-t border-gray-100 overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-64' : 'max-h-0'}`}>
-        <nav className="flex flex-col space-y-4 p-4">
-          <a href="#features" className="text-brand-darkBlue hover:text-brand-teal transition-colors py-2 px-4">Features</a>
-          <a href="#testimonials" className="text-brand-darkBlue hover:text-brand-teal transition-colors py-2 px-4">Testimonials</a>
-          <a href="#pricing" className="text-brand-darkBlue hover:text-brand-teal transition-colors py-2 px-4">Pricing</a>
-          <a href="#contact" className="text-brand-darkBlue hover:text-brand-teal transition-colors py-2 px-4">Contact</a>
-        </nav>
+      {/* Mobile CTA */}
+      <div className={`md:hidden bg-white border-t border-gray-100 overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-20' : 'max-h-0'}`}>
+        <div className="p-4 flex justify-center">
+          <Button 
+            className="w-full bg-brand-teal hover:bg-brand-teal/90 text-white font-medium"
+            onClick={() => {
+              document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' });
+              setIsOpen(false);
+            }}
+          >
+            <Calendar className="mr-2 h-4 w-4" />
+            Schedule Free Audit
+          </Button>
+        </div>
       </div>
     </header>
   );
