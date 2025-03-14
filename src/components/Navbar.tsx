@@ -40,7 +40,7 @@ const Navbar = () => {
             ? "bg-white/60 border border-white/30 shadow-lg px-6 py-3" 
             : "bg-white/20 border border-white/10 px-6 py-3"
         )}>
-          <div className="flex items-center space-x-4">
+          <div className="flex-1 flex items-center space-x-4">
             <a 
               href="https://linkedin.com/company/schedulepro" 
               target="_blank" 
@@ -74,20 +74,22 @@ const Navbar = () => {
             </Popover>
           </div>
           
-          <div className="flex items-center">
+          <div className="flex-1 flex justify-center items-center">
             <div className="bg-gradient-to-r from-brand-darkBlue to-brand-teal text-transparent bg-clip-text">
               <span className="text-xl font-bold">Schedule<span className="text-brand-coral">Pro</span></span>
             </div>
           </div>
           
-          <Button 
-            onClick={scrollToBooking}
-            className="bg-gradient-to-r from-brand-teal to-brand-coral text-white hover:shadow-lg transition-all rounded-full"
-          >
-            <Calendar className="mr-2 h-4 w-4" />
-            Schedule Free Audit
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <div className="flex-1 flex justify-end">
+            <Button 
+              onClick={scrollToBooking}
+              className="bg-gradient-to-r from-brand-teal to-brand-coral text-white hover:shadow-lg transition-all rounded-full"
+            >
+              <Calendar className="mr-2 h-4 w-4" />
+              Schedule Free Audit
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </div>
     </header>
