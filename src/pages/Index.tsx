@@ -18,7 +18,7 @@ const Index = () => {
         {/* Content */}
         <div className="container mx-auto max-w-5xl text-center relative z-10">
           <div className="inline-block mb-4 px-4 py-1 rounded-full bg-brand-teal/10 border border-brand-teal/20">
-            <span className="text-brand-teal text-sm font-medium">Professional Scheduling Service</span>
+            <span className="text-brand-teal text-sm font-medium">B2B Lead Generation & Appointment Setting Agency</span>
           </div>
           
           <h1 className="heading-xl mb-6">
