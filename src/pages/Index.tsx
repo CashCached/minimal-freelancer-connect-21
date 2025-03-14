@@ -23,7 +23,7 @@ const Index = () => {
           
           <h1 className="heading-xl mb-6">
             <span className="relative inline-block">
-              Founders* 
+              Founders: 
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-coral opacity-30"></div>
             </span>{" "}
             <span className="text-gradient">Get 3-5 High Intent Calls</span> Every Week on autopilot
