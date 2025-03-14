@@ -37,7 +37,7 @@ const Navbar = () => {
           "backdrop-blur-lg rounded-2xl transition-all duration-300 flex justify-between items-center mx-auto",
           isScrolled 
             ? "bg-white/60 border border-white/30 shadow-lg px-6 py-3" 
-            : "bg-white/20 border border-white/10 px-6 py-3"
+            : "bg-gradient-to-r from-brand-darkGreen to-brand-green border border-white/10 px-6 py-3"
         )}>
           <div className="flex-1 flex items-center space-x-4">
             <a 
@@ -86,7 +86,10 @@ const Navbar = () => {
           <div className="flex-1 flex justify-end">
             <Button 
               onClick={scrollToBooking}
-              className="btn-primary rounded-full"
+              className={cn(
+                "btn-primary rounded-full",
+                !isScrolled && "bg-brand-gold hover:bg-brand-gold/90 text-brand-darkGreen font-semibold"
+              )}
             >
               <Calendar className="mr-2 h-4 w-4" />
               Schedule Free Audit
