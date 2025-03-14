@@ -90,7 +90,7 @@ const Navbar = () => {
               onClick={scrollToBooking}
               className={cn(
                 "btn-primary rounded-full",
-                !isScrolled && "bg-brand-gold hover:bg-brand-gold/90 text-brand-darkGreen font-semibold"
+                "bg-gradient-to-br from-brand-gold to-brand-cream text-brand-darkGreen hover:bg-brand-gold/90 font-semibold"
               )}
             >
               <Calendar className="mr-2 h-4 w-4" />
