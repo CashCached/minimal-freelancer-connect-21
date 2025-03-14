@@ -50,7 +50,7 @@ const Navbar = () => {
           {/* Call to Action Button */}
           <Button 
             onClick={scrollToBooking}
-            className="bg-gradient-to-r from-brand-teal to-brand-coral text-white hover:shadow-lg transition-all"
+            className="bg-gradient-to-r from-brand-teal to-brand-coral text-white hover:shadow-lg transition-all rounded-full"
           >
             <Calendar className="mr-2 h-4 w-4" />
             Schedule Free Audit
