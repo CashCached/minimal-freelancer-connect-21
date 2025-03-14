@@ -14,14 +14,14 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-4 relative overflow-hidden">
+      <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand-yellow/10 blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-brand-teal/10 blur-3xl"></div>
         <div className="absolute top-1/3 left-1/4 w-32 h-32 rounded-full bg-brand-coral/10 blur-2xl"></div>
         
         {/* Content */}
-        <div className="container mx-auto text-center relative z-10">
+        <div className="container mx-auto max-w-5xl text-center relative z-10">
           <div className="inline-block mb-4 px-4 py-1 rounded-full bg-brand-teal/10 border border-brand-teal/20">
             <span className="text-brand-teal text-sm font-medium">Professional Scheduling Service</span>
           </div>
@@ -65,8 +65,8 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="section-padding px-4">
-        <div className="container mx-auto">
+      <section id="services" className="section-padding px-6 md:px-12 lg:px-24">
+        <div className="container mx-auto max-w-6xl">
           <h2 className="heading-lg text-center mb-12">Our Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
@@ -116,8 +116,8 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="section-padding px-4 bg-brand-darkBlue/5">
-        <div className="container mx-auto">
+      <section id="testimonials" className="section-padding px-6 md:px-12 lg:px-24 bg-brand-darkBlue/5">
+        <div className="container mx-auto max-w-6xl">
           <h2 className="heading-lg text-center mb-12">Client Testimonials</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <TestimonialCard
@@ -143,8 +143,8 @@ const Index = () => {
       </section>
 
       {/* Booking Section */}
-      <section id="booking" className="section-padding px-4">
-        <div className="container mx-auto">
+      <section id="booking" className="section-padding px-6 md:px-12 lg:px-24">
+        <div className="container mx-auto max-w-5xl">
           <h2 className="heading-lg text-center mb-4">Book an Appointment</h2>
           <p className="subtitle text-center mb-12 max-w-2xl mx-auto">
             Schedule a time that works best for you. We'll confirm your appointment within 24 hours.
@@ -154,8 +154,8 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section-padding px-4">
-        <div className="container mx-auto">
+      <section id="contact" className="section-padding px-6 md:px-12 lg:px-24">
+        <div className="container mx-auto max-w-5xl">
           <h2 className="heading-lg text-center mb-4">Get in Touch</h2>
           <p className="subtitle text-center mb-12 max-w-2xl mx-auto">
             Have questions? We're here to help. Contact us through any of these channels.
