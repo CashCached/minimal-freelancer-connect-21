@@ -74,7 +74,7 @@ const Navbar = () => {
           </div>
           
           <div className="flex-1 flex justify-center items-center">
-            <div className="h-[120px] relative">
+            <div className="h-[40px] relative">
               <img 
                 src="/lovable-uploads/2a70dfb2-6e84-419a-a547-1f4c0f67c494.png" 
                 alt="SchedulePro Logo" 
