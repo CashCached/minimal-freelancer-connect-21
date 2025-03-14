@@ -16,31 +16,31 @@ const Index = () => {
       {/* Hero Section */}
       <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-4 relative overflow-hidden">
         {/* Enhanced Background Elements */}
-        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-yellow/20 blur-3xl"></div>
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-brand-teal/20 blur-3xl"></div>
-        <div className="absolute top-1/3 left-1/4 w-40 h-40 rounded-full bg-brand-coral/20 blur-2xl"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-32 h-32 rounded-full bg-brand-darkBlue/15 blur-2xl"></div>
+        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-yellow/30 blur-3xl"></div>
+        <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-brand-teal/30 blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-40 h-40 rounded-full bg-brand-coral/30 blur-2xl"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-32 h-32 rounded-full bg-brand-darkBlue/25 blur-2xl"></div>
         
         {/* Content */}
         <div className="container mx-auto text-center relative z-10">
-          <div className="inline-block mb-4 px-4 py-1 rounded-full bg-brand-teal/10 border border-brand-teal/20">
-            <span className="text-brand-teal text-sm font-medium">Professional Scheduling Service</span>
+          <div className="inline-block mb-4 px-4 py-1 rounded-full bg-brand-teal/20 border border-brand-teal/30">
+            <span className="text-brand-teal font-medium">Professional Scheduling Service</span>
           </div>
           
-          <h1 className="heading-xl mb-6 animate-fade-up opacity-0">
+          <h1 className="heading-xl mb-6 animate-fade-up opacity-0 text-brand-darkBlue">
             <span className="relative inline-block">
               Professional 
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-coral opacity-30"></div>
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-coral opacity-50"></div>
             </span>{" "}
             <span className="text-gradient">Appointment</span> Scheduling
           </h1>
           
-          <p className="subtitle max-w-2xl mx-auto mb-6 animate-fade-up opacity-0 delay-100">
+          <p className="subtitle max-w-2xl mx-auto mb-6 animate-fade-up opacity-0 delay-100 font-medium text-brand-darkBlue">
             Streamline your appointments with our efficient scheduling service. Save time and focus on what matters most - your clients.
           </p>
           
-          {/* Added descriptive text */}
-          <p className="text-brand-darkBlue/80 max-w-3xl mx-auto mb-8 animate-fade-up opacity-0 delay-150">
+          {/* Added descriptive text with improved visibility */}
+          <p className="text-brand-darkBlue max-w-3xl mx-auto mb-8 animate-fade-up opacity-0 delay-150 bg-white/50 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/70">
             Our intelligent scheduling system helps professionals manage their time effectively. 
             With automated reminders, custom availability, and seamless integration, 
             you'll reduce no-shows and maximize your productivity.
@@ -61,19 +61,19 @@ const Index = () => {
             </button>
           </div>
           
-          {/* Stats Section - New Addition */}
+          {/* Stats Section with improved contrast */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-8 mb-6 animate-fade-up opacity-0 delay-300">
-            <div className="bg-white/40 backdrop-blur-sm rounded-xl p-4 border border-white/50 shadow-sm">
-              <div className="text-3xl font-bold text-gradient-cool mb-1">98%</div>
-              <div className="text-brand-darkBlue/80 text-sm">Client Satisfaction</div>
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-white/80 shadow-md">
+              <div className="text-3xl font-bold text-brand-darkBlue mb-1">98%</div>
+              <div className="text-brand-darkBlue font-medium text-sm">Client Satisfaction</div>
             </div>
-            <div className="bg-white/40 backdrop-blur-sm rounded-xl p-4 border border-white/50 shadow-sm">
-              <div className="text-3xl font-bold text-gradient-cool mb-1">24/7</div>
-              <div className="text-brand-darkBlue/80 text-sm">Online Booking</div>
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-white/80 shadow-md">
+              <div className="text-3xl font-bold text-brand-teal mb-1">24/7</div>
+              <div className="text-brand-darkBlue font-medium text-sm">Online Booking</div>
             </div>
-            <div className="bg-white/40 backdrop-blur-sm rounded-xl p-4 border border-white/50 shadow-sm">
-              <div className="text-3xl font-bold text-gradient-cool mb-1">50%</div>
-              <div className="text-brand-darkBlue/80 text-sm">Time Saved</div>
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-white/80 shadow-md">
+              <div className="text-3xl font-bold text-brand-coral mb-1">50%</div>
+              <div className="text-brand-darkBlue font-medium text-sm">Time Saved</div>
             </div>
           </div>
           
