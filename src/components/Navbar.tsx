@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Handle scroll effect
   useEffect(() => {
@@ -21,10 +21,9 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll to section
-  const scrollToSection = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
+  // Scroll to booking section
+  const scrollToBooking = () => {
+    const element = document.getElementById('booking');
     if (element) {
       const yOffset = -80; // Navbar height + some padding
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -48,48 +47,16 @@ const Navbar = () => {
             </div>
           </div>
           
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {['services', 'testimonials', 'booking', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className="text-brand-darkBlue hover:text-brand-teal transition-colors capitalize link-underline"
-              >
-                {item}
-              </button>
-            ))}
-          </nav>
-          
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-brand-darkBlue"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle mobile menu"
+          {/* Call to Action Button */}
+          <Button 
+            onClick={scrollToBooking}
+            className="bg-gradient-to-r from-brand-teal to-brand-coral text-white hover:shadow-lg transition-all"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <Calendar className="mr-2 h-4 w-4" />
+            Schedule Free Audit
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
-      </div>
-      
-      {/* Mobile Menu */}
-      <div 
-        className={cn(
-          "fixed inset-0 bg-white/90 backdrop-blur-lg z-40 px-4 pt-20 transform transition-transform duration-300 md:hidden",
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <nav className="flex flex-col space-y-6 items-center">
-          {['services', 'testimonials', 'booking', 'contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              className="text-lg text-brand-darkBlue hover:text-brand-teal transition-colors capitalize"
-            >
-              {item}
-            </button>
-          ))}
-        </nav>
       </div>
     </header>
   );
