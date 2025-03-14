@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Users } from 'lucide-react';
 
 const PartnersSection = () => {
   return (
@@ -13,7 +12,7 @@ const PartnersSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
           {/* Dexter Agency Logo */}
           <div className="flex flex-col items-center col-span-2 md:col-span-1">
             <img 
@@ -41,17 +40,13 @@ const PartnersSection = () => {
             />
           </div>
           
-          {/* HD Sales Logo (replacing the Award icon) */}
+          {/* HD Sales Logo */}
           <div className="flex flex-col items-center">
             <img 
               src="/lovable-uploads/b911427e-f3ec-4d6a-98fa-7bdc4b8de91f.png" 
               alt="HD Sales" 
               className="h-12 object-contain brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
             />
-          </div>
-          
-          <div className="flex flex-col items-center">
-            <Users size={48} className="text-brand-green" />
           </div>
         </div>
       </div>
