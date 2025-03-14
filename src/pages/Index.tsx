@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PartnersSection from '@/components/PartnersSection';
 
 const Index = () => {
   return (
@@ -52,6 +53,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      {/* Partners Section */}
+      <PartnersSection />
 
       <Footer />
     </div>
