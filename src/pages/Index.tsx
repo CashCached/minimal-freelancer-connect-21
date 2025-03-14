@@ -7,8 +7,10 @@ import VideoSalesLetterSection from '@/components/VideoSalesLetterSection';
 import HeroVideoBackground from '@/components/HeroVideoBackground';
 
 const Index = () => {
-  // Direct MP4 URL for better compatibility
-  const heroVideoUrl = "https://drive.google.com/uc?export=download&id=1gGAt0IbxL-4tRFLfLS9nzAtfNZYGefDW";
+  // Using a public video URL that is more reliable
+  const heroVideoUrl = "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4";
+  // Fallback image in case video fails to load
+  const fallbackImageUrl = "/lovable-uploads/c2897f46-1493-4b80-b7fe-f24038db9475.png";
   
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-brand-teal/5">
@@ -19,6 +21,7 @@ const Index = () => {
         {/* Video Background */}
         <HeroVideoBackground 
           videoUrl={heroVideoUrl}
+          fallbackImageUrl={fallbackImageUrl}
           overlayOpacity={50} // Increased opacity for better text visibility
         />
         

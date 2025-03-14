@@ -23,14 +23,35 @@ const HeroVideoBackground: React.FC<HeroVideoBackgroundProps> = ({
   }, [videoUrl]);
   
   useEffect(() => {
+    // Attempt to load the video directly using fetch to check its availability
+    const checkVideoAvailability = async () => {
+      try {
+        const response = await fetch(videoUrl, { method: 'HEAD' });
+        if (!response.ok) {
+          console.error("Video URL not accessible:", response.status);
+          setVideoError(true);
+        }
+      } catch (error) {
+        console.error("Error checking video URL:", error);
+        setVideoError(true);
+      }
+    };
+    
+    if (videoUrl) {
+      checkVideoAvailability();
+    }
+    
     // Ensure video autoplays
     if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error("Autoplay failed:", error);
-        setVideoError(true);
-      });
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Autoplay failed:", error);
+          // Don't set video error here, as it might be a temporary autoplay policy issue
+        });
+      }
     }
-  }, [videoUrl, videoRef]);
+  }, [videoUrl]);
   
   const handleVideoError = () => {
     console.error("Video failed to load");
