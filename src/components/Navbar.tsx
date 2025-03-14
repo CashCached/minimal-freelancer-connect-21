@@ -74,12 +74,11 @@ const Navbar = () => {
           </div>
           
           <div className="flex-1 flex justify-center items-center">
-            <div className="h-[40px] relative">
+            <div className="h-[45px] relative">
               <img 
-                src="/lovable-uploads/2a70dfb2-6e84-419a-a547-1f4c0f67c494.png" 
+                src="/lovable-uploads/0ba739f3-dbf9-4b3a-8f40-5a69fa44a8a8.png" 
                 alt="SchedulePro Logo" 
                 className="h-full object-contain"
-                style={{ filter: "brightness(0) saturate(100%) invert(22%) sepia(38%) saturate(867%) hue-rotate(118deg) brightness(94%) contrast(90%)" }}
               />
             </div>
           </div>
