@@ -87,7 +87,7 @@ const Navbar = () => {
           <div className="flex-1 flex justify-end">
             <Button 
               onClick={scrollToBooking}
-              className="bg-gradient-to-r from-brand-green to-brand-gold text-white hover:shadow-lg transition-all rounded-full"
+              className="btn-primary rounded-full"
             >
               <Calendar className="mr-2 h-4 w-4" />
               Schedule Free Audit
