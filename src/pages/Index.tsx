@@ -30,7 +30,7 @@ const Index = () => {
           </h1>
           
           <p className="subtitle max-w-2xl mx-auto mb-8">
-            Streamline your appointments with our efficient scheduling service. Save time and focus on what matters most - your clients.
+            Pay 100% for Results
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
