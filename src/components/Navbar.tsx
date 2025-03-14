@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight, Linkedin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,8 +66,18 @@ const Navbar = () => {
                   <Phone size={16} />
                 </button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-2 bg-white/90 backdrop-blur-sm border border-brand-teal/20">
-                <p className="text-brand-darkBlue font-medium">+1 (555) 123-4567</p>
+              <PopoverContent 
+                className="p-0 overflow-hidden origin-top-left transition-all duration-200 animate-in zoom-in-90 slide-in-from-left-5" 
+                side="right" 
+                align="center" 
+                sideOffset={5}
+              >
+                <div className="flex items-center p-3 bg-white/90 backdrop-blur-sm border border-brand-teal/20 rounded-md">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-brand-teal to-brand-darkBlue flex items-center justify-center text-white mr-2 opacity-70">
+                    <Phone size={12} />
+                  </div>
+                  <p className="text-brand-darkBlue font-medium">+1 (555) 123-4567</p>
+                </div>
               </PopoverContent>
             </Popover>
           </div>
