@@ -7,10 +7,7 @@ const PartnersSection = () => {
     <section className="py-12 px-6 md:px-12 lg:px-24 bg-white">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-8">
-          <h2 className="heading-md text-brand-darkGreen mb-3">Trusted by Leading Companies</h2>
-          <p className="text-brand-darkGreen/70 max-w-2xl mx-auto">
-            We partner with industry leaders to deliver exceptional results
-          </p>
+          <h2 className="heading-md text-brand-darkGreen mb-3">Trusted Partners</h2>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
