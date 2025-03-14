@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 interface HeroVideoBackgroundProps {
   videoUrl: string;
@@ -14,6 +15,13 @@ const HeroVideoBackground: React.FC<HeroVideoBackgroundProps> = ({
 }) => {
   const [videoError, setVideoError] = useState(false);
   
+  useEffect(() => {
+    // Reset error state if video URL changes
+    if (videoUrl) {
+      setVideoError(false);
+    }
+  }, [videoUrl]);
+  
   const handleVideoError = () => {
     console.error("Video failed to load");
     setVideoError(true);
@@ -23,7 +31,7 @@ const HeroVideoBackground: React.FC<HeroVideoBackgroundProps> = ({
     <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
       {!videoError && videoUrl ? (
         <video 
-          className="absolute min-w-full min-h-full object-cover"
+          className="absolute min-w-full min-h-full object-cover w-full h-full"
           autoPlay 
           muted 
           loop
