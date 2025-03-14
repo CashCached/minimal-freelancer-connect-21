@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight, Linkedin, Phone } from 'lucide-react';
@@ -9,7 +8,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -23,7 +21,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll to booking section
   const scrollToBooking = () => {
     const element = document.getElementById('booking');
     if (element) {
@@ -42,14 +39,12 @@ const Navbar = () => {
             ? "bg-white/60 border border-white/30 shadow-lg px-6 py-3" 
             : "bg-white/20 border border-white/10 px-6 py-3"
         )}>
-          {/* Logo */}
           <div className="flex items-center">
             <div className="bg-gradient-to-r from-brand-darkBlue to-brand-teal text-transparent bg-clip-text">
               <span className="text-xl font-bold">Schedule<span className="text-brand-coral">Pro</span></span>
             </div>
           </div>
           
-          {/* Social and Contact Icons */}
           <div className="flex items-center space-x-4 mr-4">
             <a 
               href="https://linkedin.com/company/schedulepro" 
@@ -67,22 +62,23 @@ const Navbar = () => {
                 </button>
               </PopoverTrigger>
               <PopoverContent 
-                className="p-0 overflow-hidden origin-top-left transition-all duration-200 animate-in zoom-in-90 slide-in-from-left-5" 
+                className="p-0 border-0 shadow-none bg-transparent" 
                 side="right" 
                 align="center" 
                 sideOffset={5}
               >
-                <div className="flex items-center p-3 bg-white/90 backdrop-blur-sm border border-brand-teal/20 rounded-md">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-brand-teal to-brand-darkBlue flex items-center justify-center text-white mr-2 opacity-70">
-                    <Phone size={12} />
+                <div className="flex items-center p-0 overflow-hidden">
+                  <div className="flex items-center h-8 pl-1 pr-3 py-1 rounded-full bg-gradient-to-br from-brand-teal to-brand-darkBlue text-white animate-in zoom-in-90 slide-in-from-left-5 duration-200">
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center mr-2">
+                      <Phone size={14} />
+                    </div>
+                    <p className="text-white font-medium whitespace-nowrap">+1 (555) 123-4567</p>
                   </div>
-                  <p className="text-brand-darkBlue font-medium">+1 (555) 123-4567</p>
                 </div>
               </PopoverContent>
             </Popover>
           </div>
           
-          {/* Call to Action Button */}
           <Button 
             onClick={scrollToBooking}
             className="bg-gradient-to-r from-brand-teal to-brand-coral text-white hover:shadow-lg transition-all rounded-full"
