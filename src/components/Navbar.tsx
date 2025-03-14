@@ -53,7 +53,7 @@ const Navbar = () => {
             
             <Popover>
               <PopoverTrigger asChild>
-                <button className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-green to-brand-darkGreen flex items-center justify-center text-white">
+                <button className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-gold to-brand-cream flex items-center justify-center text-brand-darkGreen">
                   <Phone size={16} />
                 </button>
               </PopoverTrigger>
@@ -64,11 +64,11 @@ const Navbar = () => {
                 sideOffset={5}
               >
                 <div className="flex items-center p-0 overflow-hidden">
-                  <div className="flex items-center h-8 pl-1 pr-3 py-1 rounded-full bg-gradient-to-br from-brand-green to-brand-darkGreen text-white animate-in zoom-in-90 slide-in-from-left-5 duration-200">
+                  <div className="flex items-center h-8 pl-1 pr-3 py-1 rounded-full bg-gradient-to-br from-brand-gold to-brand-cream text-brand-darkGreen animate-in zoom-in-90 slide-in-from-left-5 duration-200">
                     <div className="w-6 h-6 rounded-full flex items-center justify-center mr-2">
                       <Phone size={14} />
                     </div>
-                    <p className="text-white font-medium whitespace-nowrap">+1 (555) 123-4567</p>
+                    <p className="text-brand-darkGreen font-medium whitespace-nowrap">+1 (555) 123-4567</p>
                   </div>
                 </div>
               </PopoverContent>
