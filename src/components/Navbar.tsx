@@ -33,18 +33,13 @@ const Navbar = () => {
   };
 
   return (
-    <header 
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 py-4 px-4 md:px-8",
-        isScrolled ? "bg-white/10 backdrop-blur-sm" : "bg-transparent"
-      )}
-    >
-      <div className="container mx-auto">
+    <header className="fixed top-0 w-full z-50 transition-all duration-300 py-6 px-4 md:px-8">
+      <div className="container mx-auto max-w-6xl">
         <div className={cn(
-          "backdrop-blur-lg rounded-2xl transition-all duration-300 flex justify-between items-center",
+          "backdrop-blur-lg rounded-2xl transition-all duration-300 flex justify-between items-center mx-auto",
           isScrolled 
-            ? "bg-white/80 border border-white/50 shadow-lg px-6 py-3" 
-            : "bg-white/30 border border-white/30 px-5 py-2"
+            ? "bg-white/60 border border-white/30 shadow-lg px-6 py-3" 
+            : "bg-white/20 border border-white/10 px-6 py-3"
         )}>
           {/* Logo */}
           <div className="flex items-center">
@@ -59,7 +54,7 @@ const Navbar = () => {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-brand-darkBlue hover:text-brand-teal transition-colors capitalize link-underline font-medium"
+                className="text-brand-darkBlue hover:text-brand-teal transition-colors capitalize link-underline"
               >
                 {item}
               </button>
