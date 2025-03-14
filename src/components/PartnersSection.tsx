@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Building, HandShake, Award, Users } from 'lucide-react';
+import { Building, Handshake, Award, Users } from 'lucide-react';
 
 const PartnersSection = () => {
   return (
@@ -20,7 +20,7 @@ const PartnersSection = () => {
             <span className="font-medium text-brand-darkGreen">Acme Corp</span>
           </div>
           <div className="flex flex-col items-center">
-            <HandShake size={48} className="text-brand-green mb-2" />
+            <Handshake size={48} className="text-brand-green mb-2" />
             <span className="font-medium text-brand-darkGreen">Global Tech</span>
           </div>
           <div className="flex flex-col items-center">
