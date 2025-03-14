@@ -43,7 +43,7 @@ const Navbar = () => {
         )}>
           {/* Logo */}
           <div className="flex items-center">
-            <div className="bg-gradient-to-r from-brand-teal to-brand-darkBlue text-transparent bg-clip-text">
+            <div className="bg-gradient-to-r from-brand-darkBlue to-brand-teal text-transparent bg-clip-text">
               <span className="text-xl font-bold">Schedule<span className="text-brand-coral">Pro</span></span>
             </div>
           </div>
@@ -54,15 +54,15 @@ const Navbar = () => {
               href="https://linkedin.com/company/schedulepro" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-brand-darkBlue hover:text-brand-teal transition-colors"
+              className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-coral to-brand-orange flex items-center justify-center text-white"
             >
-              <Linkedin size={20} />
+              <Linkedin size={16} />
             </a>
             
             <Popover>
               <PopoverTrigger asChild>
-                <button className="text-brand-darkBlue hover:text-brand-teal transition-colors flex items-center">
-                  <Phone size={20} />
+                <button className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-teal to-brand-darkBlue flex items-center justify-center text-white">
+                  <Phone size={16} />
                 </button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-2 bg-white/90 backdrop-blur-sm border border-brand-teal/20">
