@@ -12,9 +12,13 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="mb-4 md:mb-0 flex flex-col items-center md:items-start">
               <div className="mb-4">
-                <span className="text-2xl font-bold bg-gradient-to-r from-brand-cream to-brand-white bg-clip-text text-transparent">
-                  Schedule<span className="text-brand-gold">Pro</span>
-                </span>
+                <div className="h-[45px] relative">
+                  <img 
+                    src="/lovable-uploads/0ba739f3-dbf9-4b3a-8f40-5a69fa44a8a8.png" 
+                    alt="SchedulePro Logo" 
+                    className="h-full object-contain"
+                  />
+                </div>
               </div>
               <p className="text-brand-cream/90 text-center md:text-left max-w-md">
                 Professional appointment scheduling made easy. Streamline your bookings and focus on what matters most.
