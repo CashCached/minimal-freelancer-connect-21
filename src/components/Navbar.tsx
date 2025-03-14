@@ -33,18 +33,13 @@ const Navbar = () => {
   };
 
   return (
-    <header 
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 py-4 px-4 md:px-8",
-        isScrolled ? "bg-white/60 backdrop-blur-md shadow-sm" : "bg-transparent"
-      )}
-    >
-      <div className="container mx-auto">
+    <header className="fixed top-0 w-full z-50 transition-all duration-300 py-6 px-4 md:px-8">
+      <div className="container mx-auto max-w-6xl">
         <div className={cn(
-          "backdrop-blur-lg rounded-2xl transition-all duration-300 flex justify-between items-center",
+          "backdrop-blur-lg rounded-2xl transition-all duration-300 flex justify-between items-center mx-auto",
           isScrolled 
-            ? "bg-white/70 border border-white/20 shadow-lg px-6 py-3" 
-            : "bg-brand-darkBlue/10 px-5 py-2"
+            ? "bg-white/60 border border-white/30 shadow-lg px-6 py-3" 
+            : "bg-white/20 border border-white/10 px-6 py-3"
         )}>
           {/* Logo */}
           <div className="flex items-center">
