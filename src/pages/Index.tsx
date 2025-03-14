@@ -16,7 +16,7 @@ const Index = () => {
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <div className="absolute inset-0 bg-black/30 z-10"></div>
           <iframe 
-            src="https://www.canva.com/design/DAGhvFVL6rc/LxSpe7rEgag5ARFuGjLSog/watch?utm_content=DAGhvFVL6rc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0f5f5c0c64&embed" 
+            src="https://www.canva.com/design/DAGhvFVL6rc/LxSpe7rEgag5ARFuGjLSog/watch?utm_content=DAGhvFVL6rc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0f5f5c0c64&embed&autoplay=1&loop=1&muted=1" 
             className="w-full h-full scale-[1.02] object-cover"
             allow="autoplay" 
             allowFullScreen
