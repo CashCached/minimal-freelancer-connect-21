@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PartnersSection from '@/components/PartnersSection';
+import VideoSalesLetterSection from '@/components/VideoSalesLetterSection';
 
 const Index = () => {
   return (
@@ -53,6 +54,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      {/* Video Sales Letter Section */}
+      <VideoSalesLetterSection />
       
       {/* Partners Section */}
       <PartnersSection />
