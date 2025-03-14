@@ -38,7 +38,7 @@ const Index = () => {
               Book Now
             </button>
             <button className="btn-secondary">
-              Explore Services
+              Watch Demo
             </button>
           </div>
           
