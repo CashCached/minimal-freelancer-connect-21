@@ -23,11 +23,17 @@ const PartnersSection = () => {
             <span className="font-medium text-brand-darkGreen">Dexter Agency</span>
           </div>
           
-          {/* Other partner logos with icons as placeholders */}
+          {/* AgencyMatch Logo */}
           <div className="flex flex-col items-center">
-            <Building size={48} className="text-brand-green mb-2" />
-            <span className="font-medium text-brand-darkGreen">Acme Corp</span>
+            <img 
+              src="/lovable-uploads/12370ca8-9ac6-4f12-9626-f2321c22deaa.png" 
+              alt="AgencyMatch" 
+              className="h-12 object-contain mb-2" 
+            />
+            <span className="font-medium text-brand-darkGreen">AgencyMatch</span>
           </div>
+          
+          {/* Other partner logos with icons as placeholders */}
           <div className="flex flex-col items-center">
             <Handshake size={48} className="text-brand-green mb-2" />
             <span className="font-medium text-brand-darkGreen">Global Tech</span>
