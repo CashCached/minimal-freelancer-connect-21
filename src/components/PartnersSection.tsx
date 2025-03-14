@@ -23,14 +23,14 @@ const PartnersSection = () => {
             <span className="font-medium text-brand-darkGreen">Dexter Agency</span>
           </div>
           
-          {/* AgencyMatch Logo */}
+          {/* Agency Watch Logo */}
           <div className="flex flex-col items-center">
             <img 
-              src="/lovable-uploads/12370ca8-9ac6-4f12-9626-f2321c22deaa.png" 
-              alt="AgencyMatch" 
+              src="/lovable-uploads/c2897f46-1493-4b80-b7fe-f24038db9475.png" 
+              alt="Agency Watch" 
               className="h-12 object-contain mb-2" 
             />
-            <span className="font-medium text-brand-darkGreen">AgencyMatch</span>
+            <span className="font-medium text-brand-darkGreen">Agency Watch</span>
           </div>
           
           {/* Other partner logos with icons as placeholders */}
