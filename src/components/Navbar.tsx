@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight, Linkedin, Phone } from 'lucide-react';
@@ -39,13 +40,7 @@ const Navbar = () => {
             ? "bg-white/60 border border-white/30 shadow-lg px-6 py-3" 
             : "bg-white/20 border border-white/10 px-6 py-3"
         )}>
-          <div className="flex items-center">
-            <div className="bg-gradient-to-r from-brand-darkBlue to-brand-teal text-transparent bg-clip-text">
-              <span className="text-xl font-bold">Schedule<span className="text-brand-coral">Pro</span></span>
-            </div>
-          </div>
-          
-          <div className="flex items-center space-x-4 mr-4">
+          <div className="flex items-center space-x-4">
             <a 
               href="https://linkedin.com/company/schedulepro" 
               target="_blank" 
@@ -77,6 +72,12 @@ const Navbar = () => {
                 </div>
               </PopoverContent>
             </Popover>
+          </div>
+          
+          <div className="flex items-center">
+            <div className="bg-gradient-to-r from-brand-darkBlue to-brand-teal text-transparent bg-clip-text">
+              <span className="text-xl font-bold">Schedule<span className="text-brand-coral">Pro</span></span>
+            </div>
           </div>
           
           <Button 
