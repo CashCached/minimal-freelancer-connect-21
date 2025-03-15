@@ -19,7 +19,13 @@ const PhotoCollageSection = () => {
       hasImage: true,
       className: "col-span-2 row-span-2" 
     },
-    { id: "placeholder-2", hasImage: false, className: "col-span-1 row-span-1" },
+    { 
+      id: "image-2", 
+      src: "public/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
+      alt: "Beautiful snowy mountain landscape with skiers", 
+      hasImage: true,
+      className: "col-span-1 row-span-1" 
+    },
     { id: "placeholder-3", hasImage: false, className: "col-span-1 row-span-1" },
     { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
     { id: "placeholder-5", hasImage: false, className: "col-span-2 row-span-1" },
@@ -46,7 +52,7 @@ const PhotoCollageSection = () => {
           </p>
         </div>
         
-        {/* Photo Grid with First Image and Empty Placeholders */}
+        {/* Photo Grid with Images and Empty Placeholders */}
         <div className="grid grid-cols-4 gap-3 md:gap-5">
           {placeholders.map((item) => (
             <div 
