@@ -29,7 +29,11 @@ const Index = () => {
               Founders: 
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-coral opacity-30"></div>
             </span>{" "}
-            <span className="text-gradient">Get 3-5 High Intent Calls</span> Every Week on autopilot
+            <span className="text-gradient">Get 3-5 High Intent Calls</span> Every Week on <span className="relative inline-block">autopilot
+              <svg className="absolute -bottom-1 left-0 w-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="8" viewBox="0 0 100 8" fill="none" preserveAspectRatio="none">
+                <path d="M1 5.5C20 0.5 50 9 99 3.5" stroke="#BE9553" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </span>
           </h1>
           
           <p className="subtitle max-w-2xl mx-auto mb-8">
