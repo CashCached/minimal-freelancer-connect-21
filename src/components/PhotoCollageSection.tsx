@@ -24,7 +24,8 @@ const PhotoCollageSection = () => {
       src: "public/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
       alt: "Beautiful snowy mountain landscape with skiers", 
       hasImage: true,
-      className: "col-span-1 row-span-1" 
+      className: "col-span-1 row-span-1",
+      rotate: true
     },
     { id: "placeholder-3", hasImage: false, className: "col-span-1 row-span-1" },
     { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
@@ -68,7 +69,10 @@ const PhotoCollageSection = () => {
                   <img 
                     src={item.src} 
                     alt={item.alt} 
-                    className="w-full h-full object-cover"
+                    className={cn(
+                      "w-full h-full object-cover",
+                      item.rotate && "rotate-90 object-contain transform-origin-center"
+                    )}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{item.alt}</p>
