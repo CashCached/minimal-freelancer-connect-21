@@ -26,16 +26,14 @@ const PhotoCollageSection = () => {
       src: "/lovable-uploads/c1862175-8040-4609-92dd-1a14f01e13f6.png", 
       alt: "Beach view with team members", 
       hasImage: true,
-      className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3", // Made the beach view longer
+      className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3", 
       transformStyle: {
         transform: 'scale(1.03) rotate(-1deg)',
       }
     },
-    { id: "placeholder-5", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
-    { id: "placeholder-6", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
+    { id: "placeholder-large", hasImage: false, className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3" },
     { id: "placeholder-7", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
     { id: "placeholder-8", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
-    { id: "placeholder-9", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
   ];
 
   return (
