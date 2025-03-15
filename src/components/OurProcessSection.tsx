@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const OurProcessSection = () => {
   const processSteps = [
@@ -50,7 +50,7 @@ const OurProcessSection = () => {
           {processSteps.map((step) => (
             <div 
               key={step.number}
-              className="flex flex-col items-center hover-lift transition-all duration-300"
+              className="flex flex-col items-center"
             >
               {/* Step Number */}
               <div className="mb-6">
