@@ -11,7 +11,7 @@ const VideoSalesLetterSection = () => {
       
       <div className="container mx-auto max-w-4xl text-center">
         <div className="mb-4 md:mb-8">
-          <div className="inline-block mb-2 md:mb-4 px-2 md:px-3 py-1 rounded-full bg-brand-green/10 border border-brand-green/20">
+          <div className="inline-block mb-2 md:mb-4 px-2 md:px-3 py-1 rounded-full bg-brand-green/10">
             <span className="text-brand-green text-xs font-medium">Watch Our Process</span>
           </div>
           
