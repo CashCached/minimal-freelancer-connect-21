@@ -32,7 +32,16 @@ const PhotoCollageSection = () => {
         transform: 'scale(1.03) rotate(-1deg)',
       }
     },
-    { id: "placeholder-large", hasImage: false, className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3" },
+    { 
+      id: "image-selfie", 
+      src: "/lovable-uploads/c9f64778-b120-4384-a919-0e461e9ba343.png", 
+      alt: "Selfie on the slopes", 
+      hasImage: true,
+      className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3",
+      transformStyle: {
+        transform: 'rotate(90deg) scale(1.2)',
+      }
+    },
     { id: "placeholder-7", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
     { id: "placeholder-8", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
   ];
