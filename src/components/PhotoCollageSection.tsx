@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { cn } from '@/lib/utils';
 
 type CollageImage = {
@@ -8,7 +8,7 @@ type CollageImage = {
   alt: string;
   className?: string;
   rotation?: number;
-  transformStyle?: React.CSSProperties;
+  transformStyle?: CSSProperties;
 }
 
 const PhotoCollageSection = () => {
@@ -30,7 +30,7 @@ const PhotoCollageSection = () => {
       rotation: 90,
       transformStyle: {
         transform: 'rotate(90deg)',
-        objectFit: 'cover',
+        objectFit: 'cover' as const,
         objectPosition: 'center',
         width: '100%',
         height: '100%'
@@ -82,11 +82,12 @@ const PhotoCollageSection = () => {
               {item.hasImage ? (
                 <>
                   {item.rotation ? (
-                    <div className="w-full h-full overflow-hidden">
+                    <div className="w-full h-full overflow-hidden flex items-center justify-center">
                       <img 
                         src={item.src} 
                         alt={item.alt} 
                         style={item.transformStyle}
+                        className="min-w-[150%] min-h-[150%]"
                       />
                     </div>
                   ) : (
