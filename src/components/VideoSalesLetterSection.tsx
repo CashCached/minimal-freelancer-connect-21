@@ -11,7 +11,9 @@ const VideoSalesLetterSection = () => {
       
       <div className="container mx-auto max-w-4xl text-center">
         <div className="mb-4 md:mb-8">
-          <p className="text-xs font-medium text-brand-green mb-2 md:mb-4">Watch Our Process</p>
+          <div className="inline-block mb-3 md:mb-4 px-3 py-1 rounded-full bg-brand-teal/10">
+            <span className="text-brand-teal font-semibold text-xs md:text-sm">Watch Our Process</span>
+          </div>
           
           <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-1 md:mb-4">
             <span className="text-gradient-cool font-bold">Get 12-20+ Qualified Sales Meetings</span>{" "}
