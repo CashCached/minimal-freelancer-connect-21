@@ -5,9 +5,8 @@ const FAQSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto max-w-6xl px-4">
-        <div className="text-center mb-12 flex items-center justify-center gap-2">
+        <div className="text-center mb-12">
           <h2 className="heading-lg mb-0">Commonly Asked Questions</h2>
-          <span className="text-brand-green text-2xl">❓</span>
         </div>
         
         <div className="max-w-3xl mx-auto">
