@@ -43,7 +43,13 @@ const PhotoCollageSection = () => {
       hasImage: true,
       className: "col-span-1 row-span-1" 
     },
-    { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
+    { 
+      id: "image-4", 
+      src: "/lovable-uploads/5099b7d6-06c0-4300-97e6-dc9b35467b81.png", 
+      alt: "Two team members in black attire", 
+      hasImage: true,
+      className: "col-span-1 row-span-2" 
+    },
     { id: "placeholder-5", hasImage: false, className: "col-span-1 row-span-1" },
   ];
 
