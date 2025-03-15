@@ -16,16 +16,49 @@ const VideoSalesLetterSection = () => {
           </div>
           
           <h2 className="heading-lg mb-6">
-            <span className="text-gradient-cool">See how we generate</span>{" "}
+            <span className="text-gradient-cool font-bold">Get 12-20+ Qualified Sales Meetings</span>{" "}
             <span className="relative">
-              high-intent leads
+              Every Month
               <div className="absolute -bottom-1 left-0 w-full h-1 bg-brand-gold/50"></div>
             </span>
           </h2>
           
-          <p className="text-lg text-brand-darkGreen/80 mb-8 leading-relaxed max-w-2xl mx-auto">
-            Our proven methodology has helped hundreds of founders schedule quality meetings with decision-makers who are actively seeking your solutions.
+          <p className="text-lg font-semibold text-brand-darkGreen mb-6 leading-relaxed max-w-2xl mx-auto">
+            All while working 100% pay-on-result
           </p>
+
+          <p className="text-base text-brand-darkGreen/80 mb-8 leading-relaxed max-w-2xl mx-auto">
+            We help companies grow through targeted outreach, delivering qualified meetings with decision-makers.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto text-left">
+            <div className="flex items-start">
+              <div className="w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center mt-0.5 mr-2">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="#2A6D4B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <p className="text-brand-darkGreen text-sm md:text-base">Consistent High Quality Leads & Appointments</p>
+            </div>
+            
+            <div className="flex items-start">
+              <div className="w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center mt-0.5 mr-2">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="#2A6D4B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <p className="text-brand-darkGreen text-sm md:text-base">Hyper-Targeted Messaging for your Specific Niches</p>
+            </div>
+            
+            <div className="flex items-start">
+              <div className="w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center mt-0.5 mr-2">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="#2A6D4B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <p className="text-brand-darkGreen text-sm md:text-base">Data-Driven Campaigns That Improve Over Time</p>
+            </div>
+          </div>
         </div>
         
         {/* Video Container - Centered and Smaller */}
