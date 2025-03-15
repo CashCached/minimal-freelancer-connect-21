@@ -10,7 +10,7 @@ type CollageImage = {
 }
 
 const PhotoCollageSection = () => {
-  // Images with actual content, others are empty placeholders
+  // First image with actual content, others are empty placeholders
   const placeholders = [
     { 
       id: "image-1", 
@@ -19,13 +19,7 @@ const PhotoCollageSection = () => {
       hasImage: true,
       className: "col-span-2 row-span-2" 
     },
-    { 
-      id: "image-2", 
-      src: "public/lovable-uploads/c2897f46-1493-4b80-b7fe-f24038db9475.png", 
-      alt: "Team at conference", 
-      hasImage: true,
-      className: "col-span-1 row-span-1" 
-    },
+    { id: "placeholder-2", hasImage: false, className: "col-span-1 row-span-1" },
     { id: "placeholder-3", hasImage: false, className: "col-span-1 row-span-1" },
     { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
     { id: "placeholder-5", hasImage: false, className: "col-span-2 row-span-1" },
@@ -52,7 +46,7 @@ const PhotoCollageSection = () => {
           </p>
         </div>
         
-        {/* Photo Grid with Images and Empty Placeholders */}
+        {/* Photo Grid with First Image and Empty Placeholders */}
         <div className="grid grid-cols-4 gap-3 md:gap-5">
           {placeholders.map((item) => (
             <div 
