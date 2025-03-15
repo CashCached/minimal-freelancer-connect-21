@@ -91,7 +91,7 @@ const Navbar = () => {
             <Button 
               onClick={scrollToBooking}
               className={cn(
-                "btn-primary rounded-full text-xs md:text-base py-1 md:py-2 px-2 md:px-4",
+                "h-7 md:h-auto rounded-full text-xs md:text-base py-0 md:py-2 px-2 md:px-4",
                 "bg-gradient-to-br from-brand-gold to-brand-cream text-brand-darkGreen hover:bg-brand-gold/90 font-semibold"
               )}
             >
