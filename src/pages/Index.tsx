@@ -21,30 +21,30 @@ const Index = () => {
         {/* Content */}
         <div className="container mx-auto max-w-5xl text-center relative z-10">
           <div className="inline-block mb-3 md:mb-4 px-3 py-1 rounded-full bg-brand-teal/10">
-            <span className="text-brand-teal text-xs md:text-sm font-medium">B2B Lead Generation & Appointment Setting Agency</span>
+            <span className="text-brand-teal font-semibold text-xs md:text-sm">B2B Lead Generation & Appointment Setting Agency</span>
           </div>
           
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 text-shadow-sm">
             <span className="relative inline-block">
               Founders: 
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-coral opacity-30"></div>
             </span>{" "}
-            <span className="text-gradient">Get 3-5 High Intent Calls</span> Every Week on <span className="relative inline-block">autopilot
+            <span className="text-gradient font-extrabold">Get 3-5 High Intent Calls</span> Every Week on <span className="relative inline-block">autopilot
               <svg className="absolute -bottom-1 left-0 w-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="8" viewBox="0 0 100 8" fill="none" preserveAspectRatio="none">
-                <path d="M1 5.5C20 0.5 50 9 99 3.5" stroke="#BE9553" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M1 5.5C20 0.5 50 9 99 3.5" stroke="#BE9553" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </span>
           </h1>
           
-          <p className="text-base md:text-lg text-brand-darkGreen/80 max-w-2xl mx-auto mb-6 md:mb-8">
+          <p className="text-base md:text-xl font-medium text-brand-darkGreen max-w-2xl mx-auto mb-6 md:mb-8">
             Pay 100% for Results
           </p>
           
           <div className="flex flex-row justify-center gap-3 mb-8 md:mb-12">
-            <button className="btn-primary text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
+            <button className="btn-primary text-sm md:text-base px-4 md:px-6 py-2 md:py-3 shadow-lg hover:shadow-xl">
               Book Now
             </button>
-            <button className="btn-secondary text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
+            <button className="btn-secondary text-sm md:text-base px-4 md:px-6 py-2 md:py-3 hover:bg-brand-darkGreen/10">
               Watch Demo
             </button>
           </div>
