@@ -11,16 +11,26 @@ const OurProcessSection = () => {
     },
     {
       number: '02',
+      title: 'Research',
+      description: 'Our team identifies ideal prospects and decision-makers within your target industry verticals.'
+    },
+    {
+      number: '03',
+      title: 'Planning',
+      description: 'We craft personalized messaging and outreach sequences tailored to your unique value proposition.'
+    },
+    {
+      number: '04',
       title: 'Implementation',
       description: 'Our specialists build and deploy your custom B2B lead generation campaign.'
     },
     {
-      number: '03',
+      number: '05',
       title: 'Optimization',
       description: 'We continuously refine your campaign based on performance data to maximize results.'
     },
     {
-      number: '04',
+      number: '06',
       title: 'Scale',
       description: 'Once we\'ve proven success, we scale your campaign to deliver more high-quality leads.'
     }
@@ -36,33 +46,26 @@ const OurProcessSection = () => {
           </p>
         </div>
         
-        <div className="grid gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-12 md:gap-y-20">
           {processSteps.map((step) => (
             <div 
               key={step.number}
               className="flex flex-col items-center"
             >
               {/* Step Number */}
-              <div className="mb-8">
-                <div className="flex items-center justify-center w-20 h-20 rounded-full backdrop-blur-sm bg-white/80 shadow-lg border border-white/20">
-                  <span className="text-3xl font-light text-brand-green">{step.number}</span>
+              <div className="mb-6">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full backdrop-blur-sm bg-white/80 shadow-lg border border-white/20">
+                  <span className="text-2xl font-light text-brand-green">{step.number}</span>
                 </div>
               </div>
               
               {/* Step Content */}
-              <div className="text-center max-w-2xl">
-                <h3 className="text-2xl font-medium text-brand-darkGreen mb-4">{step.title}</h3>
-                <p className="text-brand-darkGreen/60 text-lg font-light">{step.description}</p>
+              <div className="text-center">
+                <h3 className="text-xl font-medium text-brand-darkGreen mb-3">{step.title}</h3>
+                <p className="text-brand-darkGreen/60 text-base font-light">{step.description}</p>
               </div>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-24 text-center">
-          <a href="#" className="group inline-flex items-center gap-2 text-brand-green hover:text-brand-darkGreen transition-colors duration-300">
-            <span className="font-medium">Learn more about our process</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </a>
         </div>
       </div>
     </section>
