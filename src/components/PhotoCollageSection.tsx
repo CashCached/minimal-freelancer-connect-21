@@ -47,17 +47,11 @@ const PhotoCollageSection = () => {
   ];
 
   return (
-    <section className="py-0 relative overflow-hidden bg-gradient-to-b from-white to-brand-teal/5">
+    <section className="py-8 relative overflow-hidden bg-gradient-to-b from-white to-brand-teal/5">
       <div className="absolute top-1/4 -right-10 w-40 h-40 rounded-full bg-brand-green/5 blur-2xl"></div>
       <div className="absolute bottom-1/4 -left-10 w-40 h-40 rounded-full bg-brand-yellow/5 blur-2xl"></div>
       
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center my-4">
-          <div className="inline-block mb-1 px-3 py-1 rounded-full bg-brand-teal/10">
-            <span className="text-brand-teal font-semibold text-xs">Our Journey</span>
-          </div>
-        </div>
-        
         <div className="grid grid-cols-4 md:grid-cols-6 gap-3 h-[320px] sm:h-[400px] md:h-[480px]">
           {placeholders.map((item) => (
             <div 

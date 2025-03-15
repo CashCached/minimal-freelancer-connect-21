@@ -18,7 +18,7 @@ const ContactSection = () => {
           <Mail className="h-6 w-6" />
         </div>
         <h3 className="text-lg font-semibold mb-2 text-brand-darkBlue">Email</h3>
-        <p className="text-brand-darkBlue/70">contact@schedulepro.com</p>
+        <p className="text-brand-darkBlue/70">salesbridge@gmail.com</p>
       </div>
 
       <div className="glass-panel p-6 animate-fade-up opacity-0 delay-300 text-center">

@@ -43,7 +43,7 @@ const Navbar = () => {
         )}>
           <div className="flex-1 flex items-center space-x-2 md:space-x-4">
             <a 
-              href="https://linkedin.com/company/schedulepro" 
+              href="https://linkedin.com/company/salesbridge" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-brand-gold to-brand-cream flex items-center justify-center text-brand-darkGreen"
@@ -78,12 +78,8 @@ const Navbar = () => {
           </div>
           
           <div className="flex-1 flex justify-center items-center">
-            <div className="h-8 md:h-[45px] relative">
-              <img 
-                src="/lovable-uploads/0ba739f3-dbf9-4b3a-8f40-5a69fa44a8a8.png" 
-                alt="SchedulePro Logo" 
-                className="h-full object-contain"
-              />
+            <div className="h-8 md:h-[45px] relative font-bold text-xl md:text-2xl text-white">
+              SalesBridge
             </div>
           </div>
           
