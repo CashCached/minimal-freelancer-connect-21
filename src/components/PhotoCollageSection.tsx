@@ -54,18 +54,18 @@ const PhotoCollageSection = () => {
   ];
 
   return (
-    <section className="py-6 px-2 md:px-8 relative overflow-hidden">
+    <section className="py-4 relative overflow-hidden">
       {/* Background Elements - made smaller */}
       <div className="absolute top-1/4 -right-10 w-40 h-40 rounded-full bg-brand-green/5 blur-2xl"></div>
       <div className="absolute bottom-1/4 -left-10 w-40 h-40 rounded-full bg-brand-yellow/5 blur-2xl"></div>
       
-      <div className="mx-auto" style={{ maxWidth: "calc(100vw - 24px)" }}>
-        <div className="text-center mb-4">
+      <div className="container mx-auto max-w-6xl px-2 md:px-8">
+        <div className="text-center mb-3">
           <div className="inline-block mb-1 px-3 py-1 rounded-full bg-brand-teal/10">
             <span className="text-brand-teal font-semibold text-xs">Our Journey</span>
           </div>
           
-          <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-brand-darkGreen mb-2">
+          <h2 className="text-lg md:text-xl font-bold text-brand-darkGreen mb-1">
             Moments That Define <span className="text-gradient">Our Success</span>
           </h2>
           
@@ -75,7 +75,7 @@ const PhotoCollageSection = () => {
         </div>
         
         {/* Photo Grid with Images and Empty Placeholders - reduced height */}
-        <div className="grid grid-cols-6 gap-2 max-h-[200px] md:max-h-[240px]">
+        <div className="grid grid-cols-6 gap-1.5 max-h-[180px] md:max-h-[200px]">
           {placeholders.map((item) => (
             <div 
               key={item.id} 
