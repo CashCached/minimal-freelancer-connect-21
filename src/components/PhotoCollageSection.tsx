@@ -10,7 +10,7 @@ type CollageImage = {
 }
 
 const PhotoCollageSection = () => {
-  // Updated image collection with the new beach image
+  // Rearranged image collection with better layout
   const placeholders = [
     { 
       id: "image-1", 
@@ -20,19 +20,18 @@ const PhotoCollageSection = () => {
       className: "col-span-2 row-span-2" 
     },
     { 
-      id: "image-2", 
-      src: "/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
-      alt: "Beautiful snowy mountain landscape with skiers", 
-      hasImage: true,
-      className: "col-span-1 row-span-1",
-      rotate: true
-    },
-    { 
       id: "image-3", 
       src: "/lovable-uploads/c1862175-8040-4609-92dd-1a14f01e13f6.png", 
       alt: "Beach view with team members", 
       hasImage: true,
       className: "col-span-1 row-span-1" 
+    },
+    { 
+      id: "image-2", 
+      src: "/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
+      alt: "Beautiful snowy mountain landscape with skiers", 
+      hasImage: true,
+      className: "col-span-1 row-span-1"
     },
     { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
     { id: "placeholder-5", hasImage: false, className: "col-span-2 row-span-1" },
@@ -72,21 +71,11 @@ const PhotoCollageSection = () => {
             >
               {item.hasImage ? (
                 <>
-                  {item.rotate ? (
-                    <div className="w-full h-full overflow-hidden flex items-center justify-center">
-                      <img 
-                        src={item.src} 
-                        alt={item.alt} 
-                        className="w-[150%] h-[150%] object-cover rotate-90"
-                      />
-                    </div>
-                  ) : (
-                    <img 
-                      src={item.src} 
-                      alt={item.alt} 
-                      className="w-full h-full object-cover"
-                    />
-                  )}
+                  <img 
+                    src={item.src} 
+                    alt={item.alt} 
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{item.alt}</p>
                   </div>
