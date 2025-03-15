@@ -3,7 +3,8 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PartnersSection from '@/components/PartnersSection';
-import ProcessTechnologySection from '@/components/ProcessTechnologySection';
+import OurProcessSection from '@/components/OurProcessSection';
+import AIAgentsSection from '@/components/AIAgentsSection';
 
 const Index = () => {
   return (
@@ -62,8 +63,11 @@ const Index = () => {
       {/* Partners Section */}
       <PartnersSection />
       
-      {/* Combined Process & Technology Section */}
-      <ProcessTechnologySection />
+      {/* Our Process Section */}
+      <OurProcessSection />
+      
+      {/* AI Agents Section */}
+      <AIAgentsSection />
 
       <Footer />
     </div>
