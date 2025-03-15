@@ -26,15 +26,7 @@ const PhotoCollageSection = () => {
       src: "/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
       alt: "Beautiful snowy mountain landscape with skiers", 
       hasImage: true,
-      className: "col-span-1 row-span-1",
-      rotation: 90,
-      transformStyle: {
-        transform: 'rotate(90deg)',
-        objectFit: 'cover' as const,
-        objectPosition: 'center',
-        width: '100%',
-        height: '100%'
-      }
+      className: "col-span-1 row-span-1" 
     },
     { 
       id: "image-3", 
@@ -54,55 +46,36 @@ const PhotoCollageSection = () => {
   ];
 
   return (
-    <section className="py-4 relative overflow-hidden">
-      {/* Background Elements - made smaller */}
+    <section className="py-0 relative overflow-hidden bg-gradient-to-b from-white to-brand-teal/5">
+      {/* Background Elements */}
       <div className="absolute top-1/4 -right-10 w-40 h-40 rounded-full bg-brand-green/5 blur-2xl"></div>
       <div className="absolute bottom-1/4 -left-10 w-40 h-40 rounded-full bg-brand-yellow/5 blur-2xl"></div>
       
-      <div className="container mx-auto max-w-6xl px-2 md:px-8">
-        <div className="text-center mb-3">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center my-4">
           <div className="inline-block mb-1 px-3 py-1 rounded-full bg-brand-teal/10">
             <span className="text-brand-teal font-semibold text-xs">Our Journey</span>
           </div>
-          
-          <h2 className="text-lg md:text-xl font-bold text-brand-darkGreen mb-1">
-            Moments That Define <span className="text-gradient">Our Success</span>
-          </h2>
-          
-          <p className="text-brand-darkGreen/80 mx-auto text-xs max-w-lg">
-            A glimpse into our process, our team, and the results we achieve for our clients.
-          </p>
         </div>
         
-        {/* Photo Grid with Images and Empty Placeholders - reduced height */}
-        <div className="grid grid-cols-6 gap-1.5 max-h-[180px] md:max-h-[200px]">
+        {/* Photo Grid with Images and Empty Placeholders */}
+        <div className="grid grid-cols-6 gap-3 h-[180px] sm:h-[200px] md:h-[240px]">
           {placeholders.map((item) => (
             <div 
               key={item.id} 
               className={cn(
-                "relative overflow-hidden rounded-lg shadow-sm transition-all duration-300 h-full",
+                "relative overflow-hidden rounded-lg transition-all duration-300 h-full",
                 item.hasImage ? "hover:shadow-md hover:-translate-y-1" : "bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center",
                 item.className
               )}
             >
               {item.hasImage ? (
                 <>
-                  {item.rotation ? (
-                    <div className="w-full h-full overflow-hidden flex items-center justify-center">
-                      <img 
-                        src={item.src} 
-                        alt={item.alt} 
-                        style={item.transformStyle}
-                        className="min-w-[120%] min-h-[120%]"
-                      />
-                    </div>
-                  ) : (
-                    <img 
-                      src={item.src} 
-                      alt={item.alt} 
-                      className="w-full h-full object-cover"
-                    />
-                  )}
+                  <img 
+                    src={item.src} 
+                    alt={item.alt} 
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <p className="p-1 text-white text-xs font-medium">{item.alt}</p>
                   </div>
