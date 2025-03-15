@@ -22,7 +22,7 @@ const OurProcessSection = () => {
     {
       number: '04',
       title: 'Scale',
-      description: 'Once we've proven success, we scale your campaign to deliver more high-quality leads.'
+      description: 'Once we\'ve proven success, we scale your campaign to deliver more high-quality leads.'
     }
   ];
 
