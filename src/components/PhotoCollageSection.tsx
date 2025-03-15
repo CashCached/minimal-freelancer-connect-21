@@ -32,18 +32,9 @@ const PhotoCollageSection = () => {
         transform: 'scale(1.03) rotate(-1deg)',
       }
     },
-    { 
-      id: "image-snow", 
-      src: "/lovable-uploads/cc1d8df0-0b5d-45b6-94f2-fdfe7c89ffb8.png", 
-      alt: "Team members on a snowy mountain", 
-      hasImage: true, 
-      className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1",
-      transformStyle: {
-        transform: 'rotate(90deg) scale(1.2)',
-      }
-    },
-    { id: "placeholder-8", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
     { id: "placeholder-large", hasImage: false, className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3" },
+    { id: "placeholder-7", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
+    { id: "placeholder-8", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
   ];
 
   return (
