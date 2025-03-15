@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PartnersSection from '@/components/PartnersSection';
 import OurProcessSection from '@/components/OurProcessSection';
-import PhotoCollageSection from '@/components/PhotoCollageSection';
+import AIAgentsSection from '@/components/AIAgentsSection';
 
 const Index = () => {
   return (
@@ -66,8 +66,8 @@ const Index = () => {
       {/* Our Process Section */}
       <OurProcessSection />
       
-      {/* Photo Collage Section */}
-      <PhotoCollageSection />
+      {/* AI Agents Section */}
+      <AIAgentsSection />
 
       <Footer />
     </div>
