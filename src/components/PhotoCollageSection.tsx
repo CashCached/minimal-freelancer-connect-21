@@ -10,13 +10,19 @@ type CollageImage = {
 }
 
 const PhotoCollageSection = () => {
-  // Empty placeholders for future images
+  // First image with actual content, others are empty placeholders
   const placeholders = [
-    { id: "placeholder-1", className: "col-span-2 row-span-2" },
-    { id: "placeholder-2", className: "col-span-1 row-span-1" },
-    { id: "placeholder-3", className: "col-span-1 row-span-1" },
-    { id: "placeholder-4", className: "col-span-1 row-span-2" },
-    { id: "placeholder-5", className: "col-span-2 row-span-1" },
+    { 
+      id: "image-1", 
+      src: "public/lovable-uploads/d28bee97-019f-478d-b9db-bf2df2a60889.png", 
+      alt: "Team skiing in the snow", 
+      hasImage: true,
+      className: "col-span-2 row-span-2" 
+    },
+    { id: "placeholder-2", hasImage: false, className: "col-span-1 row-span-1" },
+    { id: "placeholder-3", hasImage: false, className: "col-span-1 row-span-1" },
+    { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
+    { id: "placeholder-5", hasImage: false, className: "col-span-2 row-span-1" },
   ];
 
   return (
@@ -40,22 +46,36 @@ const PhotoCollageSection = () => {
           </p>
         </div>
         
-        {/* Photo Grid with Empty Placeholders */}
+        {/* Photo Grid with First Image and Empty Placeholders */}
         <div className="grid grid-cols-4 gap-3 md:gap-5">
-          {placeholders.map((placeholder) => (
+          {placeholders.map((item) => (
             <div 
-              key={placeholder.id} 
+              key={item.id} 
               className={cn(
-                "relative overflow-hidden rounded-2xl shadow-md transition-all duration-300 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center",
-                placeholder.className
+                "relative overflow-hidden rounded-2xl shadow-md transition-all duration-300",
+                item.hasImage ? "hover:shadow-xl hover:-translate-y-1" : "bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center",
+                item.className
               )}
             >
-              <div className="text-center p-4">
-                <svg className="w-10 h-10 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                <p className="mt-2 text-sm text-gray-500">Image placeholder</p>
-              </div>
+              {item.hasImage ? (
+                <>
+                  <img 
+                    src={item.src} 
+                    alt={item.alt} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{item.alt}</p>
+                  </div>
+                </>
+              ) : (
+                <div className="text-center p-4">
+                  <svg className="w-10 h-10 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <p className="mt-2 text-sm text-gray-500">Image placeholder</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
