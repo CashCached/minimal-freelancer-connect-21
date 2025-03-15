@@ -24,16 +24,6 @@ const PhotoCollageSection = () => {
       }
     },
     { 
-      id: "image-4", 
-      src: "/lovable-uploads/5099b7d6-06c0-4300-97e6-dc9b35467b81.png", 
-      alt: "Two team members in black attire", 
-      hasImage: true,
-      className: "col-span-2 row-span-1 md:col-span-2 md:row-span-1", // Moved directly below skiing image
-      transformStyle: {
-        transform: 'scale(1.01) rotate(0.5deg)',
-      }
-    },
-    { 
       id: "image-2", 
       src: "/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
       alt: "Beautiful snowy mountain landscape with skiers", 
@@ -48,9 +38,19 @@ const PhotoCollageSection = () => {
       src: "/lovable-uploads/c1862175-8040-4609-92dd-1a14f01e13f6.png", 
       alt: "Beach view with team members", 
       hasImage: true,
-      className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3", // Beach view longer
+      className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3", // Made the beach view longer
       transformStyle: {
         transform: 'scale(1.03) rotate(-1deg)',
+      }
+    },
+    { 
+      id: "image-4", 
+      src: "/lovable-uploads/5099b7d6-06c0-4300-97e6-dc9b35467b81.png", 
+      alt: "Two team members in black attire", 
+      hasImage: true,
+      className: "col-span-1 row-span-1 md:col-span-1 md:row-span-2", // Moved to be under other images
+      transformStyle: {
+        transform: 'scale(1.01) rotate(0.5deg)',
       }
     },
     // Added placeholder spaces for more images
