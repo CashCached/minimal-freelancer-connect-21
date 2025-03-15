@@ -8,6 +8,7 @@ type CollageImage = {
   alt: string;
   className?: string;
   rotation?: number;
+  transformStyle?: React.CSSProperties;
 }
 
 const PhotoCollageSection = () => {
@@ -25,7 +26,15 @@ const PhotoCollageSection = () => {
       src: "/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
       alt: "Beautiful snowy mountain landscape with skiers", 
       hasImage: true,
-      className: "col-span-2 row-span-1"
+      className: "col-span-2 row-span-1",
+      rotation: 90,
+      transformStyle: {
+        transform: 'rotate(90deg)',
+        objectFit: 'cover',
+        objectPosition: 'center',
+        width: '100%',
+        height: '100%'
+      }
     },
     { 
       id: "image-3", 
@@ -72,11 +81,21 @@ const PhotoCollageSection = () => {
             >
               {item.hasImage ? (
                 <>
-                  <img 
-                    src={item.src} 
-                    alt={item.alt} 
-                    className="w-full h-full object-cover"
-                  />
+                  {item.rotation ? (
+                    <div className="w-full h-full overflow-hidden">
+                      <img 
+                        src={item.src} 
+                        alt={item.alt} 
+                        style={item.transformStyle}
+                      />
+                    </div>
+                  ) : (
+                    <img 
+                      src={item.src} 
+                      alt={item.alt} 
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{item.alt}</p>
                   </div>
