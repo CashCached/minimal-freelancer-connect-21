@@ -7,6 +7,7 @@ type CollageImage = {
   src: string;
   alt: string;
   className?: string;
+  rotation?: number;
 }
 
 const PhotoCollageSection = () => {
@@ -31,7 +32,8 @@ const PhotoCollageSection = () => {
       src: "/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
       alt: "Beautiful snowy mountain landscape with skiers", 
       hasImage: true,
-      className: "col-span-1 row-span-1"
+      className: "col-span-1 row-span-1",
+      rotation: 90
     },
     { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
     { id: "placeholder-5", hasImage: false, className: "col-span-2 row-span-1" },
@@ -71,11 +73,26 @@ const PhotoCollageSection = () => {
             >
               {item.hasImage ? (
                 <>
-                  <img 
-                    src={item.src} 
-                    alt={item.alt} 
-                    className="w-full h-full object-cover"
-                  />
+                  {item.rotation ? (
+                    <div className="w-full h-full overflow-hidden flex items-center justify-center">
+                      <img 
+                        src={item.src} 
+                        alt={item.alt} 
+                        className={`w-full h-full object-cover ${item.rotation ? `rotate-${item.rotation}` : ''}`}
+                        style={{ 
+                          transformOrigin: 'center',
+                          objectFit: 'cover',
+                          aspectRatio: item.rotation ? '3/4' : 'auto'
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <img 
+                      src={item.src} 
+                      alt={item.alt} 
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{item.alt}</p>
                   </div>
