@@ -5,10 +5,9 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-r from-brand-darkGreen to-brand-green py-12 mt-16 relative overflow-hidden text-brand-cream">
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-darkGreen/20 to-brand-green/20 pointer-events-none"></div>
+    <footer className="bg-white py-12 mt-16 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="p-8 rounded-2xl backdrop-blur-sm bg-brand-darkGreen/10 border border-brand-cream/10">
+        <div className="p-8 rounded-2xl bg-gradient-to-r from-brand-darkGreen to-brand-green backdrop-blur-sm border border-brand-cream/10 text-brand-cream">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="mb-4 md:mb-0 flex flex-col items-center md:items-start">
               <div className="mb-4">
