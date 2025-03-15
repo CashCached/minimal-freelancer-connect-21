@@ -3,39 +3,20 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 type CollageImage = {
+  id: string;
   src: string;
   alt: string;
   className?: string;
 }
 
 const PhotoCollageSection = () => {
-  // Demo images - replace with your actual uploaded images
-  const images: CollageImage[] = [
-    { 
-      src: "/lovable-uploads/0ba739f3-dbf9-4b3a-8f40-5a69fa44a8a8.png", 
-      alt: "Team collaboration", 
-      className: "col-span-2 row-span-2" 
-    },
-    { 
-      src: "/lovable-uploads/7d9b9752-20da-4013-ae11-df2bec3bc9de.png", 
-      alt: "Client meeting", 
-      className: "col-span-1 row-span-1" 
-    },
-    { 
-      src: "/lovable-uploads/8665157c-b619-4900-a187-04babcb84170.png", 
-      alt: "Office workspace", 
-      className: "col-span-1 row-span-1" 
-    },
-    { 
-      src: "/lovable-uploads/b911427e-f3ec-4d6a-98fa-7bdc4b8de91f.png", 
-      alt: "Sales strategy session", 
-      className: "col-span-1 row-span-2" 
-    },
-    { 
-      src: "/lovable-uploads/c2897f46-1493-4b80-b7fe-f24038db9475.png", 
-      alt: "Team building", 
-      className: "col-span-2 row-span-1" 
-    },
+  // Empty placeholders for future images
+  const placeholders = [
+    { id: "placeholder-1", className: "col-span-2 row-span-2" },
+    { id: "placeholder-2", className: "col-span-1 row-span-1" },
+    { id: "placeholder-3", className: "col-span-1 row-span-1" },
+    { id: "placeholder-4", className: "col-span-1 row-span-2" },
+    { id: "placeholder-5", className: "col-span-2 row-span-1" },
   ];
 
   return (
@@ -59,23 +40,21 @@ const PhotoCollageSection = () => {
           </p>
         </div>
         
-        {/* Photo Grid */}
+        {/* Photo Grid with Empty Placeholders */}
         <div className="grid grid-cols-4 gap-3 md:gap-5">
-          {images.map((image, index) => (
+          {placeholders.map((placeholder) => (
             <div 
-              key={index} 
+              key={placeholder.id} 
               className={cn(
-                "relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1",
-                image.className
+                "relative overflow-hidden rounded-2xl shadow-md transition-all duration-300 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center",
+                placeholder.className
               )}
             >
-              <img 
-                src={image.src} 
-                alt={image.alt} 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{image.alt}</p>
+              <div className="text-center p-4">
+                <svg className="w-10 h-10 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <p className="mt-2 text-sm text-gray-500">Image placeholder</p>
               </div>
             </div>
           ))}
