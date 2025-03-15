@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import PartnersSection from '@/components/PartnersSection';
 import VideoSalesLetterSection from '@/components/VideoSalesLetterSection';
 import OurProcessSection from '@/components/OurProcessSection';
+import PhotoCollageSection from '@/components/PhotoCollageSection';
 
 const Index = () => {
   return (
@@ -68,6 +69,9 @@ const Index = () => {
       
       {/* Our Process Section */}
       <OurProcessSection />
+      
+      {/* Photo Collage Section */}
+      <PhotoCollageSection />
 
       <Footer />
     </div>
