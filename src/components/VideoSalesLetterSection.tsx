@@ -8,30 +8,30 @@ const VideoSalesLetterSection = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section className="py-8 md:py-20 px-4 md:px-12 lg:px-24 bg-gradient-to-b from-white to-brand-cream/20 relative overflow-hidden">
+    <section className="py-6 md:py-20 px-4 md:px-12 lg:px-24 bg-gradient-to-b from-white to-brand-cream/20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-brand-green/5 blur-3xl"></div>
       <div className="absolute bottom-1/3 left-1/2 w-64 h-64 rounded-full bg-brand-gold/5 blur-3xl"></div>
       
       <div className="container mx-auto max-w-4xl">
-        <div className="mb-4 md:mb-8">
+        <div className="mb-3 md:mb-8">
           {/* Main heading - larger on mobile */}
-          <h2 className="text-3xl md:text-3xl font-bold tracking-tight text-left text-brand-darkGreen mb-2 md:mb-4">
+          <h2 className="text-3xl md:text-3xl font-bold tracking-tight text-left text-brand-darkGreen mb-1 md:mb-4">
             Get 12-20+ Qualified Sales Meetings Every Month
           </h2>
           
           {/* Subheading - styled in gold color */}
-          <p className="text-xl md:text-xl font-bold text-left text-brand-gold mb-3 md:mb-4 leading-tight">
+          <p className="text-xl md:text-xl font-bold text-left text-brand-gold mb-2 md:mb-4 leading-tight">
             All while working 100% pay-on-result
           </p>
 
           {/* Description text */}
-          <p className="text-base md:text-lg text-left text-brand-darkGreen mb-4 md:mb-6 leading-snug">
+          <p className="text-base md:text-lg text-left text-brand-darkGreen mb-3 md:mb-6 leading-snug">
             We help companies grow through targeted outreach, delivering qualified meetings with decision-makers.
           </p>
           
-          {/* Bullet points with gold circular background */}
-          <div className="grid grid-cols-1 gap-3 mb-5 md:mb-8">
+          {/* Bullet points with gold circular background - reduced spacing for mobile */}
+          <div className="grid grid-cols-1 gap-2 md:gap-3 mb-3 md:mb-8">
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center mr-3 flex-shrink-0">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,8 +61,8 @@ const VideoSalesLetterSection = () => {
           </div>
         </div>
         
-        {/* Video Container - Styled to look like the screenshot */}
-        <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-black">
+        {/* Video Container - Reduced margins on mobile */}
+        <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-black mb-4 md:mb-6">
           {/* Video header bar */}
           <div className="bg-gray-800 text-white p-3 flex justify-between items-center">
             <div className="flex items-center">
@@ -118,9 +118,9 @@ const VideoSalesLetterSection = () => {
           </AspectRatio>
         </div>
         
-        {/* Call to action button */}
-        <div className="mt-8 flex justify-center">
-          <Button className="bg-brand-darkGreen hover:bg-brand-darkGreen/90 text-white px-8 py-6 rounded-full text-lg font-medium">
+        {/* Call to action button - reduced top margin for mobile */}
+        <div className="mt-2 md:mt-8 flex justify-center">
+          <Button className="bg-brand-darkGreen hover:bg-brand-darkGreen/90 text-white px-8 py-5 rounded-full text-lg font-medium">
             👉 Schedule Your Free Strategy Session 👈
           </Button>
         </div>
