@@ -1,3 +1,4 @@
+
 import React, { CSSProperties } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -48,7 +49,7 @@ const PhotoCollageSection = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-4 md:grid-cols-6 gap-3 h-[280px] sm:h-[320px] md:h-[400px]">
+        <div className="grid grid-cols-4 md:grid-cols-6 gap-3 h-[320px] sm:h-[400px] md:h-[480px]">
           {placeholders.map((item) => (
             <div 
               key={item.id} 
