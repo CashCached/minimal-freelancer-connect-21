@@ -71,7 +71,7 @@ const PhotoCollageSection = () => {
                       <img 
                         src={item.src} 
                         alt={item.alt} 
-                        className="w-[120%] h-[120%] object-cover rotate-90"
+                        className="w-[150%] h-[150%] object-cover rotate-90"
                       />
                     </div>
                   ) : (
