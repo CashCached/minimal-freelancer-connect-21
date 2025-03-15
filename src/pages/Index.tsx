@@ -12,7 +12,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-20 md:pt-40 pb-12 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand-yellow/10 blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-brand-teal/10 blur-3xl"></div>
@@ -20,11 +20,11 @@ const Index = () => {
         
         {/* Content */}
         <div className="container mx-auto max-w-5xl text-center relative z-10">
-          <div className="inline-block mb-4 px-4 py-1 rounded-full bg-brand-teal/10 border border-brand-teal/20">
-            <span className="text-brand-teal text-sm font-medium">B2B Lead Generation & Appointment Setting Agency</span>
+          <div className="inline-block mb-3 md:mb-4 px-3 py-1 rounded-full bg-brand-teal/10 border border-brand-teal/20">
+            <span className="text-brand-teal text-xs md:text-sm font-medium">B2B Lead Generation & Appointment Setting Agency</span>
           </div>
           
-          <h1 className="heading-xl mb-6">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">
             <span className="relative inline-block">
               Founders: 
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-teal to-brand-coral opacity-30"></div>
@@ -36,26 +36,26 @@ const Index = () => {
             </span>
           </h1>
           
-          <p className="subtitle max-w-2xl mx-auto mb-8">
+          <p className="text-base md:text-lg text-brand-darkGreen/80 max-w-2xl mx-auto mb-6 md:mb-8">
             Pay 100% for Results
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="btn-primary">
+          <div className="flex flex-row justify-center gap-3 mb-8 md:mb-12">
+            <button className="btn-primary text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
               Book Now
             </button>
-            <button className="btn-secondary">
+            <button className="btn-secondary text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
               Watch Demo
             </button>
           </div>
           
           {/* Brand Color Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            <div className="w-8 h-2 rounded-full bg-brand-darkBlue"></div>
-            <div className="w-8 h-2 rounded-full bg-brand-teal"></div>
-            <div className="w-8 h-2 rounded-full bg-brand-yellow"></div>
-            <div className="w-8 h-2 rounded-full bg-brand-orange"></div>
-            <div className="w-8 h-2 rounded-full bg-brand-coral"></div>
+          <div className="flex justify-center gap-2 mt-6 md:mt-8">
+            <div className="w-6 md:w-8 h-2 rounded-full bg-brand-darkBlue"></div>
+            <div className="w-6 md:w-8 h-2 rounded-full bg-brand-teal"></div>
+            <div className="w-6 md:w-8 h-2 rounded-full bg-brand-yellow"></div>
+            <div className="w-6 md:w-8 h-2 rounded-full bg-brand-orange"></div>
+            <div className="w-6 md:w-8 h-2 rounded-full bg-brand-coral"></div>
           </div>
         </div>
       </section>
