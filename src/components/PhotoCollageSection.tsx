@@ -66,14 +66,21 @@ const PhotoCollageSection = () => {
             >
               {item.hasImage ? (
                 <>
-                  <img 
-                    src={item.src} 
-                    alt={item.alt} 
-                    className={cn(
-                      "w-full h-full object-cover",
-                      item.rotate && "rotate-90 object-contain transform-origin-center"
-                    )}
-                  />
+                  {item.rotate ? (
+                    <div className="w-full h-full overflow-hidden flex items-center justify-center">
+                      <img 
+                        src={item.src} 
+                        alt={item.alt} 
+                        className="w-[120%] h-[120%] object-cover rotate-90"
+                      />
+                    </div>
+                  ) : (
+                    <img 
+                      src={item.src} 
+                      alt={item.alt} 
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{item.alt}</p>
                   </div>
