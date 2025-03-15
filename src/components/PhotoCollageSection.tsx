@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -14,14 +13,14 @@ const PhotoCollageSection = () => {
   const placeholders = [
     { 
       id: "image-1", 
-      src: "public/lovable-uploads/d28bee97-019f-478d-b9db-bf2df2a60889.png", 
+      src: "/lovable-uploads/d28bee97-019f-478d-b9db-bf2df2a60889.png", 
       alt: "Team skiing in the snow", 
       hasImage: true,
       className: "col-span-2 row-span-2" 
     },
     { 
       id: "image-2", 
-      src: "public/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
+      src: "/lovable-uploads/856aa277-9b4b-45e5-9cf1-87ed121740b5.png", 
       alt: "Beautiful snowy mountain landscape with skiers", 
       hasImage: true,
       className: "col-span-1 row-span-1",
