@@ -20,7 +20,7 @@ const Index = () => {
         
         {/* Content */}
         <div className="container mx-auto max-w-5xl text-center relative z-10">
-          <div className="inline-block mb-3 md:mb-4 px-3 py-1 rounded-full bg-brand-teal/10 border border-brand-teal/20">
+          <div className="inline-block mb-3 md:mb-4 px-3 py-1 rounded-full bg-brand-teal/10">
             <span className="text-brand-teal text-xs md:text-sm font-medium">B2B Lead Generation & Appointment Setting Agency</span>
           </div>
           
