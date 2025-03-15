@@ -54,34 +54,34 @@ const PhotoCollageSection = () => {
   ];
 
   return (
-    <section className="py-12 md:py-20 px-4 md:px-12 lg:px-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-1/4 -right-20 w-64 h-64 rounded-full bg-brand-green/5 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -left-20 w-64 h-64 rounded-full bg-brand-yellow/5 blur-3xl"></div>
+    <section className="py-8 md:py-12 px-4 md:px-8 relative overflow-hidden">
+      {/* Background Elements - made smaller */}
+      <div className="absolute top-1/4 -right-10 w-40 h-40 rounded-full bg-brand-green/5 blur-2xl"></div>
+      <div className="absolute bottom-1/4 -left-10 w-40 h-40 rounded-full bg-brand-yellow/5 blur-2xl"></div>
       
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-10">
-          <div className="inline-block mb-3 md:mb-4 px-3 py-1 rounded-full bg-brand-teal/10">
-            <span className="text-brand-teal font-semibold text-xs md:text-sm">Our Journey</span>
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-6">
+          <div className="inline-block mb-2 px-3 py-1 rounded-full bg-brand-teal/10">
+            <span className="text-brand-teal font-semibold text-xs">Our Journey</span>
           </div>
           
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-darkGreen mb-4">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-brand-darkGreen mb-3">
             Moments That Define <span className="text-gradient">Our Success</span>
           </h2>
           
-          <p className="text-brand-darkGreen/80 max-w-2xl mx-auto">
+          <p className="text-brand-darkGreen/80 max-w-xl mx-auto text-sm">
             A glimpse into our process, our team, and the results we achieve for our clients.
           </p>
         </div>
         
-        {/* Photo Grid with Images and Empty Placeholders */}
-        <div className="grid grid-cols-4 gap-3 md:gap-5">
+        {/* Photo Grid with Images and Empty Placeholders - reduced gap */}
+        <div className="grid grid-cols-4 gap-2 md:gap-3">
           {placeholders.map((item) => (
             <div 
               key={item.id} 
               className={cn(
-                "relative overflow-hidden rounded-2xl shadow-md transition-all duration-300",
-                item.hasImage ? "hover:shadow-xl hover:-translate-y-1" : "bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center",
+                "relative overflow-hidden rounded-lg shadow-sm transition-all duration-300",
+                item.hasImage ? "hover:shadow-md hover:-translate-y-1" : "bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center",
                 item.className
               )}
             >
@@ -104,15 +104,15 @@ const PhotoCollageSection = () => {
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkGreen/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-3 md:p-4 text-white text-xs md:text-sm font-medium">{item.alt}</p>
+                    <p className="p-2 text-white text-xs font-medium">{item.alt}</p>
                   </div>
                 </>
               ) : (
-                <div className="text-center p-4">
-                  <svg className="w-10 h-10 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="text-center p-3">
+                  <svg className="w-6 h-6 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                   </svg>
-                  <p className="mt-2 text-sm text-gray-500">Image placeholder</p>
+                  <p className="mt-1 text-xs text-gray-500">Image placeholder</p>
                 </div>
               )}
             </div>
