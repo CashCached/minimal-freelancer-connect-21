@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { HelpCircle } from "lucide-react";
 
 const FAQSection = () => {
   return (
@@ -9,7 +7,7 @@ const FAQSection = () => {
       <div className="container mx-auto max-w-6xl px-4">
         <div className="text-center mb-12 flex items-center justify-center gap-2">
           <h2 className="heading-lg mb-0">Commonly Asked Questions</h2>
-          <HelpCircle className="h-6 w-6 text-brand-green" />
+          <span className="text-brand-green text-2xl">❓</span>
         </div>
         
         <div className="max-w-3xl mx-auto">
