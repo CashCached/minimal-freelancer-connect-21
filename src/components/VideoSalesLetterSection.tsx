@@ -15,11 +15,13 @@ const VideoSalesLetterSection = () => {
             <span className="text-brand-green text-xs font-medium">Watch Our Process</span>
           </div>
           
-          <h2 className="text-xl md:text-3xl font-bold tracking-tight mb-1 md:mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-1 md:mb-4">
             <span className="text-gradient-cool font-bold">Get 12-20+ Qualified Sales Meetings</span>{" "}
-            <span className="relative">
+            <span className="relative inline-block">
               Every Month
-              <div className="absolute -bottom-1 left-0 w-full h-1 bg-brand-gold/50"></div>
+              <svg className="absolute -bottom-1 left-0 w-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="8" viewBox="0 0 100 8" fill="none" preserveAspectRatio="none">
+                <path d="M1 5.5C20 0.5 50 9 99 3.5" stroke="#BE9553" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
             </span>
           </h2>
           
