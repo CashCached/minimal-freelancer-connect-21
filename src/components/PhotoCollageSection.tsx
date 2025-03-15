@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -9,7 +10,7 @@ type CollageImage = {
 }
 
 const PhotoCollageSection = () => {
-  // First image with actual content, others are empty placeholders
+  // Updated image collection with the new beach image
   const placeholders = [
     { 
       id: "image-1", 
@@ -26,7 +27,13 @@ const PhotoCollageSection = () => {
       className: "col-span-1 row-span-1",
       rotate: true
     },
-    { id: "placeholder-3", hasImage: false, className: "col-span-1 row-span-1" },
+    { 
+      id: "image-3", 
+      src: "/lovable-uploads/c1862175-8040-4609-92dd-1a14f01e13f6.png", 
+      alt: "Beach view with team members", 
+      hasImage: true,
+      className: "col-span-1 row-span-1" 
+    },
     { id: "placeholder-4", hasImage: false, className: "col-span-1 row-span-2" },
     { id: "placeholder-5", hasImage: false, className: "col-span-2 row-span-1" },
   ];
