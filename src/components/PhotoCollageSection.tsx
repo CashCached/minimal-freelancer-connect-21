@@ -39,7 +39,8 @@ const PhotoCollageSection = () => {
       hasImage: true,
       className: "col-span-2 row-span-2 md:col-span-2 md:row-span-3",
       transformStyle: {
-        transform: 'rotate(90deg) scale(1.2)',
+        transform: 'rotate(90deg) scale(1.02)',
+        objectFit: 'contain',
       }
     },
     { id: "placeholder-7", hasImage: false, className: "col-span-1 row-span-1 md:col-span-1 md:row-span-1" },
