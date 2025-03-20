@@ -21,6 +21,9 @@ const PricingSection = () => {
           <div className="glass-panel p-8 hover-lift transition-all">
             <div className="mb-6">
               <h3 className="text-xl font-bold text-brand-darkGreen mb-2">Starter</h3>
+              <div className="inline-block mb-2 px-2 py-1 rounded-full bg-brand-yellow/10">
+                <span className="text-brand-yellow font-medium text-xs">Best for startups</span>
+              </div>
               <div className="flex items-end gap-1 mb-4">
                 <span className="text-4xl font-bold text-brand-darkGreen">$97</span>
                 <span className="text-brand-darkGreen/60 mb-1">/month</span>
@@ -59,6 +62,9 @@ const PricingSection = () => {
             </div>
             <div className="mb-6">
               <h3 className="text-xl font-bold text-brand-darkGreen mb-2">Professional</h3>
+              <div className="inline-block mb-2 px-2 py-1 rounded-full bg-brand-teal/10">
+                <span className="text-brand-teal font-medium text-xs">Best for growing businesses</span>
+              </div>
               <div className="flex items-end gap-1 mb-4">
                 <span className="text-4xl font-bold text-brand-darkGreen">$197</span>
                 <span className="text-brand-darkGreen/60 mb-1">/month</span>
@@ -98,6 +104,9 @@ const PricingSection = () => {
           <div className="glass-panel p-8 hover-lift transition-all">
             <div className="mb-6">
               <h3 className="text-xl font-bold text-brand-darkGreen mb-2">Enterprise</h3>
+              <div className="inline-block mb-2 px-2 py-1 rounded-full bg-brand-coral/10">
+                <span className="text-brand-coral font-medium text-xs">Best for large teams</span>
+              </div>
               <div className="flex items-end gap-1 mb-4">
                 <span className="text-4xl font-bold text-brand-darkGreen">$497</span>
                 <span className="text-brand-darkGreen/60 mb-1">/month</span>
