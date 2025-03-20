@@ -28,8 +28,7 @@ const Footer = () => {
               </div>
               <div className="flex flex-col items-center md:items-start">
                 <h3 className="font-semibold text-brand-cream mb-2">Contact</h3>
-                <span className="text-brand-cream/80">salesbridge@gmail.com</span>
-                <span className="text-brand-cream/80">+1 (555) 123-4567</span>
+                <span className="text-brand-cream/80">salesbridge@protonmail.com</span>
               </div>
             </div>
           </div>

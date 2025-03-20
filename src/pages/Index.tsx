@@ -8,6 +8,7 @@ import ProcessTechnologySection from '@/components/ProcessTechnologySection';
 import TestimonialSection from '@/components/TestimonialSection';
 import PricingSection from '@/components/PricingSection';
 import FlowchartSection from '@/components/FlowchartSection';
+import VideoSalesLetterSection from '@/components/VideoSalesLetterSection';
 
 const Index = () => {
   return (
@@ -71,6 +72,9 @@ const Index = () => {
 
       {/* Flowchart Section */}
       <FlowchartSection />
+
+      {/* Video Sales Letter Section */}
+      <VideoSalesLetterSection />
       
       {/* Testimonials Section */}
       <TestimonialSection />

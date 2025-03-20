@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PricingSection = () => {
   return (
@@ -50,9 +51,11 @@ const PricingSection = () => {
               </li>
             </ul>
             
-            <button className="w-full btn-secondary hover:bg-brand-teal/10">
-              Start Free Trial
-            </button>
+            <Link to="/get-started" className="w-full">
+              <button className="w-full btn-secondary hover:bg-brand-teal/10">
+                Start Free Trial
+              </button>
+            </Link>
           </div>
           
           {/* Pro Plan (Featured) */}
@@ -95,9 +98,11 @@ const PricingSection = () => {
               </li>
             </ul>
             
-            <button className="w-full btn-primary">
-              Start Free Trial
-            </button>
+            <Link to="/get-started" className="w-full">
+              <button className="w-full btn-primary">
+                Start Free Trial
+              </button>
+            </Link>
           </div>
           
           {/* Enterprise Plan */}
@@ -137,9 +142,11 @@ const PricingSection = () => {
               </li>
             </ul>
             
-            <button className="w-full btn-secondary hover:bg-brand-teal/10">
-              Contact Sales
-            </button>
+            <Link to="/get-started" className="w-full">
+              <button className="w-full btn-secondary hover:bg-brand-teal/10">
+                Contact Sales
+              </button>
+            </Link>
           </div>
         </div>
         
