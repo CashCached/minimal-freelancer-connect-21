@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PartnersSection from '@/components/PartnersSection';
@@ -43,9 +44,9 @@ const Index = () => {
           </p>
           
           <div className="flex flex-row justify-center gap-3 mb-8 md:mb-12">
-            <button className="btn-primary text-sm md:text-base px-4 md:px-6 py-2 md:py-3 shadow-lg hover:shadow-xl">
+            <Link to="/get-started" className="btn-primary text-sm md:text-base px-4 md:px-6 py-2 md:py-3 shadow-lg hover:shadow-xl">
               Get Started Free
-            </button>
+            </Link>
             <button id="watch-demo-btn" className="btn-secondary text-sm md:text-base px-4 md:px-6 py-2 md:py-3 hover:bg-brand-darkGreen/10">
               See It in Action
             </button>
