@@ -6,9 +6,9 @@ const PartnersSection = () => {
     <section className="py-12 px-6 md:px-12 lg:px-24 bg-white">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-10">
-          <h2 className="heading-md text-brand-darkGreen mb-3">Trusted by Leading Companies</h2>
+          <h2 className="heading-md text-brand-darkGreen mb-3">Trusted by 200+ Businesses</h2>
           <p className="text-brand-darkGreen/70 max-w-2xl mx-auto">
-            We partner with industry leaders to deliver exceptional results
+            Companies of all sizes are growing with our Instagram DM automation
           </p>
         </div>
         
@@ -47,6 +47,12 @@ const PartnersSection = () => {
               alt="HD Sales" 
               className="h-10 md:h-12 object-contain brightness-0 saturate-100 invert-[.25] sepia-[.4] saturate-[3] hue-rotate-[100deg]" 
             />
+          </div>
+        </div>
+        
+        <div className="mt-10 text-center">
+          <div className="inline-flex items-center bg-brand-teal/5 rounded-full px-4 py-2">
+            <span className="text-brand-darkGreen font-medium">Join 200+ successful businesses using our platform</span>
           </div>
         </div>
       </div>

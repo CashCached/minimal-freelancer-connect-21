@@ -1,38 +1,38 @@
 
 import React from 'react';
-import { Search, UserRound, Bot, Calendar, BarChart } from 'lucide-react';
+import { AtSign, Search, MessagesSquare, UserCheck, Zap } from 'lucide-react';
 
 const ProcessTechnologySection = () => {
   const processSteps = [
     {
       number: '01',
-      icon: <Search className="h-6 w-6 text-brand-teal" />,
-      title: 'Discovery & Research',
-      description: 'Our AI agents scan the web, databases, and social platforms to identify ideal prospects that match your customer profile.'
+      icon: <AtSign className="h-6 w-6 text-brand-teal" />,
+      title: 'Sign Up & Connect Instagram',
+      description: 'Connect your Instagram account in a few clicks through our secure OAuth integration.'
     },
     {
       number: '02',
-      icon: <UserRound className="h-6 w-6 text-brand-yellow" />,
-      title: 'Planning & Personalization',
-      description: 'We craft personalized messaging sequences tailored to each prospect's specific needs and pain points.'
+      icon: <Search className="h-6 w-6 text-brand-yellow" />,
+      title: 'AI Finds Leads',
+      description: 'Our AI identifies high-potential prospects that match your ideal customer profile across Instagram.'
     },
     {
       number: '03',
-      icon: <Bot className="h-6 w-6 text-brand-orange" />,
-      title: 'Implementation & Engagement',
-      description: 'Our AI orchestrates outreach across multiple channels, automatically adjusting tactics based on response patterns.'
+      icon: <MessagesSquare className="h-6 w-6 text-brand-orange" />,
+      title: 'Smart DMs Sent',
+      description: 'Personalized messages are automatically sent to prospects based on their profiles and activity.'
     },
     {
       number: '04',
-      icon: <Calendar className="h-6 w-6 text-brand-coral" />,
-      title: 'Meeting Scheduling',
-      description: 'When prospects show interest, our system seamlessly schedules meetings directly on your calendar.'
+      icon: <UserCheck className="h-6 w-6 text-brand-coral" />,
+      title: 'AI Qualifies Leads',
+      description: 'Our system engages with responses, answers questions, and qualifies leads without your involvement.'
     },
     {
       number: '05',
-      icon: <BarChart className="h-6 w-6 text-brand-darkBlue" />,
-      title: 'Optimization & Scaling',
-      description: 'We continuously refine campaigns based on performance data to maximize results and scale successful approaches.'
+      icon: <Zap className="h-6 w-6 text-brand-darkBlue" />,
+      title: 'Sales on Autopilot',
+      description: 'Qualified leads are seamlessly transferred to your sales process, with meetings booked directly into your calendar.'
     }
   ];
 
@@ -41,11 +41,11 @@ const ProcessTechnologySection = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-20">
           <div className="inline-block mb-3 px-3 py-1 rounded-full bg-brand-orange/10">
-            <span className="text-brand-orange font-semibold text-sm">Our AI-Powered Process</span>
+            <span className="text-brand-orange font-semibold text-sm">Instagram DM Automation</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-darkGreen mb-5">Our Technology & Process</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-darkGreen mb-5">How It Works</h2>
           <p className="text-brand-darkGreen/60 max-w-xl mx-auto text-lg font-light">
-            A systematic approach powered by AI to generate high-intent leads for your business
+            A 5-step automated process that turns Instagram activity into qualified sales opportunities
           </p>
         </div>
         
@@ -74,35 +74,16 @@ const ProcessTechnologySection = () => {
           ))}
         </div>
         
-        {/* Technology Benefits Section */}
+        {/* AI Technology Benefits Section */}
         <div className="mt-20 text-center">
           <div className="p-6 md:p-8 rounded-xl bg-gradient-to-r from-brand-darkGreen to-brand-green text-white">
-            <h3 className="text-2xl font-bold mb-3">How Our AI Technology Works</h3>
+            <h3 className="text-2xl font-bold mb-3">Our Instagram AI Automation Technology</h3>
             <p className="mb-6 text-white/90">
-              Our proprietary AI agents replace traditional manual prospecting with an intelligent, automated system that scales your outreach while maintaining a personal touch.
+              Our proprietary AI agents handle all Instagram interactions naturally, responding like a human while scaling your outreach to hundreds of potential customers daily.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <span className="w-6 h-6 flex items-center justify-center bg-white text-brand-darkGreen rounded-full text-sm font-bold">1</span>
-                <span>Deploy AI Agents</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <span className="w-6 h-6 flex items-center justify-center bg-white text-brand-darkGreen rounded-full text-sm font-bold">2</span>
-                <span>Intelligent Prospecting</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <span className="w-6 h-6 flex items-center justify-center bg-white text-brand-darkGreen rounded-full text-sm font-bold">3</span>
-                <span>Personalized Outreach</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <span className="w-6 h-6 flex items-center justify-center bg-white text-brand-darkGreen rounded-full text-sm font-bold">4</span>
-                <span>Meeting Booking</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <span className="w-6 h-6 flex items-center justify-center bg-white text-brand-darkGreen rounded-full text-sm font-bold">5</span>
-                <span>You Close Deals</span>
-              </div>
-            </div>
+            <button className="bg-white text-brand-darkGreen font-medium px-6 py-3 rounded-full hover:bg-white/90 transition-all shadow-lg">
+              Start Your Free Trial
+            </button>
           </div>
         </div>
       </div>
