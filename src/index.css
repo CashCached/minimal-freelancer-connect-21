@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,6 +99,18 @@
   .amoled-grid {
     @apply bg-amoled-grid bg-[length:40px_40px];
   }
+  
+  .glow-text {
+    text-shadow: 0 0 10px rgba(155, 135, 245, 0.7), 0 0 20px rgba(155, 135, 245, 0.4);
+  }
+  
+  .glow-text-subtle {
+    text-shadow: 0 0 5px rgba(155, 135, 245, 0.5);
+  }
+  
+  .glow-purple {
+    filter: drop-shadow(0 0 8px rgba(155, 135, 245, 0.6));
+  }
 }
 
 /* Custom animations and effects */
@@ -129,3 +140,13 @@
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+
+/* New animation for the product cards glow effect */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px 2px rgba(155, 135, 245, 0.3); }
+  50% { box-shadow: 0 0 25px 5px rgba(155, 135, 245, 0.5); }
+}
+
+.product-card-glow {
+  animation: pulse-glow 4s infinite ease-in-out;
+}
