@@ -51,7 +51,7 @@ const Footer = () => {
             <p className="text-white/70 mb-4">
               Innovation Center 104A, MIT Manipal
             </p>
-            <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white">
+            <Button className="bg-brand-pink hover:bg-brand-purpleDark text-white">
               Schedule Consultation
             </Button>
           </div>

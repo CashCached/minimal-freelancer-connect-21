@@ -26,7 +26,7 @@ const PricingSection = () => {
                 <span className="text-brand-yellow font-medium text-xs">Best for startups</span>
               </div>
               <div className="flex items-end gap-1 mb-4">
-                <span className="text-4xl font-bold text-brand-darkGreen">$97</span>
+                <span className="text-4xl font-bold text-brand-darkGreen">₹7,999</span>
                 <span className="text-brand-darkGreen/60 mb-1">/month</span>
               </div>
               <p className="text-brand-darkGreen/60 text-sm">Perfect for small businesses just getting started</p>
@@ -69,7 +69,7 @@ const PricingSection = () => {
                 <span className="text-brand-teal font-medium text-xs">Best for growing businesses</span>
               </div>
               <div className="flex items-end gap-1 mb-4">
-                <span className="text-4xl font-bold text-brand-darkGreen">$197</span>
+                <span className="text-4xl font-bold text-brand-darkGreen">₹15,999</span>
                 <span className="text-brand-darkGreen/60 mb-1">/month</span>
               </div>
               <p className="text-brand-darkGreen/60 text-sm">For growing businesses ready to scale</p>
@@ -113,7 +113,7 @@ const PricingSection = () => {
                 <span className="text-brand-coral font-medium text-xs">Best for large teams</span>
               </div>
               <div className="flex items-end gap-1 mb-4">
-                <span className="text-4xl font-bold text-brand-darkGreen">$497</span>
+                <span className="text-4xl font-bold text-brand-darkGreen">₹39,999</span>
                 <span className="text-brand-darkGreen/60 mb-1">/month</span>
               </div>
               <p className="text-brand-darkGreen/60 text-sm">For large teams and agencies</p>

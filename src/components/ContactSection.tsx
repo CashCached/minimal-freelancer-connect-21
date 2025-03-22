@@ -42,7 +42,7 @@ const ContactSection = () => {
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouch}
       >
-        <div className="mx-auto h-12 w-12 bg-brand-purple/10 text-brand-purple rounded-xl flex items-center justify-center mb-4 glow-purple">
+        <div className="mx-auto h-12 w-12 bg-brand-pink/10 text-brand-pink rounded-xl flex items-center justify-center mb-4 glow-purple">
           <Mail className="h-6 w-6" />
         </div>
         <h3 className="text-lg font-semibold mb-2 text-white glow-text-subtle">Email</h3>
@@ -66,7 +66,7 @@ const ContactSection = () => {
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouch}
       >
-        <div className="mx-auto h-12 w-12 bg-brand-purple/10 text-brand-purple rounded-xl flex items-center justify-center mb-4 glow-purple">
+        <div className="mx-auto h-12 w-12 bg-brand-pink/10 text-brand-pink rounded-xl flex items-center justify-center mb-4 glow-purple">
           <Phone className="h-6 w-6" />
         </div>
         <h3 className="text-lg font-semibold mb-2 text-white glow-text-subtle">Phone</h3>

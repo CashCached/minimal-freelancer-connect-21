@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,7 +13,7 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
     
-    --primary: 262 84% 74%;  /* Purple primary color */
+    --primary: 290 84% 74%;  /* Pink-Purple primary color */
     --primary-foreground: 0 0% 98%;
     
     --secondary: 240 3.7% 15.9%;
@@ -23,7 +22,7 @@
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
     
-    --accent: 264 73% 85%;  /* Light purple accent */
+    --accent: 287 73% 85%;  /* Pink accent */
     --accent-foreground: 240 5.9% 10%;
     
     --destructive: 0 62.8% 30.6%;
@@ -31,13 +30,13 @@
     
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 262 84% 74%;  /* Purple ring color */
+    --ring: 287 84% 74%;  /* Pink-purple ring color */
     
     --radius: 0.75rem;
   }
 
   * {
-    @apply border-border selection:bg-brand-purple/20 selection:text-brand-purpleLight;
+    @apply border-border selection:bg-brand-pink/20 selection:text-brand-pinkLight;
   }
   
   body {
@@ -60,7 +59,7 @@
   }
   
   .neo-blur {
-    @apply backdrop-blur-2xl bg-black/40 border border-brand-purple/20 rounded-xl;
+    @apply backdrop-blur-2xl bg-black/40 border border-brand-pink/20 rounded-xl;
   }
   
   .text-gradient {
@@ -68,7 +67,7 @@
   }
   
   .text-gradient-primary {
-    @apply bg-gradient-to-br from-brand-purple via-brand-purpleLight to-white/80 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-brand-pink via-brand-purple to-white/80 bg-clip-text text-transparent;
   }
   
   .heading-xl {
@@ -88,13 +87,13 @@
   }
   
   .btn-primary {
-    @apply rounded-full bg-gradient-to-r from-brand-purple to-brand-purpleDark text-white font-medium px-6 py-3 shadow-md hover:shadow-lg 
-    hover:from-brand-purple/90 hover:to-brand-purpleDark/90 transition-all duration-300 focus:ring-2 focus:ring-brand-purple/50 focus:outline-none;
+    @apply rounded-full bg-gradient-to-r from-brand-pink to-brand-purpleDark text-white font-medium px-6 py-3 shadow-md hover:shadow-lg 
+    hover:from-brand-pink/90 hover:to-brand-purpleDark/90 transition-all duration-300 focus:ring-2 focus:ring-brand-pink/50 focus:outline-none;
   }
   
   .btn-secondary {
-    @apply rounded-full bg-black/30 text-white border border-brand-purple/20 font-medium 
-    px-6 py-3 shadow-sm hover:shadow-md hover:bg-brand-purple/10 transition-all duration-300;
+    @apply rounded-full bg-black/30 text-white border border-brand-pink/20 font-medium 
+    px-6 py-3 shadow-sm hover:shadow-md hover:bg-brand-pink/10 transition-all duration-300;
   }
 
   .amoled-grid {
@@ -103,35 +102,35 @@
   
   /* Toned down glow effects */
   .glow-text {
-    text-shadow: 0 0 6px rgba(155, 135, 245, 0.4), 0 0 12px rgba(155, 135, 245, 0.2);
+    text-shadow: 0 0 6px rgba(211, 70, 239, 0.3), 0 0 12px rgba(211, 70, 239, 0.15);
   }
   
   .glow-text-subtle {
-    text-shadow: 0 0 3px rgba(155, 135, 245, 0.3);
+    text-shadow: 0 0 3px rgba(211, 70, 239, 0.25);
   }
 
   .glow-text-strong {
-    text-shadow: 0 0 6px rgba(155, 135, 245, 0.5), 0 0 12px rgba(155, 135, 245, 0.3), 0 0 20px rgba(155, 135, 245, 0.2);
+    text-shadow: 0 0 6px rgba(211, 70, 239, 0.4), 0 0 12px rgba(211, 70, 239, 0.25), 0 0 20px rgba(211, 70, 239, 0.15);
   }
   
   .glow-purple {
-    filter: drop-shadow(0 0 4px rgba(155, 135, 245, 0.4));
+    filter: drop-shadow(0 0 4px rgba(211, 70, 239, 0.3));
   }
 
   .glow-purple-strong {
-    filter: drop-shadow(0 0 10px rgba(155, 135, 245, 0.5));
+    filter: drop-shadow(0 0 10px rgba(211, 70, 239, 0.4));
   }
 }
 
 /* Custom animations and effects */
 .glow-effect {
-  box-shadow: 0 0 6px 2px rgba(155, 135, 245, 0.25);
+  box-shadow: 0 0 6px 2px rgba(211, 70, 239, 0.2);
   animation: glow 3s infinite ease-in-out;
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 6px 2px rgba(155, 135, 245, 0.25); }
-  50% { box-shadow: 0 0 15px 4px rgba(155, 135, 245, 0.4); }
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(211, 70, 239, 0.2); }
+  50% { box-shadow: 0 0 15px 4px rgba(211, 70, 239, 0.35); }
 }
 
 .hover-lift {
@@ -203,7 +202,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(155, 135, 245, 0.25) 0%, transparent 50%);
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(211, 70, 239, 0.2) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
