@@ -22,16 +22,31 @@ const ProductCard: React.FC<ProductCardProps> = ({
   color,
   ctaText
 }) => {
+  // Track mouse position for the interactive glow effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--x', `${x}%`);
+    card.style.setProperty('--y', `${y}%`);
+  };
+
   return (
-    <Card className="glass-card overflow-hidden hover-lift transition-all duration-300 border-white/5 backdrop-blur-md group product-card-glow">
+    <Card 
+      className="glass-card overflow-hidden hover-lift transition-all duration-500 border-white/5 backdrop-blur-md group product-card-glow interactive-hover"
+      onMouseMove={handleMouseMove}
+    >
       <CardHeader className="pb-2 relative">
         <div className="absolute top-[-20px] right-[-20px] opacity-10 group-hover:opacity-20 transition-opacity duration-500">
           <Sparkle className="h-40 w-40 text-brand-purple rotate-12" />
         </div>
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${color} glow-purple transform transition-all duration-300 group-hover:scale-110`}>
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${color} glow-purple-strong transform transition-all duration-500 group-hover:scale-110`}>
           <Icon className="h-6 w-6 text-white" />
         </div>
-        <CardTitle className="text-xl font-bold text-white group-hover:text-gradient-primary transition-all duration-300 glow-text-subtle">{title}</CardTitle>
+        <CardTitle className="text-xl font-bold text-white group-hover:text-gradient-primary transition-all duration-500 glow-text-subtle">
+          {title}
+        </CardTitle>
         <CardDescription className="text-white/70">{description}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -47,8 +62,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </ul>
       </CardContent>
       <CardFooter>
-        <Button variant="ghost" className="w-full border border-white/10 text-white bg-black/20 hover:bg-brand-purple/20 group/button">
-          <span>{ctaText}</span>
+        <Button variant="ghost" className="w-full border border-white/10 text-white bg-black/20 hover:bg-brand-purple/20 group/button relative overflow-hidden">
+          <span className="relative z-10">{ctaText}</span>
+          <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover/button:w-full"></span>
           <ArrowRight size={16} className="ml-2 opacity-0 group-hover/button:opacity-100 group-hover/button:translate-x-1 transition-all duration-300" />
         </Button>
       </CardFooter>

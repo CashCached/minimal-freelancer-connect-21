@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
@@ -9,6 +9,7 @@ import PricingPlans from '@/components/PricingPlans';
 import AnalyticsChartBackground from '@/components/AnalyticsChartBackground';
 import ContactSection from '@/components/ContactSection';
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   ArrowRight, 
   BarChart2,
@@ -22,8 +23,7 @@ import {
   TrendingUp,
   PieChart
 } from 'lucide-react';
-import { ChartContainer, ChartTooltip } from '@/components/ui/chart';
-import { BarChart, Bar, LineChart, Line, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const chartData = [
   { name: 'Jan', cost: 4000, savings: 2400, projection: 2800 },
@@ -35,10 +35,14 @@ const chartData = [
 ];
 
 const Index = () => {
+  const isMobile = useIsMobile();
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX;
       const y = e.clientY;
+      setCursorPosition({ x, y });
       
       // Create ripple effect on mouse move
       const ripple = document.createElement('div');
@@ -53,16 +57,19 @@ const Index = () => {
       }, 1000);
     };
     
-    document.addEventListener('mousemove', handleMouseMove);
+    if (!isMobile) {
+      document.addEventListener('mousemove', handleMouseMove);
+    }
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [isMobile]);
   
   return (
-    <div className="min-h-screen bg-brand-blackAmoled amoled-grid relative overflow-hidden">
-      <style>{`
+    <div className="min-h-screen bg-brand-blackAmoled enhanced-grid relative overflow-hidden">
+      <style>
+        {`
         .pointer-ripple {
           position: fixed;
           width: 50px;
@@ -87,7 +94,8 @@ const Index = () => {
             opacity: 0;
           }
         }
-      `}</style>
+      `}
+      </style>
       
       <Navbar />
       
@@ -95,7 +103,7 @@ const Index = () => {
       <AnalyticsChartBackground className="pointer-events-none" />
       
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-radial from-brand-purple/20 via-transparent to-transparent opacity-50"></div>
         <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand-purple/10 blur-3xl"></div>
@@ -111,50 +119,50 @@ const Index = () => {
               </span>
             </div>
             
-            <h1 className="heading-xl text-gradient-primary mb-4 animate-fade-up opacity-0">
+            <h1 className="heading-xl text-gradient-primary mb-4 animate-fade-up glow-text-strong">
               Revolutionizing AI Financial Management
             </h1>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 animate-fade-up opacity-0 delay-100">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 animate-fade-up delay-100 glow-text-subtle">
               CashCached – Simplifying AI Payments
             </h2>
-            <p className="subtitle max-w-3xl mx-auto mb-8 animate-fade-up opacity-0 delay-200">
+            <p className="subtitle max-w-3xl mx-auto mb-8 animate-fade-up delay-200">
               The unified AI fund management platform that helps companies allocate, track, and audit AI spending with ease.
             </p>
             
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-10">
-              <div className="flex items-center animate-fade-up opacity-0 delay-300 hover:scale-105 transition-transform">
-                <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3">
+              <div className="flex items-center animate-fade-up delay-300 hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3 glow-purple">
                   <BarChart2 className="h-5 w-5 text-brand-purple" />
                 </div>
                 <div className="text-left">
-                  <p className="text-xl font-bold text-white">35%</p>
+                  <p className="text-xl font-bold text-white glow-text-subtle">35%</p>
                   <p className="text-sm text-white/70">Cost Reduction</p>
                 </div>
               </div>
               
-              <div className="flex items-center animate-fade-up opacity-0 delay-400 hover:scale-105 transition-transform">
-                <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3">
+              <div className="flex items-center animate-fade-up delay-400 hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3 glow-purple">
                   <ShieldCheck className="h-5 w-5 text-brand-purple" />
                 </div>
                 <div className="text-left">
-                  <p className="text-xl font-bold text-white">10+</p>
+                  <p className="text-xl font-bold text-white glow-text-subtle">10+</p>
                   <p className="text-sm text-white/70">AI Services Integrated</p>
                 </div>
               </div>
               
-              <div className="flex items-center animate-fade-up opacity-0 delay-500 hover:scale-105 transition-transform">
-                <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3">
+              <div className="flex items-center animate-fade-up delay-500 hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3 glow-purple">
                   <Clock className="h-5 w-5 text-brand-purple" />
                 </div>
                 <div className="text-left">
-                  <p className="text-xl font-bold text-white">15hrs</p>
+                  <p className="text-xl font-bold text-white glow-text-subtle">15hrs</p>
                   <p className="text-sm text-white/70">Saved Weekly</p>
                 </div>
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
                 <span className="relative z-10">Try Vora Dashboard</span>
                 <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
@@ -167,8 +175,8 @@ const Index = () => {
           </div>
           
           {/* Featured Chart */}
-          <div className="mt-16 glass-card p-6 animate-fade-up opacity-0 delay-300 hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300">
-            <h3 className="text-lg font-semibold mb-4 text-white">AI Spending Optimization</h3>
+          <div className="mt-16 glass-card p-6 animate-fade-up delay-300 hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 interactive-hover">
+            <h3 className="text-lg font-semibold mb-4 text-white glow-text-subtle">AI Spending Optimization</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -202,7 +210,7 @@ const Index = () => {
             <div className="inline-block mb-4 px-3 py-1 rounded-full bg-white/5 border border-white/10">
               <span className="text-white/80 font-medium text-sm">Our Solutions</span>
             </div>
-            <h2 className="heading-lg text-gradient-primary mb-4">Our Products</h2>
+            <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Our Products</h2>
             <p className="subtitle max-w-2xl mx-auto">
               Comprehensive solutions for managing AI expenditure
             </p>
@@ -274,7 +282,7 @@ const Index = () => {
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
-            <h2 className="heading-lg text-gradient-primary mb-4">Why CashCached?</h2>
+            <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Why CashCached?</h2>
             <p className="subtitle max-w-2xl mx-auto">
               Trusted by leading enterprises worldwide
             </p>
@@ -303,10 +311,10 @@ const Index = () => {
             />
           </div>
           
-          <div className="glass-card p-8 md:p-10 text-center hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 group">
+          <div className="glass-card p-8 md:p-10 text-center hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 group interactive-hover">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="md:text-left">
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-brand-purple transition-colors">Trusted by 500+ enterprises</h3>
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-brand-purple transition-colors glow-text-subtle">Trusted by 500+ enterprises</h3>
                 <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-4">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-brand-purple"></div>
@@ -337,28 +345,28 @@ const Index = () => {
                   <PieChart className="h-4 w-4 mr-2 text-brand-purple" /> Advanced Analytics
                 </span>
               </div>
-              <h2 className="heading-lg text-gradient-primary mb-6">Real-time AI Fund Tracking</h2>
+              <h2 className="heading-lg text-gradient-primary mb-6 glow-text-strong">Real-time AI Fund Tracking</h2>
               <p className="subtitle mb-8">
                 Get comprehensive analytics and insights into your AI spending patterns. Identify optimization opportunities and track your savings in real-time.
               </p>
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5 glow-purple">
                     <MousePointerClick className="h-4 w-4 text-brand-purple" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-1">Intuitive Dashboard</h3>
+                    <h3 className="text-lg font-semibold text-white mb-1 glow-text-subtle">Intuitive Dashboard</h3>
                     <p className="text-white/70">Easy-to-use interface with customizable widgets</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5 glow-purple">
                     <TrendingUp className="h-4 w-4 text-brand-purple" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-1">Trend Analysis</h3>
+                    <h3 className="text-lg font-semibold text-white mb-1 glow-text-subtle">Trend Analysis</h3>
                     <p className="text-white/70">AI-powered predictions and usage patterns</p>
                   </div>
                 </div>
@@ -369,14 +377,14 @@ const Index = () => {
               </Button>
             </div>
             
-            <div className="glass-card p-6 hover-lift transition-all duration-500">
+            <div className="glass-card p-6 hover-lift transition-all duration-500 interactive-hover">
               <div className="bg-black/40 rounded-lg p-4">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-white">AI Service Spending</h3>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10">Weekly</Button>
-                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-brand-purple/20 text-brand-purple">Monthly</Button>
-                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10">Yearly</Button>
+                  <h3 className="text-lg font-semibold text-white glow-text-subtle">AI Service Spending</h3>
+                  <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
+                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10 whitespace-nowrap">Weekly</Button>
+                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-brand-purple/20 text-brand-purple whitespace-nowrap">Monthly</Button>
+                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10 whitespace-nowrap">Yearly</Button>
                   </div>
                 </div>
                 
@@ -400,7 +408,7 @@ const Index = () => {
                   </ResponsiveContainer>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-4 mt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
                   <div className="bg-white/5 rounded-lg p-3">
                     <p className="text-white/70 text-xs mb-1">Total Spend</p>
                     <p className="text-lg font-semibold text-white">$24,560</p>
@@ -425,7 +433,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-5">
-              <h2 className="heading-lg text-gradient-primary mb-4">Real Results, Real Companies</h2>
+              <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Real Results, Real Companies</h2>
               <p className="subtitle mb-6">
                 See how we've helped organizations transform their AI financial operations
               </p>
@@ -455,7 +463,7 @@ const Index = () => {
       <section id="contact" className="py-16 md:py-24 px-4 relative">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12">
-            <h2 className="heading-lg text-gradient-primary mb-4">Get in Touch</h2>
+            <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Get in Touch</h2>
             <p className="subtitle max-w-2xl mx-auto mb-8">
               Have questions? Our team is here to help you optimize your AI spending
             </p>
@@ -468,16 +476,16 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-16 md:py-24 px-4 relative">
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="glass-card p-8 md:p-12 overflow-hidden relative border-brand-purple/30 group hover:shadow-lg hover:shadow-brand-purple/20 transition-all duration-500">
+          <div className="glass-card p-8 md:p-12 overflow-hidden relative border-brand-purple/30 group hover:shadow-lg hover:shadow-brand-purple/20 transition-all duration-500 interactive-hover">
             <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-brand-purple/20 blur-3xl group-hover:bg-brand-purple/30 transition-all duration-500"></div>
             
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="heading-lg text-gradient-primary mb-6">Get Started Today</h2>
+              <h2 className="heading-lg text-gradient-primary mb-6 glow-text-strong">Get Started Today</h2>
               <p className="subtitle mb-8">
                 Join hundreds of forward-thinking companies optimizing their AI expenditure
               </p>
               
-              <div className="flex flex-col md:flex-row justify-center gap-4 mb-8">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
                   <span className="relative z-10">Schedule a Free Consultation</span>
                   <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
@@ -488,7 +496,7 @@ const Index = () => {
               </div>
               
               <p className="text-white/70">
-                Contact: salesbridge@protonmail.com | 123 AI Street, Tech Valley
+                Contact: cashcached@gmail.com | 123 AI Avenue, Tech Valley
               </p>
             </div>
           </div>

@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col">
-            <h3 className="text-2xl font-bold text-gradient-primary mb-4">CashCached</h3>
+            <h3 className="text-2xl font-bold text-gradient-primary mb-4 glow-text-subtle">CashCached</h3>
             <p className="text-white/70 mb-4">
               The unified AI fund management platform that helps companies allocate, 
               track, and audit AI spending with ease.
@@ -25,31 +25,31 @@ const Footer = () => {
           
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h4 className="text-white font-semibold mb-4">Products</h4>
+              <h4 className="text-white font-semibold mb-4 glow-text-subtle">Products</h4>
               <ul className="flex flex-col gap-2">
-                <li><a href="#products" className="text-white/70 hover:text-white">Vora</a></li>
-                <li><a href="#products" className="text-white/70 hover:text-white">Mosaic</a></li>
-                <li><a href="#products" className="text-white/70 hover:text-white">Flow</a></li>
-                <li><a href="#products" className="text-white/70 hover:text-white">Nexus</a></li>
+                <li><a href="#products" className="text-white/70 hover:text-white transition-colors">Vora</a></li>
+                <li><a href="#products" className="text-white/70 hover:text-white transition-colors">Mosaic</a></li>
+                <li><a href="#products" className="text-white/70 hover:text-white transition-colors">Flow</a></li>
+                <li><a href="#products" className="text-white/70 hover:text-white transition-colors">Nexus</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <h4 className="text-white font-semibold mb-4 glow-text-subtle">Company</h4>
               <ul className="flex flex-col gap-2">
-                <li><a href="#why" className="text-white/70 hover:text-white">Why Us</a></li>
-                <li><a href="#case-study" className="text-white/70 hover:text-white">Case Studies</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white">Contact</a></li>
+                <li><a href="#why" className="text-white/70 hover:text-white transition-colors">Why Us</a></li>
+                <li><a href="#case-study" className="text-white/70 hover:text-white transition-colors">Case Studies</a></li>
+                <li><a href="#contact" className="text-white/70 hover:text-white transition-colors">Contact</a></li>
               </ul>
             </div>
           </div>
           
           <div>
-            <h4 className="text-white font-semibold mb-4">Get In Touch</h4>
+            <h4 className="text-white font-semibold mb-4 glow-text-subtle">Get In Touch</h4>
             <p className="text-white/70 mb-2">
-              Email: cashcach3@gmail.com
+              Email: cashcached@gmail.com
             </p>
             <p className="text-white/70 mb-4">
-              123 AI Street, Tech Valley
+              123 AI Avenue, Tech Valley
             </p>
             <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white">
               Schedule Consultation
