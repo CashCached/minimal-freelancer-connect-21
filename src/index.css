@@ -248,3 +248,105 @@
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+
+/* Fancy cursor animation */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(247, 89, 171, 0.7);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(247, 89, 171, 0.3);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+}
+
+/* Button hover animation */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.btn-hover-effect:hover::before {
+  transform: translateX(100%);
+}
+
+/* Floating elements animation */
+.floating-element {
+  animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Subtle section entry animations */
+.section-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered list item animations */
+.stagger-list > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stagger-list.is-visible > *:nth-child(1) { 
+  animation: staggerFadeIn 0.5s 0.1s forwards ease-out; 
+}
+.stagger-list.is-visible > *:nth-child(2) { 
+  animation: staggerFadeIn 0.5s 0.2s forwards ease-out; 
+}
+.stagger-list.is-visible > *:nth-child(3) { 
+  animation: staggerFadeIn 0.5s 0.3s forwards ease-out; 
+}
+.stagger-list.is-visible > *:nth-child(4) { 
+  animation: staggerFadeIn 0.5s 0.4s forwards ease-out; 
+}
+.stagger-list.is-visible > *:nth-child(5) { 
+  animation: staggerFadeIn 0.5s 0.5s forwards ease-out; 
+}
+
+@keyframes staggerFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Magnetic effects for interactive elements */
+.magnetic-effect {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}

@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
@@ -41,14 +41,72 @@ const formatCurrency = (value: number) => {
 const Index = () => {
   const isMobile = useIsMobile();
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const cursorDotRef = useRef<HTMLDivElement>(null);
+  const cursorRingRef = useRef<HTMLDivElement>(null);
+  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
   
+  // Animation on scroll for sections
   useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    
+    const sections = document.querySelectorAll('.section-animate');
+    const staggerLists = document.querySelectorAll('.stagger-list');
+    
+    sections.forEach(section => observer.observe(section));
+    staggerLists.forEach(list => observer.observe(list));
+    
+    return () => {
+      sections.forEach(section => observer.unobserve(section));
+      staggerLists.forEach(list => observer.unobserve(list));
+    };
+  }, []);
+  
+  // Custom cursor effect (desktop only)
+  useEffect(() => {
+    if (isMobile) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX;
       const y = e.clientY;
       setCursorPosition({ x, y });
       
-      // Create ripple effect on mouse move
+      // Update cursor position
+      if (cursorDotRef.current) {
+        cursorDotRef.current.style.left = `${x}px`;
+        cursorDotRef.current.style.top = `${y}px`;
+      }
+      
+      if (cursorRingRef.current) {
+        cursorRingRef.current.style.left = `${x}px`;
+        cursorRingRef.current.style.top = `${y}px`;
+      }
+      
+      // Check if hovering over interactive elements
+      const target = e.target as HTMLElement;
+      const isClickable = 
+        target.tagName.toLowerCase() === 'button' || 
+        target.tagName.toLowerCase() === 'a' ||
+        target.closest('button') ||
+        target.closest('a') ||
+        target.classList.contains('interactive-hover');
+      
+      if (isClickable && cursorRingRef.current) {
+        cursorRingRef.current.style.width = '65px';
+        cursorRingRef.current.style.height = '65px';
+        cursorRingRef.current.style.borderColor = 'rgba(247, 89, 171, 0.6)';
+      } else if (cursorRingRef.current) {
+        cursorRingRef.current.style.width = '40px';
+        cursorRingRef.current.style.height = '40px';
+        cursorRingRef.current.style.borderColor = 'rgba(247, 89, 171, 0.3)';
+      }
+      
+      // Create ripple effect on mouse move (more subtle now)
       const ripple = document.createElement('div');
       ripple.className = 'pointer-ripple';
       ripple.style.left = `${x}px`;
@@ -60,6 +118,27 @@ const Index = () => {
         ripple.remove();
       }, 1000);
     };
+    
+    // Apply magnetic effect to buttons
+    const handleButtonHover = () => {
+      const buttons = document.querySelectorAll('button, .magnetic-effect');
+      
+      buttons.forEach(button => {
+        button.addEventListener('mousemove', (e: any) => {
+          const rect = button.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+          button.style.transform = 'translate(0, 0)';
+        });
+      });
+    };
+    
+    handleButtonHover();
     
     // Handle touch events for mobile
     const handleTouchMove = (e: TouchEvent) => {
@@ -93,60 +172,23 @@ const Index = () => {
   }, [isMobile]);
   
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      <style>
-        {`
-        .pointer-ripple {
-          position: fixed;
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(155, 135, 245, 0.2) 0%, rgba(155, 135, 245, 0) 70%);
-          transform: translate(-50%, -50%);
-          pointer-events: none;
-          animation: ripple 1s ease-out forwards;
-          z-index: 1;
-        }
-        
-        @keyframes ripple {
-          0% {
-            width: 0;
-            height: 0;
-            opacity: 0.5;
-          }
-          100% {
-            width: 200px;
-            height: 200px;
-            opacity: 0;
-          }
-        }
-        
-        .touch-ripple {
-          position: fixed;
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(155, 135, 245, 0.2) 0%, rgba(155, 135, 245, 0) 70%);
-          transform: translate(-50%, -50%);
-          pointer-events: none;
-          animation: ripple 1s ease-out forwards;
-          z-index: 1;
-        }
-      `}
-      </style>
+    <div className="min-h-screen bg-black relative overflow-hidden amoled-grid">
+      {/* Custom cursor (desktop only) */}
+      {!isMobile && (
+        <>
+          <div ref={cursorDotRef} className="cursor-dot"></div>
+          <div ref={cursorRingRef} className="cursor-ring"></div>
+        </>
+      )}
       
       <Navbar />
       
-      {/* Removed background elements as requested */}
-      
       {/* Hero Section */}
-      <section className="pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden">
-        {/* Removed background elements to let black stand out */}
-        
+      <section className="pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden section-animate">
         {/* Content */}
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="text-center mb-8">
-            <div className="inline-block mb-6 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20">
+            <div className="inline-block mb-6 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20 floating-element">
               <span className="text-brand-purpleLight font-medium text-sm flex items-center">
                 <TrendingUp className="h-4 w-4 mr-2" /> Simplifying AI Financial Management
               </span>
@@ -163,8 +205,8 @@ const Index = () => {
             </p>
             
             {/* Stats */}
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-10">
-              <div className="flex items-center animate-fade-up delay-300 hover:scale-105 transition-transform">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-10 stagger-list">
+              <div className="flex items-center animate-fade-up delay-300 hover:scale-105 transition-transform magnetic-effect">
                 <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3 glow-purple">
                   <BarChart2 className="h-5 w-5 text-brand-purple" />
                 </div>
@@ -174,7 +216,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="flex items-center animate-fade-up delay-400 hover:scale-105 transition-transform">
+              <div className="flex items-center animate-fade-up delay-400 hover:scale-105 transition-transform magnetic-effect">
                 <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3 glow-purple">
                   <ShieldCheck className="h-5 w-5 text-brand-purple" />
                 </div>
@@ -184,7 +226,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="flex items-center animate-fade-up delay-500 hover:scale-105 transition-transform">
+              <div className="flex items-center animate-fade-up delay-500 hover:scale-105 transition-transform magnetic-effect">
                 <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3 glow-purple">
                   <Clock className="h-5 w-5 text-brand-purple" />
                 </div>
@@ -196,11 +238,11 @@ const Index = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
+              <Button variant="gradient" size="lg" className="magnetic-effect group relative overflow-hidden">
                 <span className="relative z-10">Try Vora Dashboard</span>
                 <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </Button>
-              <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 group">
+              <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 group magnetic-effect">
                 <span>Learn More</span>
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -208,7 +250,7 @@ const Index = () => {
           </div>
           
           {/* Featured Chart */}
-          <div className="mt-16 glass-card p-6 animate-fade-up delay-300 hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 interactive-hover">
+          <div className="mt-16 glass-card p-6 animate-fade-up delay-300 hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 interactive-hover floating-element">
             <h3 className="text-lg font-semibold mb-4 text-white glow-text-subtle">AI Spending Optimization</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
@@ -241,7 +283,7 @@ const Index = () => {
       </section>
       
       {/* Products Section */}
-      <section id="products" className="py-16 md:py-24 px-4 relative">
+      <section id="products" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block mb-4 px-3 py-1 rounded-full bg-white/5 border border-white/10">
@@ -253,7 +295,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-list">
             <ProductCard 
               title="Vora"
               description="AI Fund Management & Analytics"
@@ -314,9 +356,7 @@ const Index = () => {
       <PricingPlans />
       
       {/* Why CashCached Section */}
-      <section id="why" className="py-16 md:py-24 px-4 relative">
-        {/* Removed background effects to let black stand out */}
-        
+      <section id="why" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
             <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Why CashCached?</h2>
@@ -325,7 +365,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 stagger-list">
             <StatCard 
               icon={ShieldCheck}
               stat="Enterprise Security"
@@ -363,7 +403,7 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
+              <Button variant="gradient" className="magnetic-effect group relative overflow-hidden">
                 <span className="relative z-10">Schedule a Demo</span>
                 <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </Button>
@@ -373,7 +413,7 @@ const Index = () => {
       </section>
       
       {/* Analytics Dashboard Preview */}
-      <section className="py-16 md:py-24 px-4 relative">
+      <section className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -387,7 +427,7 @@ const Index = () => {
                 Get comprehensive analytics and insights into your AI spending patterns. Identify optimization opportunities and track your savings in real-time.
               </p>
               
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 mb-8 stagger-list">
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5 glow-purple">
                     <Circle className="h-4 w-4 text-brand-purple" />
@@ -409,12 +449,12 @@ const Index = () => {
                 </div>
               </div>
               
-              <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white">
+              <Button variant="gradient" className="magnetic-effect">
                 Explore Dashboard
               </Button>
             </div>
             
-            <div className="glass-card p-6 hover-lift transition-all duration-500 interactive-hover">
+            <div className="glass-card p-6 hover-lift transition-all duration-500 interactive-hover floating-element">
               <div className="bg-black/40 rounded-lg p-4">
                 <div className="flex justify-between items-center mb-4 flex-wrap">
                   <h3 className="text-lg font-semibold text-white glow-text-subtle">AI Service Spending</h3>
@@ -449,7 +489,7 @@ const Index = () => {
                   </ResponsiveContainer>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4 stagger-list">
                   <div className="bg-white/5 rounded-lg p-3">
                     <p className="text-white/70 text-xs mb-1">Total Spend</p>
                     <p className="text-lg font-semibold text-white">₹24,560</p>
@@ -470,7 +510,7 @@ const Index = () => {
       </section>
       
       {/* Case Study Section */}
-      <section id="case-study" className="py-16 md:py-24 px-4 relative">
+      <section id="case-study" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-5">
@@ -478,7 +518,7 @@ const Index = () => {
               <p className="subtitle mb-6">
                 See how we've helped organizations transform their AI financial operations
               </p>
-              <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white group">
+              <Button variant="gradient" className="group magnetic-effect">
                 <span>View All Case Studies</span>
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -501,7 +541,7 @@ const Index = () => {
       </section>
       
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 px-4 relative">
+      <section id="contact" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12">
             <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Get in Touch</h2>
@@ -515,7 +555,7 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 relative">
+      <section className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="glass-card p-8 md:p-12 overflow-hidden relative border-brand-purple/30 group hover:shadow-lg hover:shadow-brand-purple/20 transition-all duration-500 interactive-hover">
             <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-brand-purple/20 blur-3xl group-hover:bg-brand-purple/30 transition-all duration-500"></div>
@@ -527,11 +567,11 @@ const Index = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
+                <Button size="lg" variant="gradient" className="magnetic-effect group relative overflow-hidden">
                   <span className="relative z-10">Schedule a Free Consultation</span>
                   <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                 </Button>
-                <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10">
+                <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 magnetic-effect">
                   Try Vora Dashboard
                 </Button>
               </div>

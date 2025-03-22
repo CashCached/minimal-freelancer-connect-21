@@ -48,7 +48,7 @@ const BookingSection = () => {
     <div className="glass-panel p-6 md:p-8 max-w-xl mx-auto animate-fade-up">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-brand-darkBlue">
+          <label className="block text-sm font-medium text-white">
             Select Date
           </label>
           <Popover>
@@ -56,7 +56,7 @@ const BookingSection = () => {
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal",
+                  "w-full justify-start text-left font-normal border-brand-purple/20 hover:bg-brand-purple/10 hover:border-brand-purple/30 transition-all",
                   !date && "text-muted-foreground"
                 )}
               >
@@ -78,7 +78,7 @@ const BookingSection = () => {
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-brand-darkBlue">
+          <label className="block text-sm font-medium text-white">
             Select Time
           </label>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -88,8 +88,8 @@ const BookingSection = () => {
                 type="button"
                 variant="outline"
                 className={cn(
-                  "justify-start",
-                  timeSlot === slot && "bg-brand-teal text-white hover:bg-brand-teal/90"
+                  "justify-start border-brand-purple/20 hover:bg-brand-purple/10",
+                  timeSlot === slot && "bg-brand-purple text-white hover:bg-brand-purple/90"
                 )}
                 onClick={() => setTimeSlot(slot)}
               >
@@ -101,28 +101,28 @@ const BookingSection = () => {
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-brand-darkBlue">
+          <label className="block text-sm font-medium text-white">
             Name
           </label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg border border-brand-darkBlue/10 focus:outline-none focus:ring-2 focus:ring-brand-teal/50"
+            className="w-full px-4 py-2 rounded-lg border border-brand-purple/20 bg-black/40 text-white focus:outline-none focus:ring-2 focus:ring-brand-purple/50 transition-all"
             placeholder="Your name"
             required
           />
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-brand-darkBlue">
+          <label className="block text-sm font-medium text-white">
             Email
           </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg border border-brand-darkBlue/10 focus:outline-none focus:ring-2 focus:ring-brand-teal/50"
+            className="w-full px-4 py-2 rounded-lg border border-brand-purple/20 bg-black/40 text-white focus:outline-none focus:ring-2 focus:ring-brand-purple/50 transition-all"
             placeholder="your@email.com"
             required
           />
@@ -130,9 +130,10 @@ const BookingSection = () => {
 
         <Button
           type="submit"
-          className="w-full bg-brand-teal text-white hover:bg-brand-teal/90"
+          variant="gradient"
+          className="w-full group relative overflow-hidden transition-all btn-hover-effect"
         >
-          Book Appointment
+          <span className="relative z-10">Book Appointment</span>
         </Button>
       </form>
     </div>
