@@ -13,6 +13,7 @@ const Auth = () => {
   const [loading, setLoading] = useState<{[key: string]: boolean}>({
     google: false
   });
+  const [showProviderError, setShowProviderError] = useState(false);
 
   // Add animations on load
   useEffect(() => {
@@ -39,6 +40,7 @@ const Auth = () => {
   const handleSocialLogin = async (provider: Provider) => {
     try {
       setLoading({...loading, [provider]: true});
+      setShowProviderError(false);
       
       // Supabase social sign-in
       const { data, error } = await supabase.auth.signInWithOAuth({
@@ -49,6 +51,10 @@ const Auth = () => {
       });
 
       if (error) {
+        if (error.message.includes("provider is not enabled")) {
+          setShowProviderError(true);
+          throw new Error("Authentication provider is not enabled in your Supabase project settings.");
+        }
         throw error;
       }
 
@@ -91,6 +97,16 @@ const Auth = () => {
           
           <h1 className="text-2xl md:text-3xl font-bold text-gradient-primary text-center mb-2 glow-text-strong">Welcome Back</h1>
           <p className="text-white/70 text-center mb-8">Sign in to access your dashboard</p>
+          
+          {showProviderError && (
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-white">
+              <h3 className="font-medium mb-1">Authentication Provider Not Enabled</h3>
+              <p className="text-sm text-white/80">
+                The Google authentication provider is not enabled in your Supabase project. 
+                You need to enable it in the Supabase dashboard under Authentication → Providers.
+              </p>
+            </div>
+          )}
           
           <div className="space-y-4 stagger-list">
             <Button 
