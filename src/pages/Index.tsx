@@ -160,7 +160,7 @@ const Index = () => {
               CashCached
             </h1>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 animate-fade-up delay-100 glow-text-subtle">
-              Revolutionizing AI Financial Management
+              Transforming payments in AI-Driven Economy
             </h2>
             <p className="subtitle max-w-3xl mx-auto mb-8 animate-fade-up delay-200">
               The unified AI fund management platform that helps companies allocate, track, and audit AI spending with ease.
@@ -571,4 +571,3 @@ const Index = () => {
 };
 
 export default Index;
-

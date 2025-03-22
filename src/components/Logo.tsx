@@ -8,12 +8,13 @@ const Logo: React.FC = () => {
   return (
     <div 
       onClick={() => navigate('/')} 
-      className="logo-container cursor-pointer glow-purple-strong transition-all duration-300 hover:scale-105"
+      className="logo-container cursor-pointer transition-all duration-300 hover:scale-105 relative"
     >
-      {/* This will be replaced with an actual logo image later */}
-      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-purple to-brand-purpleDark flex items-center justify-center">
-        <span className="text-xl font-bold text-white">CC</span>
-      </div>
+      <img 
+        src="/lovable-uploads/4c347099-675d-49ab-923b-bb99d4c3a052.png" 
+        alt="CashCached Logo" 
+        className="w-12 h-12 rounded-full object-cover"
+      />
       {/* Glow effect for the logo */}
       <div className="absolute -inset-1 bg-brand-purple/30 rounded-full blur-md -z-10"></div>
     </div>

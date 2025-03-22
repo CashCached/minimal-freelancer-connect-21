@@ -58,8 +58,8 @@ const PricingPlans = () => {
           </div>
           
           {/* Business Plan */}
-          <div className="glass-card p-8 scale-105 hover-lift transition-all duration-300 border-brand-pink/20 shadow-lg relative overflow-hidden group">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-pink text-white px-4 py-1 rounded-full text-sm font-medium">
+          <div className="glass-card p-8 scale-105 hover-lift transition-all duration-300 border-brand-pink/20 shadow-lg relative overflow-visible group mt-6">
+            <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-brand-pink text-white px-4 py-1 rounded-full text-sm font-medium">
               Most Popular
             </div>
             
