@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -164,53 +163,46 @@
 .product-card-glow {
   position: relative;
   overflow: hidden;
-  animation: pulse-glow 4s infinite ease-in-out;
+  transition: all 0.3s ease-out;
 }
 
 .product-card-glow::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(247, 89, 171, 0.1) 0%, transparent 70%);
-  transform: rotate(0deg);
-  transition: transform 0.5s ease-out;
-  pointer-events: none;
-  z-index: -1;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(155, 135, 245, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
 }
 
 .product-card-glow:hover::before {
-  transform: rotate(45deg);
+  opacity: 1;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 10px 2px rgba(247, 89, 171, 0.25); }
-  50% { box-shadow: 0 0 16px 4px rgba(247, 89, 171, 0.35); }
-}
-
-/* Interactive hover effects */
+/* Redesigned interactive hover effects - more sleek and modern */
 .interactive-hover {
   position: relative;
-  overflow: hidden;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 .interactive-hover::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(247, 89, 171, 0.2) 0%, transparent 50%);
+  inset: 0;
+  background: linear-gradient(135deg, rgba(155, 135, 245, 0.12) 0%, transparent 70%);
+  border-radius: inherit;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  transition: opacity 0.4s ease-out;
+  z-index: -1;
 }
 
 .interactive-hover:hover::after {
   opacity: 1;
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -10px rgba(155, 135, 245, 0.4);
 }
 
 /* Enhanced background grid */
@@ -230,15 +222,29 @@
   pointer-events: none;
 }
 
-/* Mobile touch effects */
+/* Mobile touch effects - optimized for better performance */
 .touch-ripple {
   position: fixed;
   pointer-events: none;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(247, 89, 171, 0.2) 0%, rgba(247, 89, 171, 0) 70%);
+  background: radial-gradient(circle, rgba(247, 89, 171, 0.15) 0%, rgba(247, 89, 171, 0) 70%);
   z-index: 1;
-  animation: ripple 1s ease-out forwards;
+  animation: touchRipple 0.8s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes touchRipple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+  }
 }
 
 /* Staggered animation delay utilities */
@@ -249,29 +255,31 @@
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
 
-/* Fancy cursor animation */
+/* Revised cursor animation - more subtle and sleek */
 .cursor-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background-color: rgba(247, 89, 171, 0.7);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
+  will-change: transform, width, height;
 }
 
 .cursor-ring {
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(247, 89, 171, 0.3);
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(247, 89, 171, 0.3);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+  transition: transform 0.12s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  will-change: transform, width, height, border-color;
 }
 
 /* Button hover animation */
@@ -284,33 +292,34 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.7s ease;
 }
 
 .btn-hover-effect:hover::before {
-  transform: translateX(100%);
+  left: 100%;
 }
 
-/* Floating elements animation */
+/* Floating elements animation - more subtle */
 .floating-element {
-  animation: floating 6s ease-in-out infinite;
+  animation: floating 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes floating {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-8px); }
 }
 
 /* Subtle section entry animations */
 .section-animate {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
 }
 
 .section-animate.is-visible {
@@ -321,32 +330,62 @@
 /* Staggered list item animations */
 .stagger-list > * {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(15px);
+  will-change: opacity, transform;
 }
 
 .stagger-list.is-visible > *:nth-child(1) { 
-  animation: staggerFadeIn 0.5s 0.1s forwards ease-out; 
+  animation: staggerFadeIn 0.4s 0.1s forwards ease-out; 
 }
 .stagger-list.is-visible > *:nth-child(2) { 
-  animation: staggerFadeIn 0.5s 0.2s forwards ease-out; 
+  animation: staggerFadeIn 0.4s 0.2s forwards ease-out; 
 }
 .stagger-list.is-visible > *:nth-child(3) { 
-  animation: staggerFadeIn 0.5s 0.3s forwards ease-out; 
+  animation: staggerFadeIn 0.4s 0.3s forwards ease-out; 
 }
 .stagger-list.is-visible > *:nth-child(4) { 
-  animation: staggerFadeIn 0.5s 0.4s forwards ease-out; 
+  animation: staggerFadeIn 0.4s 0.4s forwards ease-out; 
 }
 .stagger-list.is-visible > *:nth-child(5) { 
-  animation: staggerFadeIn 0.5s 0.5s forwards ease-out; 
+  animation: staggerFadeIn 0.4s 0.5s forwards ease-out; 
 }
 
 @keyframes staggerFadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
+  0% { opacity: 0; transform: translateY(15px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Magnetic effects for interactive elements */
+/* Improved magnetic effect - more subtle */
 .magnetic-effect {
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
+}
+
+/* Mobile optimization - disable heavy animations on mobile */
+@media (max-width: 768px) {
+  .cursor-dot, .cursor-ring, .pointer-ripple {
+    display: none !important;
+  }
+  
+  .product-card-glow::before,
+  .interactive-hover::after {
+    display: none;
+  }
+  
+  .floating-element {
+    animation: none;
+  }
+  
+  .magnetic-effect {
+    transition: none;
+  }
+  
+  .interactive-hover:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+  }
 }

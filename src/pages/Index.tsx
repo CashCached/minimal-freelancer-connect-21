@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -15,7 +14,6 @@ import {
   BarChart2,
   ShieldCheck,
   Clock,
-  // Using more subtle, minimalistic icons for product section
   Circle,
   Square,
   Hexagon,
@@ -97,26 +95,14 @@ const Index = () => {
         target.classList.contains('interactive-hover');
       
       if (isClickable && cursorRingRef.current) {
-        cursorRingRef.current.style.width = '65px';
-        cursorRingRef.current.style.height = '65px';
+        cursorRingRef.current.style.width = '50px';
+        cursorRingRef.current.style.height = '50px';
         cursorRingRef.current.style.borderColor = 'rgba(247, 89, 171, 0.6)';
       } else if (cursorRingRef.current) {
-        cursorRingRef.current.style.width = '40px';
-        cursorRingRef.current.style.height = '40px';
+        cursorRingRef.current.style.width = '30px';
+        cursorRingRef.current.style.height = '30px';
         cursorRingRef.current.style.borderColor = 'rgba(247, 89, 171, 0.3)';
       }
-      
-      // Create ripple effect on mouse move (more subtle now)
-      const ripple = document.createElement('div');
-      ripple.className = 'pointer-ripple';
-      ripple.style.left = `${x}px`;
-      ripple.style.top = `${y}px`;
-      document.body.appendChild(ripple);
-      
-      // Remove ripple after animation
-      setTimeout(() => {
-        ripple.remove();
-      }, 1000);
     };
     
     // Apply magnetic effect to buttons
@@ -131,7 +117,7 @@ const Index = () => {
           
           // Cast button to HTMLElement to avoid TypeScript errors
           const buttonEl = button as HTMLElement;
-          buttonEl.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+          buttonEl.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
         });
         
         button.addEventListener('mouseleave', () => {
@@ -144,34 +130,10 @@ const Index = () => {
     
     handleButtonHover();
     
-    // Handle touch events for mobile
-    const handleTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      const x = touch.clientX;
-      const y = touch.clientY;
-      
-      // Create ripple effect on touch move
-      const ripple = document.createElement('div');
-      ripple.className = 'touch-ripple';
-      ripple.style.left = `${x}px`;
-      ripple.style.top = `${y}px`;
-      document.body.appendChild(ripple);
-      
-      // Remove ripple after animation
-      setTimeout(() => {
-        ripple.remove();
-      }, 1000);
-    };
-    
-    if (!isMobile) {
-      document.addEventListener('mousemove', handleMouseMove);
-    } else {
-      document.addEventListener('touchmove', handleTouchMove);
-    }
+    document.addEventListener('mousemove', handleMouseMove);
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('touchmove', handleTouchMove);
     };
   }, [isMobile]);
   
