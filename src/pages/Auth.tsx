@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
-import { FaGoogle, FaGithub, FaMicrosoft } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import Logo from '@/components/Logo';
 import { supabase } from '@/lib/supabase';
 import { toast } from '@/components/ui/use-toast';
@@ -11,9 +11,7 @@ import { Provider } from '@supabase/supabase-js';
 const Auth = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<{[key: string]: boolean}>({
-    google: false,
-    github: false,
-    microsoft: false
+    google: false
   });
 
   // Add animations on load
@@ -38,15 +36,13 @@ const Auth = () => {
     };
   }, []);
 
-  const handleSocialLogin = async (provider: 'google' | 'github' | 'azure') => {
+  const handleSocialLogin = async (provider: Provider) => {
     try {
-      // Convert 'microsoft' to 'azure' in the loading state
-      const loadingKey = provider === 'azure' ? 'microsoft' : provider;
-      setLoading({...loading, [loadingKey]: true});
+      setLoading({...loading, [provider]: true});
       
       // Supabase social sign-in
       const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: provider as Provider,
+        provider,
         options: {
           redirectTo: `${window.location.origin}/`,
         },
@@ -64,20 +60,18 @@ const Auth = () => {
       // Handle successful login
       toast({
         title: "Authentication initiated",
-        description: `Redirecting to ${provider === 'azure' ? 'Microsoft' : provider} for authentication...`,
+        description: `Redirecting to ${provider} for authentication...`,
       });
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(`Error signing in with ${provider}:`, error);
       toast({
         title: "Authentication failed",
-        description: `Failed to sign in with ${provider === 'azure' ? 'Microsoft' : provider}. Please try again.`,
+        description: error.message || `Failed to sign in with ${provider}. Please try again.`,
         variant: "destructive",
       });
     } finally {
-      // Convert 'microsoft' to 'azure' in the loading state
-      const loadingKey = provider === 'azure' ? 'microsoft' : provider;
-      setLoading({...loading, [loadingKey]: false});
+      setLoading({...loading, [provider]: false});
     }
   };
 
@@ -108,32 +102,6 @@ const Auth = () => {
               <FaGoogle className="mr-2 h-4 w-4 text-red-500" />
               <span className="relative z-10">
                 {loading.google ? 'Connecting...' : 'Continue with Google'}
-              </span>
-              <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
-            
-            <Button 
-              onClick={() => handleSocialLogin('github')}
-              variant="outline" 
-              className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group relative overflow-hidden"
-              disabled={loading.github}
-            >
-              <FaGithub className="mr-2 h-4 w-4 text-white" />
-              <span className="relative z-10">
-                {loading.github ? 'Connecting...' : 'Continue with GitHub'}
-              </span>
-              <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
-            
-            <Button 
-              onClick={() => handleSocialLogin('azure')}
-              variant="outline" 
-              className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group relative overflow-hidden"
-              disabled={loading.microsoft}
-            >
-              <FaMicrosoft className="mr-2 h-4 w-4 text-blue-500" />
-              <span className="relative z-10">
-                {loading.microsoft ? 'Connecting...' : 'Continue with Microsoft'}
               </span>
               <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover:w-full"></span>
             </Button>
