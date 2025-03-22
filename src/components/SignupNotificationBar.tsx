@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { AlertCircle, Bell, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -34,8 +35,7 @@ const SignupNotificationBar = () => {
     // Initial notification after 5 seconds
     const initialTimer = setTimeout(() => {
       setNotifications([generateRandomSignup()]);
-      // Notifications hidden as requested
-      // setVisible(true);
+      setVisible(true);
       
       // Auto-hide after 5 seconds
       setTimeout(() => {
@@ -47,8 +47,7 @@ const SignupNotificationBar = () => {
     const intervalTimer = setInterval(() => {
       const newSignup = generateRandomSignup();
       setNotifications([newSignup]);
-      // Notifications hidden as requested
-      // setVisible(true);
+      setVisible(true);
       
       // Auto-hide after 5 seconds
       setTimeout(() => {
@@ -62,11 +61,6 @@ const SignupNotificationBar = () => {
     };
   }, []);
   
-  // Component is now hidden by returning null instead of the full component
-  // Keeping the code for future reference
-  return null;
-  
-  /* Original component code below, commented out but kept for reference
   return (
     <AnimatePresence>
       {visible && notifications.length > 0 && (
@@ -104,7 +98,6 @@ const SignupNotificationBar = () => {
       )}
     </AnimatePresence>
   );
-  */
 };
 
 export default SignupNotificationBar;
