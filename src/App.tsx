@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { createContext, useContext } from "react";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
@@ -57,7 +57,7 @@ const AuthRedirect = () => {
 
 const queryClient = new QueryClient();
 
-const AppContent = () => {
+const App = () => {
   const auth = useSupabaseAuth();
 
   return (
@@ -66,27 +66,23 @@ const AppContent = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
-            <AnimatePresence mode="wait">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/auth" element={<AuthRedirect />} />
-                <Route path="/waitlist" element={
-                  <ProtectedRoute>
-                    <Waitlist />
-                  </ProtectedRoute>
-                } />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </AnimatePresence>
-            <SignupNotificationBar />
-          </BrowserRouter>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<AuthRedirect />} />
+              <Route path="/waitlist" element={
+                <ProtectedRoute>
+                  <Waitlist />
+                </ProtectedRoute>
+              } />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
+          <SignupNotificationBar />
         </TooltipProvider>
       </QueryClientProvider>
     </AuthContext.Provider>
   );
 };
-
-const App = () => <AppContent />;
 
 export default App;
