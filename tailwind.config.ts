@@ -55,11 +55,12 @@ export default {
 				},
 				// Updated custom colors based on provided hex codes
 				brand: {
-					darkGreen: '#102321',
-					green: '#1B5e3c',
-					gold: '#BE9553',
-					cream: '#FFEAC6',
-					white: '#FFFFFF',
+					purple: '#9b87f5',
+					purpleDark: '#7E69AB',
+					purpleLight: '#E5DEFF',
+					blackAmoled: '#000000e6',
+					darkCharcoal: '#221F26',
+					silverGray: '#9F9EA1',
 				}
 			},
 			borderRadius: {
@@ -92,6 +93,14 @@ export default {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.8' },
 				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				'glow': {
+					'0%, 100%': { boxShadow: '0 0 5px 2px rgba(155, 135, 245, 0.3)' },
+					'50%': { boxShadow: '0 0 20px 5px rgba(155, 135, 245, 0.6)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -100,7 +109,13 @@ export default {
 				'fade-up': 'fade-up 0.7s ease-out',
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
 				'pulse-soft': 'pulse-soft 3s infinite ease-in-out',
+				'float': 'float 6s ease-in-out infinite',
+				'glow': 'glow 3s ease-in-out infinite',
 			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'amoled-grid': 'linear-gradient(to right, #2226 1px, transparent 1px), linear-gradient(to bottom, #2226 1px, transparent 1px)',
+			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

@@ -1,82 +1,102 @@
 
-import React, { useState, useEffect } from 'react';
-import { Bell, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { AlertCircle, Bell, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-// We'll use an array of fake sign-ups for the real-time effect
-const fakeSignups = [
-  { name: 'Sarah J.', location: 'New York', timeAgo: '2 minutes ago', business: 'E-commerce' },
-  { name: 'Mike T.', location: 'Los Angeles', timeAgo: '5 minutes ago', business: 'Coaching' },
-  { name: 'Emma L.', location: 'London', timeAgo: '7 minutes ago', business: 'SaaS' },
-  { name: 'Robert K.', location: 'Toronto', timeAgo: '12 minutes ago', business: 'Real Estate' },
-  { name: 'Sophia Q.', location: 'Sydney', timeAgo: '15 minutes ago', business: 'Agency' },
-  { name: 'Daniel F.', location: 'Berlin', timeAgo: '18 minutes ago', business: 'Fitness' },
-  { name: 'Lisa M.', location: 'Chicago', timeAgo: '23 minutes ago', business: 'Beauty' },
-  { name: 'James B.', location: 'Miami', timeAgo: '25 minutes ago', business: 'Other' },
+// Mock data for random signups
+const mockCompanies = [
+  "TechCorp", "DataFlow", "AIVentures", "NeuralWorks", "QuantumAI", 
+  "CogniSys", "DeepTech", "IntelliCorp", "NexusBrain", "SynthInc"
 ];
 
-const SignupNotificationBar = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentSignup, setCurrentSignup] = useState(fakeSignups[0]);
-  const [index, setIndex] = useState(0);
+const mockLocations = [
+  "San Francisco", "New York", "London", "Berlin", "Tokyo", 
+  "Singapore", "Sydney", "Toronto", "Paris", "Bangalore"
+];
 
-  // Initially hide the notification, then show it after a short delay
-  useEffect(() => {
-    const initialTimer = setTimeout(() => {
-      setIsVisible(true);
-    }, 3000);
-
-    return () => clearTimeout(initialTimer);
-  }, []);
-
-  // Cycle through the fake signups to create a real-time effect
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const interval = setInterval(() => {
-      setIsVisible(false);
-      
-      // After hiding, update to the next signup
-      setTimeout(() => {
-        setIndex((prevIndex) => (prevIndex + 1) % fakeSignups.length);
-        setCurrentSignup(fakeSignups[(index + 1) % fakeSignups.length]);
-        setIsVisible(true);
-      }, 500);
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, [isVisible, index]);
-
-  // Hide notification when the close button is clicked
-  const handleClose = () => {
-    setIsVisible(false);
+const generateRandomSignup = () => {
+  const company = mockCompanies[Math.floor(Math.random() * mockCompanies.length)];
+  const location = mockLocations[Math.floor(Math.random() * mockLocations.length)];
+  const timeAgo = Math.floor(Math.random() * 10) + 1;
+  
+  return {
+    company,
+    location,
+    timeAgo,
+    id: Date.now()
   };
+};
 
+const SignupNotificationBar = () => {
+  const [notifications, setNotifications] = useState<Array<{company: string, location: string, timeAgo: number, id: number}>>([]);
+  const [visible, setVisible] = useState(false);
+  
+  useEffect(() => {
+    // Initial notification after 5 seconds
+    const initialTimer = setTimeout(() => {
+      setNotifications([generateRandomSignup()]);
+      setVisible(true);
+      
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        setVisible(false);
+      }, 5000);
+    }, 5000);
+    
+    // Generate a new notification every 15-30 seconds
+    const intervalTimer = setInterval(() => {
+      const newSignup = generateRandomSignup();
+      setNotifications([newSignup]);
+      setVisible(true);
+      
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        setVisible(false);
+      }, 5000);
+    }, Math.random() * 15000 + 15000); // Random interval between 15-30 seconds
+    
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(intervalTimer);
+    };
+  }, []);
+  
   return (
-    <div 
-      className={`fixed bottom-4 left-4 z-50 transition-all duration-500 ease-in-out transform ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-      }`}
-    >
-      <div className="flex items-center bg-white/90 backdrop-blur-sm border border-brand-teal/20 shadow-lg rounded-full py-2 pl-3 pr-4 max-w-xs">
-        <div className="flex-shrink-0 bg-brand-teal/10 p-2 rounded-full mr-3">
-          <Bell size={18} className="text-brand-teal" />
-        </div>
-        <div className="flex-1 mr-2">
-          <p className="text-sm font-medium text-brand-darkGreen">
-            {currentSignup.name} from {currentSignup.location}
-          </p>
-          <p className="text-xs text-brand-darkGreen/70">
-            Started a free trial <span className="font-medium">{currentSignup.timeAgo}</span>
-          </p>
-        </div>
-        <button 
-          onClick={handleClose}
-          className="flex-shrink-0 text-brand-darkGreen/50 hover:text-brand-darkGreen"
+    <AnimatePresence>
+      {visible && notifications.length > 0 && (
+        <motion.div
+          initial={{ x: '100%', opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: '100%', opacity: 0 }}
+          transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+          className="fixed bottom-4 right-4 z-50"
         >
-          <X size={16} />
-        </button>
-      </div>
-    </div>
+          <div className="neo-blur p-4 pr-10 rounded-lg shadow-lg max-w-md relative overflow-hidden">
+            <button 
+              onClick={() => setVisible(false)}
+              className="absolute top-2 right-2 text-white/60 hover:text-white"
+            >
+              <X size={14} />
+            </button>
+            
+            <div className="flex items-center gap-3">
+              <div className="flex-shrink-0">
+                <div className="h-8 w-8 bg-brand-purple/20 rounded-full flex items-center justify-center animate-pulse-soft">
+                  <Bell size={16} className="text-brand-purple" />
+                </div>
+              </div>
+              
+              <div className="flex-1">
+                <p className="text-sm text-white">
+                  <span className="font-semibold">{notifications[0].company}</span> from {notifications[0].location} just 
+                  joined Vora {notifications[0].timeAgo} {notifications[0].timeAgo === 1 ? 'minute' : 'minutes'} ago
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
