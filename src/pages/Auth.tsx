@@ -6,6 +6,7 @@ import { FaGoogle, FaGithub, FaMicrosoft } from 'react-icons/fa';
 import Logo from '@/components/Logo';
 import { supabase } from '@/lib/supabase';
 import { toast } from '@/components/ui/use-toast';
+import { Provider } from '@supabase/supabase-js';
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -37,13 +38,15 @@ const Auth = () => {
     };
   }, []);
 
-  const handleSocialLogin = async (provider: 'google' | 'github' | 'microsoft') => {
+  const handleSocialLogin = async (provider: 'google' | 'github' | 'azure') => {
     try {
-      setLoading({...loading, [provider]: true});
+      // Convert 'microsoft' to 'azure' in the loading state
+      const loadingKey = provider === 'azure' ? 'microsoft' : provider;
+      setLoading({...loading, [loadingKey]: true});
       
       // Supabase social sign-in
       const { data, error } = await supabase.auth.signInWithOAuth({
-        provider,
+        provider: provider as Provider,
         options: {
           redirectTo: `${window.location.origin}/`,
         },
@@ -61,18 +64,20 @@ const Auth = () => {
       // Handle successful login
       toast({
         title: "Authentication initiated",
-        description: `Redirecting to ${provider} for authentication...`,
+        description: `Redirecting to ${provider === 'azure' ? 'Microsoft' : provider} for authentication...`,
       });
 
     } catch (error) {
       console.error(`Error signing in with ${provider}:`, error);
       toast({
         title: "Authentication failed",
-        description: `Failed to sign in with ${provider}. Please try again.`,
+        description: `Failed to sign in with ${provider === 'azure' ? 'Microsoft' : provider}. Please try again.`,
         variant: "destructive",
       });
     } finally {
-      setLoading({...loading, [provider]: false});
+      // Convert 'microsoft' to 'azure' in the loading state
+      const loadingKey = provider === 'azure' ? 'microsoft' : provider;
+      setLoading({...loading, [loadingKey]: false});
     }
   };
 
@@ -121,7 +126,7 @@ const Auth = () => {
             </Button>
             
             <Button 
-              onClick={() => handleSocialLogin('microsoft')}
+              onClick={() => handleSocialLogin('azure')}
               variant="outline" 
               className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group relative overflow-hidden"
               disabled={loading.microsoft}
