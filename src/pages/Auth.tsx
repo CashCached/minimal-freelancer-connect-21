@@ -1,12 +1,19 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub, FaMicrosoft } from 'react-icons/fa';
 import Logo from '@/components/Logo';
+import { supabase } from '@/lib/supabase';
+import { toast } from '@/components/ui/use-toast';
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState<{[key: string]: boolean}>({
+    google: false,
+    github: false,
+    microsoft: false
+  });
 
   // Add animations on load
   useEffect(() => {
@@ -30,10 +37,43 @@ const Auth = () => {
     };
   }, []);
 
-  const handleSocialLogin = (provider: string) => {
-    console.log(`Login with ${provider}`);
-    // This will be replaced with real Supabase authentication once integrated
-    alert(`Login with ${provider} will be integrated with Supabase`);
+  const handleSocialLogin = async (provider: 'google' | 'github' | 'microsoft') => {
+    try {
+      setLoading({...loading, [provider]: true});
+      
+      // Supabase social sign-in
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/`,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      // If we get here without redirect, something went wrong
+      if (!data.url) {
+        throw new Error('No redirect URL returned');
+      }
+
+      // Handle successful login
+      toast({
+        title: "Authentication initiated",
+        description: `Redirecting to ${provider} for authentication...`,
+      });
+
+    } catch (error) {
+      console.error(`Error signing in with ${provider}:`, error);
+      toast({
+        title: "Authentication failed",
+        description: `Failed to sign in with ${provider}. Please try again.`,
+        variant: "destructive",
+      });
+    } finally {
+      setLoading({...loading, [provider]: false});
+    }
   };
 
   return (
@@ -55,32 +95,41 @@ const Auth = () => {
           
           <div className="space-y-4 stagger-list">
             <Button 
-              onClick={() => handleSocialLogin('Google')}
+              onClick={() => handleSocialLogin('google')}
               variant="outline" 
               className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group relative overflow-hidden"
+              disabled={loading.google}
             >
               <FaGoogle className="mr-2 h-4 w-4 text-red-500" />
-              <span className="relative z-10">Continue with Google</span>
+              <span className="relative z-10">
+                {loading.google ? 'Connecting...' : 'Continue with Google'}
+              </span>
               <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover:w-full"></span>
             </Button>
             
             <Button 
-              onClick={() => handleSocialLogin('GitHub')}
+              onClick={() => handleSocialLogin('github')}
               variant="outline" 
               className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group relative overflow-hidden"
+              disabled={loading.github}
             >
               <FaGithub className="mr-2 h-4 w-4 text-white" />
-              <span className="relative z-10">Continue with GitHub</span>
+              <span className="relative z-10">
+                {loading.github ? 'Connecting...' : 'Continue with GitHub'}
+              </span>
               <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover:w-full"></span>
             </Button>
             
             <Button 
-              onClick={() => handleSocialLogin('Microsoft')}
+              onClick={() => handleSocialLogin('microsoft')}
               variant="outline" 
               className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group relative overflow-hidden"
+              disabled={loading.microsoft}
             >
               <FaMicrosoft className="mr-2 h-4 w-4 text-blue-500" />
-              <span className="relative z-10">Continue with Microsoft</span>
+              <span className="relative z-10">
+                {loading.microsoft ? 'Connecting...' : 'Continue with Microsoft'}
+              </span>
               <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover:w-full"></span>
             </Button>
           </div>
