@@ -62,7 +62,7 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-brand-blackAmoled amoled-grid relative overflow-hidden">
-      <style jsx>{`
+      <style>{`
         .pointer-ripple {
           position: fixed;
           width: 50px;
