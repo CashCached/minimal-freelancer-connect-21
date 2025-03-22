@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -33,6 +32,10 @@ const chartData = [
   { name: 'May', cost: 1890, savings: 4800, projection: 2800 },
   { name: 'Jun', cost: 2390, savings: 3800, projection: 2800 },
 ];
+
+const formatCurrency = (value: number) => {
+  return `₹${value.toLocaleString('en-IN')}`;
+};
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -97,7 +100,7 @@ const Index = () => {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(217, 70, 239, 0.2) 0%, rgba(217, 70, 239, 0) 70%);
+          background: radial-gradient(circle, rgba(155, 135, 245, 0.2) 0%, rgba(155, 135, 245, 0) 70%);
           transform: translate(-50%, -50%);
           pointer-events: none;
           animation: ripple 1s ease-out forwards;
@@ -122,7 +125,7 @@ const Index = () => {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(217, 70, 239, 0.2) 0%, rgba(217, 70, 239, 0) 70%);
+          background: radial-gradient(circle, rgba(155, 135, 245, 0.2) 0%, rgba(155, 135, 245, 0) 70%);
           transform: translate(-50%, -50%);
           pointer-events: none;
           animation: ripple 1s ease-out forwards;
@@ -213,22 +216,26 @@ const Index = () => {
             <h3 className="text-lg font-semibold mb-4 text-white glow-text-subtle">AI Spending Optimization</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                <LineChart 
+                  data={chartData} 
+                  margin={{ top: 5, right: isMobile ? 10 : 30, left: isMobile ? 0 : 20, bottom: 5 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" stroke="#333" />
                   <XAxis dataKey="name" stroke="#9F9EA1" />
-                  <YAxis stroke="#9F9EA1" />
+                  <YAxis stroke="#9F9EA1" tickFormatter={formatCurrency} />
                   <Tooltip 
                     contentStyle={{ 
                       backgroundColor: 'rgba(0, 0, 0, 0.8)', 
-                      border: '1px solid rgba(217, 70, 239, 0.2)',
+                      border: '1px solid rgba(155, 135, 245, 0.2)',
                       borderRadius: '0.5rem'
                     }} 
                     labelStyle={{ color: '#fff' }}
-                    itemStyle={{ color: '#D946EF' }}
+                    itemStyle={{ color: '#9b87f5' }}
+                    formatter={(value) => [formatCurrency(value as number), ""]}
                   />
                   <Legend />
                   <Line type="monotone" dataKey="cost" stroke="#ff6b6b" activeDot={{ r: 8 }} strokeWidth={2} />
-                  <Line type="monotone" dataKey="savings" stroke="#D946EF" strokeWidth={2} />
+                  <Line type="monotone" dataKey="savings" stroke="#9b87f5" strokeWidth={2} />
                   <Line type="monotone" dataKey="projection" stroke="#4ecdc4" strokeDasharray="5 5" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
@@ -424,20 +431,24 @@ const Index = () => {
                 
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+                    <BarChart 
+                      data={chartData} 
+                      margin={{ top: 5, right: isMobile ? 10 : 30, left: isMobile ? 0 : 20, bottom: 5 }}
+                    >
                       <CartesianGrid strokeDasharray="3 3" stroke="#333" />
                       <XAxis dataKey="name" stroke="#9F9EA1" />
-                      <YAxis stroke="#9F9EA1" />
+                      <YAxis stroke="#9F9EA1" tickFormatter={formatCurrency} />
                       <Tooltip 
                         contentStyle={{ 
                           backgroundColor: 'rgba(0, 0, 0, 0.8)', 
-                          border: '1px solid rgba(217, 70, 239, 0.2)',
+                          border: '1px solid rgba(155, 135, 245, 0.2)',
                           borderRadius: '0.5rem'
-                        }} 
+                        }}
+                        formatter={(value) => [formatCurrency(value as number), ""]}
                       />
                       <Legend />
-                      <Bar dataKey="cost" fill="#D946EF" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="savings" fill="#9b87f5" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="cost" fill="#9b87f5" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="savings" fill="#7E69AB" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -445,11 +456,11 @@ const Index = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
                   <div className="bg-white/5 rounded-lg p-3">
                     <p className="text-white/70 text-xs mb-1">Total Spend</p>
-                    <p className="text-lg font-semibold text-white">$24,560</p>
+                    <p className="text-lg font-semibold text-white">₹24,560</p>
                   </div>
                   <div className="bg-white/5 rounded-lg p-3">
                     <p className="text-white/70 text-xs mb-1">Total Savings</p>
-                    <p className="text-lg font-semibold text-brand-purple">$8,790</p>
+                    <p className="text-lg font-semibold text-brand-purple">₹8,790</p>
                   </div>
                   <div className="bg-white/5 rounded-lg p-3">
                     <p className="text-white/70 text-xs mb-1">Efficiency</p>
@@ -530,7 +541,7 @@ const Index = () => {
               </div>
               
               <p className="text-white/70">
-                Contact: cashcached@gmail.com | 123 AI Avenue, Tech Valley
+                Contact: contact@cashcached.com | Innovation Center 104A, MIT Manipal
               </p>
             </div>
           </div>

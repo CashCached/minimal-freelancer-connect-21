@@ -31,6 +31,8 @@ const SignupNotificationBar = () => {
   const [notifications, setNotifications] = useState<Array<{company: string, location: string, timeAgo: number, id: number}>>([]);
   const [visible, setVisible] = useState(false);
   
+  /* 
+  // Notifications are disabled as requested
   useEffect(() => {
     // Initial notification after 5 seconds
     const initialTimer = setTimeout(() => {
@@ -60,6 +62,7 @@ const SignupNotificationBar = () => {
       clearInterval(intervalTimer);
     };
   }, []);
+  */
   
   return (
     <AnimatePresence>
