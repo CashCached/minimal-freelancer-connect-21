@@ -1,29 +1,98 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import StatCard from '@/components/StatCard';
 import CaseStudyCard from '@/components/CaseStudyCard';
+import PricingPlans from '@/components/PricingPlans';
+import AnalyticsChartBackground from '@/components/AnalyticsChartBackground';
+import ContactSection from '@/components/ContactSection';
 import { Button } from "@/components/ui/button";
 import { 
   ArrowRight, 
   BarChart2,
   ShieldCheck,
   Clock,
-  CreditCard,
   AreaChart,
   Palette,
-  AppWindow,
   Wallet,
-  Zap,
-  Brain
+  Brain,
+  MousePointerClick,
+  TrendingUp,
+  PieChart
 } from 'lucide-react';
+import { ChartContainer, ChartTooltip } from '@/components/ui/chart';
+import { BarChart, Bar, LineChart, Line, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
+const chartData = [
+  { name: 'Jan', cost: 4000, savings: 2400, projection: 2800 },
+  { name: 'Feb', cost: 3000, savings: 1398, projection: 2800 },
+  { name: 'Mar', cost: 2000, savings: 9800, projection: 2800 },
+  { name: 'Apr', cost: 2780, savings: 3908, projection: 2800 },
+  { name: 'May', cost: 1890, savings: 4800, projection: 2800 },
+  { name: 'Jun', cost: 2390, savings: 3800, projection: 2800 },
+];
 
 const Index = () => {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      
+      // Create ripple effect on mouse move
+      const ripple = document.createElement('div');
+      ripple.className = 'pointer-ripple';
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      document.body.appendChild(ripple);
+      
+      // Remove ripple after animation
+      setTimeout(() => {
+        ripple.remove();
+      }, 1000);
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+  
   return (
-    <div className="min-h-screen bg-brand-blackAmoled amoled-grid">
+    <div className="min-h-screen bg-brand-blackAmoled amoled-grid relative overflow-hidden">
+      <style jsx>{`
+        .pointer-ripple {
+          position: fixed;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(155, 135, 245, 0.2) 0%, rgba(155, 135, 245, 0) 70%);
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          animation: ripple 1s ease-out forwards;
+          z-index: 1;
+        }
+        
+        @keyframes ripple {
+          0% {
+            width: 0;
+            height: 0;
+            opacity: 0.5;
+          }
+          100% {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+          }
+        }
+      `}</style>
+      
       <Navbar />
+      
+      {/* Analytics chart background */}
+      <AnalyticsChartBackground className="pointer-events-none" />
       
       {/* Hero Section */}
       <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden">
@@ -36,19 +105,25 @@ const Index = () => {
         {/* Content */}
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="text-center mb-8">
-            <h1 className="heading-xl text-gradient-primary mb-4">
+            <div className="inline-block mb-6 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20">
+              <span className="text-brand-purpleLight font-medium text-sm flex items-center">
+                <TrendingUp className="h-4 w-4 mr-2" /> Revolutionizing AI Financial Management
+              </span>
+            </div>
+            
+            <h1 className="heading-xl text-gradient-primary mb-4 animate-fade-up opacity-0">
               Revolutionizing AI Financial Management
             </h1>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 animate-fade-up opacity-0 delay-100">
               CashCached – Simplifying AI Payments
             </h2>
-            <p className="subtitle max-w-3xl mx-auto mb-8">
+            <p className="subtitle max-w-3xl mx-auto mb-8 animate-fade-up opacity-0 delay-200">
               The unified AI fund management platform that helps companies allocate, track, and audit AI spending with ease.
             </p>
             
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-10">
-              <div className="flex items-center">
+              <div className="flex items-center animate-fade-up opacity-0 delay-300 hover:scale-105 transition-transform">
                 <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3">
                   <BarChart2 className="h-5 w-5 text-brand-purple" />
                 </div>
@@ -58,7 +133,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="flex items-center">
+              <div className="flex items-center animate-fade-up opacity-0 delay-400 hover:scale-105 transition-transform">
                 <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3">
                   <ShieldCheck className="h-5 w-5 text-brand-purple" />
                 </div>
@@ -68,7 +143,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="flex items-center">
+              <div className="flex items-center animate-fade-up opacity-0 delay-500 hover:scale-105 transition-transform">
                 <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3">
                   <Clock className="h-5 w-5 text-brand-purple" />
                 </div>
@@ -80,12 +155,41 @@ const Index = () => {
             </div>
             
             <div className="flex flex-col md:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white">
-                Try Vora Dashboard
+              <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
+                <span className="relative z-10">Try Vora Dashboard</span>
+                <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </Button>
-              <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10">
-                Learn More
+              <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 group">
+                <span>Learn More</span>
+                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
+            </div>
+          </div>
+          
+          {/* Featured Chart */}
+          <div className="mt-16 glass-card p-6 animate-fade-up opacity-0 delay-300 hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300">
+            <h3 className="text-lg font-semibold mb-4 text-white">AI Spending Optimization</h3>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+                  <XAxis dataKey="name" stroke="#9F9EA1" />
+                  <YAxis stroke="#9F9EA1" />
+                  <Tooltip 
+                    contentStyle={{ 
+                      backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+                      border: '1px solid rgba(155, 135, 245, 0.2)',
+                      borderRadius: '0.5rem'
+                    }} 
+                    labelStyle={{ color: '#fff' }}
+                    itemStyle={{ color: '#9b87f5' }}
+                  />
+                  <Legend />
+                  <Line type="monotone" dataKey="cost" stroke="#ff6b6b" activeDot={{ r: 8 }} strokeWidth={2} />
+                  <Line type="monotone" dataKey="savings" stroke="#9b87f5" strokeWidth={2} />
+                  <Line type="monotone" dataKey="projection" stroke="#4ecdc4" strokeDasharray="5 5" strokeWidth={2} />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
@@ -95,6 +199,9 @@ const Index = () => {
       <section id="products" className="py-16 md:py-24 px-4 relative">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
+            <div className="inline-block mb-4 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <span className="text-white/80 font-medium text-sm">Our Solutions</span>
+            </div>
             <h2 className="heading-lg text-gradient-primary mb-4">Our Products</h2>
             <p className="subtitle max-w-2xl mx-auto">
               Comprehensive solutions for managing AI expenditure
@@ -157,6 +264,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Pricing Plans Section */}
+      <PricingPlans />
       
       {/* Why CashCached Section */}
       <section id="why" className="py-16 md:py-24 px-4 relative">
@@ -193,10 +303,10 @@ const Index = () => {
             />
           </div>
           
-          <div className="glass-card p-8 md:p-10 text-center">
+          <div className="glass-card p-8 md:p-10 text-center hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 group">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="md:text-left">
-                <h3 className="text-2xl font-bold text-white mb-2">Trusted by 500+ enterprises</h3>
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-brand-purple transition-colors">Trusted by 500+ enterprises</h3>
                 <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-4">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-brand-purple"></div>
@@ -208,9 +318,103 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white">
-                Schedule a Demo
+              <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
+                <span className="relative z-10">Schedule a Demo</span>
+                <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Analytics Dashboard Preview */}
+      <section className="py-16 md:py-24 px-4 relative">
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-block mb-4 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                <span className="text-white/80 font-medium text-sm flex items-center">
+                  <PieChart className="h-4 w-4 mr-2 text-brand-purple" /> Advanced Analytics
+                </span>
+              </div>
+              <h2 className="heading-lg text-gradient-primary mb-6">Real-time AI Fund Tracking</h2>
+              <p className="subtitle mb-8">
+                Get comprehensive analytics and insights into your AI spending patterns. Identify optimization opportunities and track your savings in real-time.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5">
+                    <MousePointerClick className="h-4 w-4 text-brand-purple" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">Intuitive Dashboard</h3>
+                    <p className="text-white/70">Easy-to-use interface with customizable widgets</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5">
+                    <TrendingUp className="h-4 w-4 text-brand-purple" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">Trend Analysis</h3>
+                    <p className="text-white/70">AI-powered predictions and usage patterns</p>
+                  </div>
+                </div>
+              </div>
+              
+              <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white">
+                Explore Dashboard
+              </Button>
+            </div>
+            
+            <div className="glass-card p-6 hover-lift transition-all duration-500">
+              <div className="bg-black/40 rounded-lg p-4">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-lg font-semibold text-white">AI Service Spending</h3>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10">Weekly</Button>
+                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-brand-purple/20 text-brand-purple">Monthly</Button>
+                    <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10">Yearly</Button>
+                  </div>
+                </div>
+                
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+                      <XAxis dataKey="name" stroke="#9F9EA1" />
+                      <YAxis stroke="#9F9EA1" />
+                      <Tooltip 
+                        contentStyle={{ 
+                          backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+                          border: '1px solid rgba(155, 135, 245, 0.2)',
+                          borderRadius: '0.5rem'
+                        }} 
+                      />
+                      <Legend />
+                      <Bar dataKey="cost" fill="#7E69AB" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="savings" fill="#9b87f5" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-4 mt-4">
+                  <div className="bg-white/5 rounded-lg p-3">
+                    <p className="text-white/70 text-xs mb-1">Total Spend</p>
+                    <p className="text-lg font-semibold text-white">$24,560</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-3">
+                    <p className="text-white/70 text-xs mb-1">Total Savings</p>
+                    <p className="text-lg font-semibold text-brand-purple">$8,790</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-3">
+                    <p className="text-white/70 text-xs mb-1">Efficiency</p>
+                    <p className="text-lg font-semibold text-green-400">+35.8%</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -247,11 +451,25 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Contact Section */}
+      <section id="contact" className="py-16 md:py-24 px-4 relative">
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="heading-lg text-gradient-primary mb-4">Get in Touch</h2>
+            <p className="subtitle max-w-2xl mx-auto mb-8">
+              Have questions? Our team is here to help you optimize your AI spending
+            </p>
+          </div>
+          
+          <ContactSection />
+        </div>
+      </section>
+      
       {/* CTA Section */}
       <section className="py-16 md:py-24 px-4 relative">
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="glass-card p-8 md:p-12 overflow-hidden relative border-brand-purple/30">
-            <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-brand-purple/20 blur-3xl"></div>
+          <div className="glass-card p-8 md:p-12 overflow-hidden relative border-brand-purple/30 group hover:shadow-lg hover:shadow-brand-purple/20 transition-all duration-500">
+            <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-brand-purple/20 blur-3xl group-hover:bg-brand-purple/30 transition-all duration-500"></div>
             
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="heading-lg text-gradient-primary mb-6">Get Started Today</h2>
@@ -260,8 +478,9 @@ const Index = () => {
               </p>
               
               <div className="flex flex-col md:flex-row justify-center gap-4 mb-8">
-                <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white">
-                  Schedule a Free Consultation
+                <Button size="lg" className="bg-brand-purple hover:bg-brand-purpleDark text-white group relative overflow-hidden">
+                  <span className="relative z-10">Schedule a Free Consultation</span>
+                  <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                 </Button>
                 <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10">
                   Try Vora Dashboard
@@ -269,7 +488,7 @@ const Index = () => {
               </div>
               
               <p className="text-white/70">
-                Contact: cashcach3@gmail.com | 123 AI Street, Tech Valley
+                Contact: salesbridge@protonmail.com | 123 AI Street, Tech Valley
               </p>
             </div>
           </div>

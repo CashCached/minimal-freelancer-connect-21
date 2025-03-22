@@ -11,10 +11,97 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Additional cursor effects */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(155, 135, 245, 0.5);
+        border-radius: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        transition: width 0.3s, height 0.3s, border-color 0.3s;
+        z-index: 9999;
+      }
+      
+      .cursor-dot {
+        width: 6px;
+        height: 6px;
+        background-color: rgba(155, 135, 245, 0.8);
+        border-radius: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 10000;
+      }
+      
+      /* Gradient animation for text */
+      @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .animated-gradient-text {
+        background: linear-gradient(90deg, #9b87f5, #E5DEFF, #9b87f5);
+        background-size: 200% auto;
+        animation: gradient-shift 3s ease infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </head>
 
   <body class="bg-black">
     <div id="root"></div>
+    
+    <!-- Cursor effects -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    
+    <script>
+      // Custom cursor effect
+      document.addEventListener('DOMContentLoaded', () => {
+        const cursor = document.getElementById('custom-cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+        
+        document.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+          cursorDot.style.left = e.clientX + 'px';
+          cursorDot.style.top = e.clientY + 'px';
+        });
+        
+        document.addEventListener('mousedown', () => {
+          cursor.style.width = '15px';
+          cursor.style.height = '15px';
+          cursor.style.borderColor = 'rgba(155, 135, 245, 0.8)';
+        });
+        
+        document.addEventListener('mouseup', () => {
+          cursor.style.width = '20px';
+          cursor.style.height = '20px';
+          cursor.style.borderColor = 'rgba(155, 135, 245, 0.5)';
+        });
+        
+        // Interactive elements cursor effect
+        document.querySelectorAll('button, a, input, select, textarea').forEach(item => {
+          item.addEventListener('mouseenter', () => {
+            cursor.style.width = '30px';
+            cursor.style.height = '30px';
+            cursor.style.borderColor = 'rgba(155, 135, 245, 0.8)';
+          });
+          
+          item.addEventListener('mouseleave', () => {
+            cursor.style.width = '20px';
+            cursor.style.height = '20px';
+            cursor.style.borderColor = 'rgba(155, 135, 245, 0.5)';
+          });
+        });
+      });
+    </script>
+    
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
