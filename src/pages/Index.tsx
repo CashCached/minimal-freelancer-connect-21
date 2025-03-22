@@ -57,17 +57,39 @@ const Index = () => {
       }, 1000);
     };
     
+    // Handle touch events for mobile
+    const handleTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      const x = touch.clientX;
+      const y = touch.clientY;
+      
+      // Create ripple effect on touch move
+      const ripple = document.createElement('div');
+      ripple.className = 'touch-ripple';
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      document.body.appendChild(ripple);
+      
+      // Remove ripple after animation
+      setTimeout(() => {
+        ripple.remove();
+      }, 1000);
+    };
+    
     if (!isMobile) {
       document.addEventListener('mousemove', handleMouseMove);
+    } else {
+      document.addEventListener('touchmove', handleTouchMove);
     }
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('touchmove', handleTouchMove);
     };
   }, [isMobile]);
   
   return (
-    <div className="min-h-screen bg-brand-blackAmoled enhanced-grid relative overflow-hidden">
+    <div className="min-h-screen bg-black enhanced-grid relative overflow-hidden">
       <style>
         {`
         .pointer-ripple {
@@ -75,7 +97,7 @@ const Index = () => {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(155, 135, 245, 0.2) 0%, rgba(155, 135, 245, 0) 70%);
+          background: radial-gradient(circle, rgba(217, 70, 239, 0.2) 0%, rgba(217, 70, 239, 0) 70%);
           transform: translate(-50%, -50%);
           pointer-events: none;
           animation: ripple 1s ease-out forwards;
@@ -93,6 +115,18 @@ const Index = () => {
             height: 200px;
             opacity: 0;
           }
+        }
+        
+        .touch-ripple {
+          position: fixed;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(217, 70, 239, 0.2) 0%, rgba(217, 70, 239, 0) 70%);
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          animation: ripple 1s ease-out forwards;
+          z-index: 1;
         }
       `}
       </style>
@@ -115,15 +149,15 @@ const Index = () => {
           <div className="text-center mb-8">
             <div className="inline-block mb-6 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20">
               <span className="text-brand-purpleLight font-medium text-sm flex items-center">
-                <TrendingUp className="h-4 w-4 mr-2" /> Revolutionizing AI Financial Management
+                <TrendingUp className="h-4 w-4 mr-2" /> Simplifying AI Financial Management
               </span>
             </div>
             
             <h1 className="heading-xl text-gradient-primary mb-4 animate-fade-up glow-text-strong">
-              Revolutionizing AI Financial Management
+              CashCached
             </h1>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 animate-fade-up delay-100 glow-text-subtle">
-              CashCached – Simplifying AI Payments
+              Revolutionizing AI Financial Management
             </h2>
             <p className="subtitle max-w-3xl mx-auto mb-8 animate-fade-up delay-200">
               The unified AI fund management platform that helps companies allocate, track, and audit AI spending with ease.
@@ -186,15 +220,15 @@ const Index = () => {
                   <Tooltip 
                     contentStyle={{ 
                       backgroundColor: 'rgba(0, 0, 0, 0.8)', 
-                      border: '1px solid rgba(155, 135, 245, 0.2)',
+                      border: '1px solid rgba(217, 70, 239, 0.2)',
                       borderRadius: '0.5rem'
                     }} 
                     labelStyle={{ color: '#fff' }}
-                    itemStyle={{ color: '#9b87f5' }}
+                    itemStyle={{ color: '#D946EF' }}
                   />
                   <Legend />
                   <Line type="monotone" dataKey="cost" stroke="#ff6b6b" activeDot={{ r: 8 }} strokeWidth={2} />
-                  <Line type="monotone" dataKey="savings" stroke="#9b87f5" strokeWidth={2} />
+                  <Line type="monotone" dataKey="savings" stroke="#D946EF" strokeWidth={2} />
                   <Line type="monotone" dataKey="projection" stroke="#4ecdc4" strokeDasharray="5 5" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
@@ -210,7 +244,7 @@ const Index = () => {
             <div className="inline-block mb-4 px-3 py-1 rounded-full bg-white/5 border border-white/10">
               <span className="text-white/80 font-medium text-sm">Our Solutions</span>
             </div>
-            <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Our Products</h2>
+            <h2 className="heading-lg text-gradient-primary mb-4 glow-text-strong">Suite of Products</h2>
             <p className="subtitle max-w-2xl mx-auto">
               Comprehensive solutions for managing AI expenditure
             </p>
@@ -379,9 +413,9 @@ const Index = () => {
             
             <div className="glass-card p-6 hover-lift transition-all duration-500 interactive-hover">
               <div className="bg-black/40 rounded-lg p-4">
-                <div className="flex justify-between items-center mb-4">
+                <div className="flex justify-between items-center mb-4 flex-wrap">
                   <h3 className="text-lg font-semibold text-white glow-text-subtle">AI Service Spending</h3>
-                  <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
+                  <div className="flex gap-2 overflow-x-auto mt-2 sm:mt-0">
                     <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10 whitespace-nowrap">Weekly</Button>
                     <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-brand-purple/20 text-brand-purple whitespace-nowrap">Monthly</Button>
                     <Button variant="outline" size="sm" className="h-8 px-2 text-xs border-white/10 bg-white/5 hover:bg-white/10 whitespace-nowrap">Yearly</Button>
@@ -397,12 +431,12 @@ const Index = () => {
                       <Tooltip 
                         contentStyle={{ 
                           backgroundColor: 'rgba(0, 0, 0, 0.8)', 
-                          border: '1px solid rgba(155, 135, 245, 0.2)',
+                          border: '1px solid rgba(217, 70, 239, 0.2)',
                           borderRadius: '0.5rem'
                         }} 
                       />
                       <Legend />
-                      <Bar dataKey="cost" fill="#7E69AB" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="cost" fill="#D946EF" radius={[4, 4, 0, 0]} />
                       <Bar dataKey="savings" fill="#9b87f5" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>

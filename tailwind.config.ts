@@ -53,12 +53,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Updated custom colors based on provided hex codes
+				// Updated custom colors for neon pink-purple theme
 				brand: {
-					purple: '#9b87f5',
-					purpleDark: '#7E69AB',
-					purpleLight: '#E5DEFF',
-					blackAmoled: '#000000e6',
+					purple: '#D946EF',  // Brighter pink-purple
+					purpleDark: '#9b87f5', // Original purple as secondary
+					purpleLight: '#FFC7FF', // Lighter pink
+					blackAmoled: '#000000', // True AMOLED black
 					darkCharcoal: '#221F26',
 					silverGray: '#9F9EA1',
 				}
@@ -98,8 +98,12 @@ export default {
 					'50%': { transform: 'translateY(-10px)' },
 				},
 				'glow': {
-					'0%, 100%': { boxShadow: '0 0 5px 2px rgba(155, 135, 245, 0.3)' },
-					'50%': { boxShadow: '0 0 20px 5px rgba(155, 135, 245, 0.6)' },
+					'0%, 100%': { boxShadow: '0 0 5px 2px rgba(217, 70, 239, 0.3)' },
+					'50%': { boxShadow: '0 0 15px 5px rgba(217, 70, 239, 0.5)' },
+				},
+				'ripple': {
+					'0%': { width: '0px', height: '0px', opacity: '0.5' },
+					'100%': { width: '200px', height: '200px', opacity: '0' },
 				},
 			},
 			animation: {
@@ -111,6 +115,7 @@ export default {
 				'pulse-soft': 'pulse-soft 3s infinite ease-in-out',
 				'float': 'float 6s ease-in-out infinite',
 				'glow': 'glow 3s ease-in-out infinite',
+				'ripple': 'ripple 1s ease-out forwards',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

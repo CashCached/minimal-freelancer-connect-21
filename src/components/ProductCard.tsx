@@ -31,11 +31,34 @@ const ProductCard: React.FC<ProductCardProps> = ({
     card.style.setProperty('--x', `${x}%`);
     card.style.setProperty('--y', `${y}%`);
   };
+  
+  // Handle touch events for mobile
+  const handleTouch = (e: React.TouchEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+    const y = ((e.touches[0].clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--x', `${x}%`);
+    card.style.setProperty('--y', `${y}%`);
+    
+    // Create touch ripple effect
+    const ripple = document.createElement('div');
+    ripple.className = 'touch-ripple';
+    ripple.style.left = `${e.touches[0].clientX}px`;
+    ripple.style.top = `${e.touches[0].clientY}px`;
+    document.body.appendChild(ripple);
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+      ripple.remove();
+    }, 1000);
+  };
 
   return (
     <Card 
       className="glass-card overflow-hidden hover-lift transition-all duration-500 border-white/5 backdrop-blur-md group product-card-glow interactive-hover"
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouch}
     >
       <CardHeader className="pb-2 relative">
         <div className="absolute top-[-20px] right-[-20px] opacity-10 group-hover:opacity-20 transition-opacity duration-500">

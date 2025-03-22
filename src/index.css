@@ -14,7 +14,7 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
     
-    --primary: 270 75% 60%;
+    --primary: 292 84% 61%;  /* Pink-purple primary color */
     --primary-foreground: 0 0% 98%;
     
     --secondary: 240 3.7% 15.9%;
@@ -23,7 +23,7 @@
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
     
-    --accent: 270 75% 80%;
+    --accent: 294 73% 89%;  /* Lighter pink accent */
     --accent-foreground: 240 5.9% 10%;
     
     --destructive: 0 62.8% 30.6%;
@@ -31,7 +31,7 @@
     
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 270 75% 60%;
+    --ring: 292 84% 61%;  /* Pink-purple ring color */
     
     --radius: 0.75rem;
   }
@@ -41,7 +41,7 @@
   }
   
   body {
-    @apply bg-brand-blackAmoled text-foreground antialiased;
+    @apply bg-black text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
@@ -101,36 +101,37 @@
     @apply bg-amoled-grid bg-[length:40px_40px];
   }
   
+  /* Toned down glow effects */
   .glow-text {
-    text-shadow: 0 0 10px rgba(155, 135, 245, 0.7), 0 0 20px rgba(155, 135, 245, 0.4);
+    text-shadow: 0 0 8px rgba(217, 70, 239, 0.5), 0 0 15px rgba(217, 70, 239, 0.3);
   }
   
   .glow-text-subtle {
-    text-shadow: 0 0 5px rgba(155, 135, 245, 0.5);
+    text-shadow: 0 0 4px rgba(217, 70, 239, 0.4);
   }
 
   .glow-text-strong {
-    text-shadow: 0 0 10px rgba(155, 135, 245, 0.8), 0 0 20px rgba(155, 135, 245, 0.6), 0 0 30px rgba(155, 135, 245, 0.4);
+    text-shadow: 0 0 8px rgba(217, 70, 239, 0.6), 0 0 15px rgba(217, 70, 239, 0.4), 0 0 25px rgba(217, 70, 239, 0.3);
   }
   
   .glow-purple {
-    filter: drop-shadow(0 0 8px rgba(155, 135, 245, 0.6));
+    filter: drop-shadow(0 0 6px rgba(217, 70, 239, 0.5));
   }
 
   .glow-purple-strong {
-    filter: drop-shadow(0 0 15px rgba(155, 135, 245, 0.8));
+    filter: drop-shadow(0 0 12px rgba(217, 70, 239, 0.6));
   }
 }
 
 /* Custom animations and effects */
 .glow-effect {
-  box-shadow: 0 0 10px 2px rgba(155, 135, 245, 0.3);
+  box-shadow: 0 0 8px 2px rgba(217, 70, 239, 0.3);
   animation: glow 3s infinite ease-in-out;
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 10px 2px rgba(155, 135, 245, 0.3); }
-  50% { box-shadow: 0 0 25px 5px rgba(155, 135, 245, 0.6); }
+  0%, 100% { box-shadow: 0 0 8px 2px rgba(217, 70, 239, 0.3); }
+  50% { box-shadow: 0 0 20px 5px rgba(217, 70, 239, 0.5); }
 }
 
 .hover-lift {
@@ -173,7 +174,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(155, 135, 245, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.1) 0%, transparent 70%);
   transform: rotate(0deg);
   transition: transform 0.5s ease-out;
   pointer-events: none;
@@ -185,8 +186,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 15px 2px rgba(155, 135, 245, 0.3); }
-  50% { box-shadow: 0 0 25px 5px rgba(155, 135, 245, 0.5); }
+  0%, 100% { box-shadow: 0 0 12px 2px rgba(217, 70, 239, 0.3); }
+  50% { box-shadow: 0 0 20px 5px rgba(217, 70, 239, 0.4); }
 }
 
 /* Interactive hover effects */
@@ -202,7 +203,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(155, 135, 245, 0.3) 0%, transparent 50%);
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(217, 70, 239, 0.3) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -225,8 +226,19 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(155, 135, 245, 0.15), transparent 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(217, 70, 239, 0.15), transparent 70%);
   pointer-events: none;
+}
+
+/* Mobile touch effects */
+.touch-ripple {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.2) 0%, rgba(217, 70, 239, 0) 70%);
+  z-index: 1;
+  animation: ripple 1s ease-out forwards;
 }
 
 /* Staggered animation delay utilities */
