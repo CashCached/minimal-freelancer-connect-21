@@ -1,16 +1,26 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, BarChart2, ShieldCheck, Clock } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useNavigate } from 'react-router-dom';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleAuthNavigate = () => {
+    navigate('/auth');
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10 py-3">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="flex items-center">
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <Logo />
+          </div>
           <span className="text-2xl font-bold text-gradient-primary">CashCached</span>
         </div>
 
@@ -20,10 +30,17 @@ const Navbar = () => {
           <a href="#why" className="text-white/80 hover:text-white transition-colors">Why Us</a>
           <a href="#case-study" className="text-white/80 hover:text-white transition-colors">Case Study</a>
           <div className="flex gap-3">
-            <Button variant="outline" className="bg-transparent border-brand-purple/50 text-white hover:bg-brand-purple/20">
+            <Button 
+              variant="outline" 
+              className="bg-transparent border-brand-purple/50 text-white hover:bg-brand-purple/20"
+              onClick={handleAuthNavigate}
+            >
               Learn More
             </Button>
-            <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white">
+            <Button 
+              className="bg-brand-purple hover:bg-brand-purpleDark text-white"
+              onClick={handleAuthNavigate}
+            >
               Try Vora Dashboard
             </Button>
           </div>
@@ -50,10 +67,23 @@ const Navbar = () => {
                 <a href="#case-study" className="text-white text-lg" onClick={() => setIsOpen(false)}>Case Study</a>
               </div>
               <div className="mt-auto flex flex-col gap-3 pt-8">
-                <Button variant="outline" className="w-full bg-transparent border-brand-purple/50 text-white hover:bg-brand-purple/20">
+                <Button 
+                  variant="outline" 
+                  className="w-full bg-transparent border-brand-purple/50 text-white hover:bg-brand-purple/20"
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleAuthNavigate();
+                  }}
+                >
                   Learn More
                 </Button>
-                <Button className="w-full bg-brand-purple hover:bg-brand-purpleDark text-white">
+                <Button 
+                  className="w-full bg-brand-purple hover:bg-brand-purpleDark text-white"
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleAuthNavigate();
+                  }}
+                >
                   Try Vora Dashboard
                 </Button>
               </div>

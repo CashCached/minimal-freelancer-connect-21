@@ -9,6 +9,7 @@ import AnalyticsChartBackground from '@/components/AnalyticsChartBackground';
 import ContactSection from '@/components/ContactSection';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
   BarChart2,
@@ -38,12 +39,16 @@ const formatCurrency = (value: number) => {
 
 const Index = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const cursorRingRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
   
-  // Animation on scroll for sections
+  const handleAuthNavigate = () => {
+    navigate('/auth');
+  };
+  
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -65,7 +70,6 @@ const Index = () => {
     };
   }, []);
   
-  // Custom cursor effect (desktop only)
   useEffect(() => {
     if (isMobile) return;
     
@@ -74,7 +78,6 @@ const Index = () => {
       const y = e.clientY;
       setCursorPosition({ x, y });
       
-      // Update cursor position
       if (cursorDotRef.current) {
         cursorDotRef.current.style.left = `${x}px`;
         cursorDotRef.current.style.top = `${y}px`;
@@ -85,7 +88,6 @@ const Index = () => {
         cursorRingRef.current.style.top = `${y}px`;
       }
       
-      // Check if hovering over interactive elements
       const target = e.target as HTMLElement;
       const isClickable = 
         target.tagName.toLowerCase() === 'button' || 
@@ -105,7 +107,6 @@ const Index = () => {
       }
     };
     
-    // Apply magnetic effect to buttons
     const handleButtonHover = () => {
       const buttons = document.querySelectorAll('button, .magnetic-effect');
       
@@ -115,13 +116,11 @@ const Index = () => {
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
           
-          // Cast button to HTMLElement to avoid TypeScript errors
           const buttonEl = button as HTMLElement;
           buttonEl.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
         });
         
         button.addEventListener('mouseleave', () => {
-          // Cast button to HTMLElement to avoid TypeScript errors
           const buttonEl = button as HTMLElement;
           buttonEl.style.transform = 'translate(0, 0)';
         });
@@ -139,7 +138,6 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-black relative overflow-hidden amoled-grid">
-      {/* Custom cursor (desktop only) */}
       {!isMobile && (
         <>
           <div ref={cursorDotRef} className="cursor-dot"></div>
@@ -149,9 +147,7 @@ const Index = () => {
       
       <Navbar />
       
-      {/* Hero Section */}
       <section className="pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden section-animate">
-        {/* Content */}
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="text-center mb-8">
             <div className="inline-block mb-6 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20 floating-element">
@@ -170,7 +166,6 @@ const Index = () => {
               The unified AI fund management platform that helps companies allocate, track, and audit AI spending with ease.
             </p>
             
-            {/* Stats */}
             <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-10 stagger-list">
               <div className="flex items-center animate-fade-up delay-300 hover:scale-105 transition-transform magnetic-effect">
                 <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mr-3 glow-purple">
@@ -204,18 +199,27 @@ const Index = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button variant="gradient" size="lg" className="magnetic-effect group relative overflow-hidden">
+              <Button 
+                variant="gradient" 
+                size="lg" 
+                className="magnetic-effect group relative overflow-hidden"
+                onClick={handleAuthNavigate}
+              >
                 <span className="relative z-10">Try Vora Dashboard</span>
                 <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </Button>
-              <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 group magnetic-effect">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 group magnetic-effect"
+                onClick={handleAuthNavigate}
+              >
                 <span>Learn More</span>
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </div>
           
-          {/* Featured Chart */}
           <div className="mt-16 glass-card p-6 animate-fade-up delay-300 hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 interactive-hover floating-element">
             <h3 className="text-lg font-semibold mb-4 text-white glow-text-subtle">AI Spending Optimization</h3>
             <div className="h-64">
@@ -248,7 +252,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Products Section */}
       <section id="products" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
@@ -318,10 +321,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Pricing Plans Section */}
       <PricingPlans />
       
-      {/* Why CashCached Section */}
       <section id="why" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
@@ -369,7 +370,11 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <Button variant="gradient" className="magnetic-effect group relative overflow-hidden">
+              <Button 
+                variant="gradient" 
+                className="magnetic-effect group relative overflow-hidden"
+                onClick={handleAuthNavigate}
+              >
                 <span className="relative z-10">Schedule a Demo</span>
                 <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </Button>
@@ -378,7 +383,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Analytics Dashboard Preview */}
       <section className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -475,7 +479,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Case Study Section */}
       <section id="case-study" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -506,7 +509,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Contact Section */}
       <section id="contact" className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12">
@@ -520,7 +522,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section */}
       <section className="py-16 md:py-24 px-4 relative section-animate">
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="glass-card p-8 md:p-12 overflow-hidden relative border-brand-purple/30 group hover:shadow-lg hover:shadow-brand-purple/20 transition-all duration-500 interactive-hover">
@@ -533,11 +534,21 @@ const Index = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                <Button size="lg" variant="gradient" className="magnetic-effect group relative overflow-hidden">
+                <Button 
+                  size="lg" 
+                  variant="gradient" 
+                  className="magnetic-effect group relative overflow-hidden"
+                  onClick={handleAuthNavigate}
+                >
                   <span className="relative z-10">Schedule a Free Consultation</span>
                   <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                 </Button>
-                <Button size="lg" variant="outline" className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 magnetic-effect">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-brand-purple/50 text-white bg-transparent hover:bg-brand-purple/10 magnetic-effect"
+                  onClick={handleAuthNavigate}
+                >
                   Try Vora Dashboard
                 </Button>
               </div>

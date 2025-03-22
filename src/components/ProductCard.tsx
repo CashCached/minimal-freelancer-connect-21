@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from 'lucide-react';
 import { ArrowRight, Sparkle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
   title: string;
@@ -22,6 +23,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   color,
   ctaText
 }) => {
+  const navigate = useNavigate();
+  
   // Track mouse position for the interactive glow effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -52,6 +55,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
     setTimeout(() => {
       ripple.remove();
     }, 1000);
+  };
+
+  const handleButtonClick = () => {
+    navigate('/auth');
   };
 
   return (
@@ -85,7 +92,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </ul>
       </CardContent>
       <CardFooter>
-        <Button variant="ghost" className="w-full border border-white/10 text-white bg-black/20 hover:bg-brand-purple/20 group/button relative overflow-hidden">
+        <Button 
+          variant="ghost" 
+          className="w-full border border-white/10 text-white bg-black/20 hover:bg-brand-purple/20 group/button relative overflow-hidden"
+          onClick={handleButtonClick}
+        >
           <span className="relative z-10">{ctaText}</span>
           <span className="absolute inset-0 w-0 bg-gradient-to-r from-brand-purple/20 to-brand-purpleLight/20 transition-all duration-300 group-hover/button:w-full"></span>
           <ArrowRight size={16} className="ml-2 opacity-0 group-hover/button:opacity-100 group-hover/button:translate-x-1 transition-all duration-300" />
