@@ -11,6 +11,7 @@ interface ProductCardProps {
   color: string;
   features: string[];
   ctaText: string;
+  onClick?: () => void; // Add an optional onClick prop
 }
 
 const ProductCard = ({ 
@@ -19,12 +20,17 @@ const ProductCard = ({
   icon: Icon, 
   color, 
   features,
-  ctaText
+  ctaText,
+  onClick
 }: ProductCardProps) => {
   const navigate = useNavigate();
   
   const handleNavigation = () => {
-    navigate('/auth');
+    if (onClick) {
+      onClick();
+    } else {
+      navigate('/auth');
+    }
   };
 
   return (

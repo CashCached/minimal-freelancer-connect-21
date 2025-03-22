@@ -277,6 +277,7 @@ const Index = () => {
                 "Role-based access & anomaly detection"
               ]}
               ctaText="Try Vora Dashboard"
+              onClick={handleAuthNavigate}
             />
             
             <ProductCard 
@@ -290,6 +291,7 @@ const Index = () => {
                 "Seamless subscription activation"
               ]}
               ctaText="Configure Pricing"
+              onClick={handleAuthNavigate}
             />
             
             <ProductCard 
@@ -303,6 +305,7 @@ const Index = () => {
                 "One-click AI service payments"
               ]}
               ctaText="Explore API Docs"
+              onClick={handleAuthNavigate}
             />
             
             <ProductCard 
@@ -316,6 +319,7 @@ const Index = () => {
                 "Real-time analytics & budget control"
               ]}
               ctaText="Join Waitlist"
+              onClick={handleAuthNavigate}
             />
           </div>
         </div>
@@ -567,3 +571,4 @@ const Index = () => {
 };
 
 export default Index;
+
