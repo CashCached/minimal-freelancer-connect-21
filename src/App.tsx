@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { createContext, useContext } from "react";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import Waitlist from "./pages/Waitlist";
 import NotFound from "./pages/NotFound";
 import SignupNotificationBar from "./components/SignupNotificationBar";
 import { AnimatePresence } from "framer-motion";
@@ -41,6 +42,19 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
+// Create an auth-only redirect component
+const AuthRedirect = () => {
+  const { user, loading } = useAuth();
+  
+  if (loading) return <div>Loading...</div>;
+  
+  if (user) {
+    return <Navigate to="/waitlist" replace />;
+  }
+  
+  return <Auth />;
+};
+
 const queryClient = new QueryClient();
 
 const AppContent = () => {
@@ -56,7 +70,12 @@ const AppContent = () => {
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="/auth" element={<Auth />} />
+                <Route path="/auth" element={<AuthRedirect />} />
+                <Route path="/waitlist" element={
+                  <ProtectedRoute>
+                    <Waitlist />
+                  </ProtectedRoute>
+                } />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AnimatePresence>
