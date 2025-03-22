@@ -129,11 +129,15 @@ const Index = () => {
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
           
-          button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+          // Cast button to HTMLElement to avoid TypeScript errors
+          const buttonEl = button as HTMLElement;
+          buttonEl.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
         });
         
         button.addEventListener('mouseleave', () => {
-          button.style.transform = 'translate(0, 0)';
+          // Cast button to HTMLElement to avoid TypeScript errors
+          const buttonEl = button as HTMLElement;
+          buttonEl.style.transform = 'translate(0, 0)';
         });
       });
     };
