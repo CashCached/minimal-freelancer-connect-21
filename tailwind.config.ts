@@ -53,12 +53,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Updated custom colors for galaxy gradient theme (more pink-focused)
+				// Updated custom colors for galaxy gradient theme (more pink-focused but still professional)
 				brand: {
 					purple: '#b36ef5',  // More pink/purple as primary
 					purpleDark: '#9258C7', // Darker purple with pink undertone
 					purpleLight: '#D6BCFA', // Light purple
-					pink: '#D946EF',     // Vibrant pink
+					pink: '#F759AB',     // Vibrant pink (but not too bright)
 					pinkLight: '#F5B8FF', // Light pink
 					blackAmoled: '#000000', // True AMOLED black
 					darkCharcoal: '#221F26',
@@ -100,8 +100,8 @@ export default {
 					'50%': { transform: 'translateY(-10px)' },
 				},
 				'glow': {
-					'0%, 100%': { boxShadow: '0 0 5px 2px rgba(211, 70, 239, 0.3)' },
-					'50%': { boxShadow: '0 0 15px 5px rgba(211, 70, 239, 0.5)' },
+					'0%, 100%': { boxShadow: '0 0 5px 2px rgba(247, 89, 171, 0.3)' },
+					'50%': { boxShadow: '0 0 15px 5px rgba(247, 89, 171, 0.5)' },
 				},
 				'ripple': {
 					'0%': { width: '0px', height: '0px', opacity: '0.5' },
@@ -122,7 +122,7 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'amoled-grid': 'linear-gradient(to right, #2226 1px, transparent 1px), linear-gradient(to bottom, #2226 1px, transparent 1px)',
-				'galaxy-gradient': 'linear-gradient(225deg, #D946EF 0%, #b36ef5 50%, #9258C7 100%)',
+				'galaxy-gradient': 'linear-gradient(225deg, #F759AB 0%, #b36ef5 50%, #9258C7 100%)',
 			}
 		}
 	},

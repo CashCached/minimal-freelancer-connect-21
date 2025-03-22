@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -14,11 +15,11 @@ import {
   BarChart2,
   ShieldCheck,
   Clock,
-  AreaChart,
-  Palette,
-  Wallet,
-  Brain,
-  MousePointerClick,
+  // Using more subtle, minimalistic icons for product section
+  Circle,
+  Square,
+  Hexagon,
+  Triangle,
   TrendingUp,
   PieChart
 } from 'lucide-react';
@@ -92,7 +93,7 @@ const Index = () => {
   }, [isMobile]);
   
   return (
-    <div className="min-h-screen bg-black enhanced-grid relative overflow-hidden">
+    <div className="min-h-screen bg-black relative overflow-hidden">
       <style>
         {`
         .pointer-ripple {
@@ -136,16 +137,11 @@ const Index = () => {
       
       <Navbar />
       
-      {/* Analytics chart background */}
-      <AnalyticsChartBackground className="pointer-events-none" />
+      {/* Removed background elements as requested */}
       
       {/* Hero Section */}
       <section className="pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-24 px-4 md:px-12 lg:px-24 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-radial from-brand-purple/20 via-transparent to-transparent opacity-50"></div>
-        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand-purple/10 blur-3xl"></div>
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-brand-purpleDark/10 blur-3xl"></div>
-        <div className="absolute top-1/3 left-1/4 w-32 h-32 rounded-full bg-brand-purpleLight/10 blur-2xl"></div>
+        {/* Removed background elements to let black stand out */}
         
         {/* Content */}
         <div className="container mx-auto max-w-5xl relative z-10">
@@ -261,7 +257,7 @@ const Index = () => {
             <ProductCard 
               title="Vora"
               description="AI Fund Management & Analytics"
-              icon={AreaChart}
+              icon={Circle}
               color="bg-gradient-to-br from-brand-purple to-brand-purpleDark"
               features={[
                 "Centralized wallet for AI services",
@@ -275,7 +271,7 @@ const Index = () => {
             <ProductCard 
               title="Mosaic"
               description="Custom AI Pricing Generator"
-              icon={Palette}
+              icon={Square}
               color="bg-gradient-to-br from-purple-600 to-pink-500"
               features={[
                 "Input AI architecture & calculate costs",
@@ -288,7 +284,7 @@ const Index = () => {
             <ProductCard 
               title="Flow"
               description="Unified AI Payment API"
-              icon={Wallet}
+              icon={Hexagon}
               color="bg-gradient-to-br from-blue-500 to-indigo-600"
               features={[
                 "Connect UPI wallets (Google Pay, Paytm, etc.)",
@@ -301,7 +297,7 @@ const Index = () => {
             <ProductCard 
               title="Nexus"
               description="Agentic AI Fund Automation"
-              icon={Brain}
+              icon={Triangle}
               color="bg-gradient-to-br from-emerald-500 to-teal-600"
               features={[
                 "Autonomous AI-driven fund allocation",
@@ -319,7 +315,7 @@ const Index = () => {
       
       {/* Why CashCached Section */}
       <section id="why" className="py-16 md:py-24 px-4 relative">
-        <div className="absolute top-0 right-0 w-full h-full bg-gradient-radial from-brand-purple/10 via-transparent to-transparent opacity-30"></div>
+        {/* Removed background effects to let black stand out */}
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
@@ -359,7 +355,7 @@ const Index = () => {
                 <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-4">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-brand-purple"></div>
-                    <span className="text-white/80">$50M+ AI Payments Processed</span>
+                    <span className="text-white/80">₹50M+ AI Payments Processed</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-brand-purple"></div>
@@ -394,7 +390,7 @@ const Index = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center mt-0.5 glow-purple">
-                    <MousePointerClick className="h-4 w-4 text-brand-purple" />
+                    <Circle className="h-4 w-4 text-brand-purple" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-1 glow-text-subtle">Intuitive Dashboard</h3>
