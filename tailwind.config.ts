@@ -53,11 +53,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Updated custom colors for neon pink-purple theme
+				// Updated custom colors for more purple theme
 				brand: {
-					purple: '#D946EF',  // Brighter pink-purple
-					purpleDark: '#9b87f5', // Original purple as secondary
-					purpleLight: '#FFC7FF', // Lighter pink
+					purple: '#8B5CF6',  // More purple, less pink
+					purpleDark: '#7C3AED', // Deeper purple
+					purpleLight: '#C4B5FD', // Lighter purple
 					blackAmoled: '#000000', // True AMOLED black
 					darkCharcoal: '#221F26',
 					silverGray: '#9F9EA1',

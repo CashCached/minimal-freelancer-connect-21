@@ -46,10 +46,10 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4 glow-text-subtle">Get In Touch</h4>
             <p className="text-white/70 mb-2">
-              Email: cashcached@gmail.com
+              Email: contact@cashcached.com
             </p>
             <p className="text-white/70 mb-4">
-              123 AI Avenue, Tech Valley
+              Innovation Center 104A
             </p>
             <Button className="bg-brand-purple hover:bg-brand-purpleDark text-white">
               Schedule Consultation

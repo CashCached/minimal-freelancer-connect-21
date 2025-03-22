@@ -46,7 +46,7 @@ const ContactSection = () => {
           <Mail className="h-6 w-6" />
         </div>
         <h3 className="text-lg font-semibold mb-2 text-white glow-text-subtle">Email</h3>
-        <p className="text-white/70">cashcached@gmail.com</p>
+        <p className="text-white/70">contact@cashcached.com</p>
       </div>
 
       <div 
@@ -58,7 +58,7 @@ const ContactSection = () => {
           <MapPin className="h-6 w-6" />
         </div>
         <h3 className="text-lg font-semibold mb-2 text-white glow-text-subtle">Location</h3>
-        <p className="text-white/70">123 AI Avenue, Tech Valley</p>
+        <p className="text-white/70">Innovation Center 104A</p>
       </div>
       
       <div 
